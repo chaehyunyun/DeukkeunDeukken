@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "217222564644",
+    "project_id": "minchae2-87856",
+    "storage_bucket": "minchae2-87856.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217222564644:android:7fa0dec0b423811862c1b1",
+        "android_client_info": {
+          "package_name": "com.example.mylogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "217222564644-q08pe9io2dj9in0bk41lfcputcbi2jr1.apps.googleusercontent.com",
+          "client_type": 3, //원래 1이었음,,
+          "android_info": {
+            "package_name": "com.example.mylogin",
+            "certificate_hash": "9aa282e85d1eb981ab269ee4e270b4ffc0f455d8"
+          }
+        },
+        {
+          "client_id": "217222564644-ahd43gi1ntm8r1v9mght30cq8eppf1om.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCg2fZMtsM70yWIBizRcUm_msF9OXUHeQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "217222564644-ahd43gi1ntm8r1v9mght30cq8eppf1om.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

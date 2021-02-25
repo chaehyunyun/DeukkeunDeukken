@@ -1,0 +1,213 @@
+package com.example.mylogin;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.ActivityManager;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
+
+public class MainActivity extends AppCompatActivity {
+
+        private FirebaseAuth mAuth = null;
+        private GoogleSignInClient mGoogleSignInClient;
+        private static final int RC_SIGN_IN = 9001;
+        private SignInButton signInButton;
+
+        //DB이용한 이메일 로그인 구현
+        //define view objects
+        EditText editTextEmail;
+        EditText editTextPassword;
+        TextView textviewMessage;
+        Button buttonLogin;
+        Button bntSingin;
+        Button bntFindpw;
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+
+
+            //여기서부터
+            //initializig firebase auth object
+            mAuth = FirebaseAuth.getInstance();
+
+            if(mAuth.getCurrentUser() != null) {
+                //이미 로그인 되었다면 이 액티비티를 종료함
+                finish();
+                //그리고 profile 액티비티를 연다.
+                startActivity(new Intent(getApplicationContext(), AfterLogin.class)); //추가해 줄 ProfileActivity
+            }
+            //initializing views
+            editTextEmail = (EditText) findViewById(R.id.editTextEmail);
+            editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+            buttonLogin = (Button) findViewById(R.id.buttonLogin);
+
+            bntSingin= (Button) findViewById(R.id.btnSignin);
+            bntFindpw = (Button) findViewById(R.id.btnFindpassword);
+
+            textviewMessage = (TextView) findViewById(R.id.textviewMessage);
+            progressDialog = new ProgressDialog(this);
+
+            //button click event
+            buttonLogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    userLogin();
+                }
+            });
+            bntSingin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getApplicationContext(), NewId.class));
+                }
+            });
+            bntFindpw.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getApplicationContext(), FindPw.class));
+                }
+            });
+            //여기까지
+
+
+
+
+            signInButton = findViewById(R.id.signInButton);
+            mAuth = FirebaseAuth.getInstance();
+
+            //자동로그인
+            if (mAuth.getCurrentUser() != null) {
+                SharedPreferences pref = getSharedPreferences("Service socket info", MODE_PRIVATE);
+
+                String server_ip = pref.getString("server_ip", null);
+                Log.d("LoginActivity", "server ip --->" + server_ip);
+
+                Toast.makeText(getApplicationContext(), "자동 로그인", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplication(), AfterLogin.class);
+                startActivity(intent);
+                finish();
+            }
+
+
+
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.default_web_client_id))
+                    .requestEmail()
+                    .build();
+
+            mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+            signInButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    signIn();
+                }
+            });
+        } //onCreate 끝
+
+
+    //여기부터
+    //firebase userLogin method
+    private void userLogin(){
+        String email = editTextEmail.getText().toString().trim();
+        String password = editTextPassword.getText().toString().trim();
+
+        if(TextUtils.isEmpty(email)){
+            Toast.makeText(this, "email을 입력해 주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(password)){
+            Toast.makeText(this, "password를 입력해 주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        progressDialog.setMessage("로그인중입니다. 잠시 기다려 주세요...");
+        progressDialog.show();
+
+        //logging in the user
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressDialog.dismiss();
+                        if(task.isSuccessful()) {
+                            finish();
+                            startActivity(new Intent(getApplicationContext(), AfterLogin.class));
+                        } else {
+                            Toast.makeText(getApplicationContext(), "로그인 실패!", Toast.LENGTH_LONG).show();
+                            textviewMessage.setText("로그인 실패 유형\n - 회원이 아닙니다.\n - password가 맞지 않습니다.\n -서버에러");
+                        }
+                    }
+                });
+    }
+
+
+
+    //구글로그인
+        private void signIn() {
+            Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+            startActivityForResult(signInIntent, RC_SIGN_IN);
+        }
+
+        @Override
+        public void onActivityResult(int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+            Log.d("LoginActivity", "여기는 onActivityResult!");
+            // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+            if (requestCode == RC_SIGN_IN) {
+                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                try {
+                    // Google Sign In was successful, authenticate with Firebase
+                    Log.d("LoginActivity", "여기는 onActivityResult try0!");
+                    GoogleSignInAccount account = task.getResult(ApiException.class);
+                    Log.d("LoginActivity", "여기는 onActivityResult try1!");
+                    firebaseAuthWithGoogle(account);
+                    Log.d("LoginActivity", "여기는 onActivityResult try2!");
+                } catch (ApiException e) {
+                }
+            }
+        }
+
+        private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+            Log.d("LoginActivity", "여기는 firebaseAuthWithGoogle!");
+            AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+            mAuth.signInWithCredential(credential)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(), "구글 로그인 성공", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplication(), AfterLogin.class);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "구글 로그인 실패", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
+}
