@@ -15,7 +15,7 @@
       "oauth_client": [
         {
           "client_id": "217222564644-q08pe9io2dj9in0bk41lfcputcbi2jr1.apps.googleusercontent.com",
-          "client_type": 3, //원래 1이었음,,
+          "client_type": 3,
           "android_info": {
             "package_name": "com.example.mylogin",
             "certificate_hash": "9aa282e85d1eb981ab269ee4e270b4ffc0f455d8"

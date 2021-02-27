@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    .requestIdToken(getString(R.string.default_web_client_id))
+                    .requestIdToken(getString(R.string.firebase_web_client_id))
                     .requestEmail()
                     .build();
 
@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         if(task.isSuccessful()) {
                             finish();
-                            startActivity(new Intent(getApplicationContext(), AfterLogin.class));
+                            startActivity(new Intent(getApplicationContext(), home.class));
                         } else {
                             Toast.makeText(getApplicationContext(), "로그인 실패!", Toast.LENGTH_LONG).show();
                             textviewMessage.setText("로그인 실패 유형\n - 회원이 아닙니다.\n - password가 맞지 않습니다.\n -서버에러");
