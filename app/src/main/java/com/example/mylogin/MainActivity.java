@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 //이미 로그인 되었다면 이 액티비티를 종료함
                 finish();
                 //그리고 profile 액티비티를 연다.
-                startActivity(new Intent(getApplicationContext(), AfterLogin.class)); //추가해 줄 ProfileActivity
+                startActivity(new Intent(getApplicationContext(), home.class)); //추가해 줄 ProfileActivity
             }
             //initializing views
             editTextEmail = (EditText) findViewById(R.id.editTextEmail);
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("LoginActivity", "server ip --->" + server_ip);
 
                 Toast.makeText(getApplicationContext(), "자동 로그인", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplication(), AfterLogin.class);
+                Intent intent = new Intent(getApplication(), home.class);
                 startActivity(intent);
                 finish();
             }
@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(getApplicationContext(), "구글 로그인 성공", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplication(), AfterLogin.class);
+                                Intent intent = new Intent(getApplication(), home.class);
                                 startActivity(intent);
                                 finish();
                             } else {

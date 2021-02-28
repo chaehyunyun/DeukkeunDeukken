@@ -26,7 +26,11 @@
         <activity android:name=".second_window">
         </activity>
         <activity android:name=".home"></activity>
-        <activity android:name=".ex_detail"></activity>
+        <activity
+            android:name=".ex_detail"
+            android:parentActivityName=".second_window">
+
+        </activity>
     </application>
 
 </manifest>
