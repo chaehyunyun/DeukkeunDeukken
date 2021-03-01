@@ -16,6 +16,9 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class second_window extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
     ScrollView scroll;
     BitmapDrawable bitmap;
@@ -24,6 +27,10 @@ public class second_window extends AppCompatActivity implements CompoundButton.O
     private CheckBox cb2;
     int [] ImageId = { R.drawable.lunge_unchecked, R.drawable.lunge_checked};
     ImageView iv;
+
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,12 +41,25 @@ public class second_window extends AppCompatActivity implements CompoundButton.O
         cb1.setOnCheckedChangeListener(this);
         cb2.setOnCheckedChangeListener(this);
         ImageView v1 = (ImageView) findViewById(R.id.v1);
+        ImageView cart = (ImageView) findViewById(R.id.cart);
         v1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(second_window.this, ex_detail.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        //파이어베이스 데이터베이스에 올리기
+        cart.setOnClickListener(new View.OnClickListener() {
+            String msg;
+            @Override
+            public void onClick(View v) {
+                if(cb1.isChecked()) {
+                    msg =cb1.getText().toString();
+                    databaseReference.child("User").push().setValue(msg);
+                }
             }
         });
     }

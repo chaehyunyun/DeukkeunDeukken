@@ -201,7 +201,10 @@
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:background="@drawable/cart"></ImageView>
+            android:background="@drawable/cart"
+            android:id="@+id/cart">
+
+        </ImageView>
     </LinearLayout>
 
 </LinearLayout>
