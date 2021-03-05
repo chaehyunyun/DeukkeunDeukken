@@ -57,7 +57,11 @@ public class second_window extends AppCompatActivity implements CompoundButton.O
             @Override
             public void onClick(View v) {
                 if(cb1.isChecked()) {
-                    msg =cb1.getText().toString();
+                    msg ="런지1";
+                    databaseReference.child("User").push().setValue(msg);
+                }
+                if(cb2.isChecked()) {
+                    msg ="런지2";
                     databaseReference.child("User").push().setValue(msg);
                 }
             }
@@ -75,8 +79,12 @@ public class second_window extends AppCompatActivity implements CompoundButton.O
         // 혹은 3항연산자
         //tx.setText(isChecked?"체크했슴":"체크안했뜸");
 
-        if(cb1.isChecked()) result += cb1.getText().toString() + "런지1\n";
-        if(cb2.isChecked()) result += cb2.getText().toString() + "런지2\n";
+        if(cb1.isChecked())
+        {result = result + cb1.getText().toString() + "런지1\n";
+        }
+        if(cb2.isChecked())
+        {result = result + cb2.getText().toString() + "런지2\n";
+        }
 
         tv.setText("담은 항목\n" + result);
     }

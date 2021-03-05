@@ -112,7 +112,8 @@
                         android:layout_height="130dp"
                         android:scaleType="fitXY"
                         android:src="@drawable/lunge"
-                        android:layout_margin="10dp"></ImageView>
+                        android:layout_margin="10dp"
+                        android:id="@+id/lunge1"></ImageView>
 
                 </LinearLayout>
                 <LinearLayout
@@ -132,7 +133,8 @@
                         android:layout_height="130dp"
                         android:scaleType="fitXY"
                         android:src="@drawable/lunge"
-                        android:layout_margin="10dp"></ImageView>
+                        android:layout_margin="10dp"
+                        android:id="@+id/lunge2"></ImageView>
 
                 </LinearLayout>
                 <LinearLayout
