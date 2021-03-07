@@ -48,12 +48,6 @@ public class ex_list extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ex_list);
-        TextView tv1 = findViewById(R.id.v1_c1);
-        ImageButton p1 = findViewById(R.id.v1_p1);
-        ImageButton m1 = findViewById(R.id.v1_m1);
-        TextView tv2 = findViewById(R.id.v1_c2);
-        ImageButton p2 = findViewById(R.id.v2_p2);
-        ImageButton m2 = findViewById(R.id.v2_m2);
 
 
     /*    p1.setOnClickListener(new View.OnClickListener() {
@@ -89,8 +83,8 @@ public class ex_list extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         String[] textSet =  {"겸군님","티스토리","입니다","g-y-e-o-m.tistory.com"};
-        int[] imgSet = {R.drawable.lunge,R.drawable.lunge,R.drawable.lunge,R.drawable.lunge};
-        int[] btnSet = {R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo};
+        int[] imgSet = {R.drawable.lunge,R.drawable.squat};
+        int[] btnSet = {R.drawable.logo,R.drawable.logo};
 
         // 어댑터 할당, 어댑터는 기본 어댑터를 확장한 커스텀 어댑터를 사용할 것이다.
         adapter = new MyAdapter(imgSet,btnSet);
