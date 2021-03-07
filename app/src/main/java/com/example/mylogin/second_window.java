@@ -64,7 +64,11 @@ public class second_window extends AppCompatActivity implements CompoundButton.O
                     msg ="런지2";
                     databaseReference.child("User").push().setValue(msg);
                 }
+                Intent intent = new Intent(second_window.this, ex_list.class);
+                startActivity(intent);
+                finish();
             }
+
         });
     }
     @Override

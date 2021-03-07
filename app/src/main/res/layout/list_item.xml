@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:orientation="vertical">
+            //첫번째운동 시작
+
+            <LinearLayout
+                android:id="@+id/first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/v1"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/lunge"></ImageView>
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="100dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="130dp"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/v1_m1"
+                            android:layout_width="40dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:backgroundTint="@color/black"
+                            android:gravity="center_horizontal"
+                            android:src="@drawable/logo">
+
+                        </ImageButton>
+
+                        <TextView
+                            android:id="@+id/v1_c1"
+                            android:layout_width="50dp"
+                            android:layout_height="30dp"
+                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:text="횟수"
+                            android:textAlignment="center">
+
+                        </TextView>
+
+                        <ImageButton
+                            android:id="@+id/v1_p1"
+                            android:layout_width="40dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:backgroundTint="@color/black"
+                            android:src="@drawable/logo">
+
+                        </ImageButton>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="130dp"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/v1_m2"
+                            android:layout_width="40dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:backgroundTint="@color/black"
+                            android:gravity="center_horizontal"
+                            android:src="@drawable/logo">
+
+                        </ImageButton>
+
+                        <TextView
+                            android:id="@+id/v1_c2"
+                            android:layout_width="50dp"
+                            android:layout_height="30dp"
+                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:text="세트"
+                            android:textAlignment="center">
+
+                        </TextView>
+
+                        <ImageButton
+                            android:id="@+id/v1_p2"
+                            android:layout_width="40dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:backgroundTint="@color/black"
+                            android:src="@drawable/logo">
+
+                        </ImageButton>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+            //첫번째 운동 끝
+            //두번째 시작
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                >
+
+                <ImageView
+                    android:id="@+id/v2"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/lunge"></ImageView>
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="100dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="130dp"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/v2_m1"
+                            android:layout_width="40dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/logo"
+                            android:layout_centerVertical="true"
+                            android:gravity="center_horizontal"
+
+                            >
+
+                        </ImageButton>
+
+                        <TextView
+                            android:id="@+id/v2_c1"
+                            android:layout_width="50dp"
+                            android:layout_height="30dp"
+                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:text="횟수"
+                            android:textAlignment="center">
+
+                        </TextView>
+
+                        <ImageButton
+                            android:id="@+id/v2_p1"
+                            android:layout_width="40dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/logo">
+
+                        </ImageButton>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="130dp"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/v2_m2"
+                            android:layout_width="40dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:gravity="center_horizontal"
+                            android:src="@drawable/logo">
+
+                        </ImageButton>
+
+                        <TextView
+                            android:id="@+id/v2_c2"
+                            android:layout_width="50dp"
+                            android:layout_height="30dp"
+                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:text="세트"
+                            android:textAlignment="center">
+
+                        </TextView>
+
+                        <ImageButton
+                            android:id="@+id/v2_p2"
+                            android:layout_width="40dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/logo">
+
+                        </ImageButton>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

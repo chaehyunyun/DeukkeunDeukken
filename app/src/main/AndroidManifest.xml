@@ -31,6 +31,8 @@
             android:parentActivityName=".second_window">
 
         </activity>
+        <activity android:name=".ex_list"></activity>
+
     </application>
 
 </manifest>
