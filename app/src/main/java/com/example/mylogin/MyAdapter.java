@@ -57,6 +57,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         myViewHolder.imageView.setBackgroundResource(this.imgSet[i]);
+        myViewHolder.m1.setBackgroundResource(this.btnSet[i]);
+        myViewHolder.m2.setBackgroundResource(this.btnSet[i]);
+        myViewHolder.p1.setBackgroundResource(this.btnSet[i]);
+        myViewHolder.p2.setBackgroundResource(this.btnSet[i]);
     }
 
     // iOS의 numberOfRows, 리사이클러뷰안에 들어갈 뷰 홀더의 개수
