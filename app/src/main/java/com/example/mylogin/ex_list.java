@@ -3,6 +3,7 @@ package com.example.mylogin;
 import androidx.annotation.IdRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -83,13 +84,12 @@ public class ex_list extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         String[] textSet =  {"겸군님","티스토리","입니다","g-y-e-o-m.tistory.com"};
-        int[] imgSet = {R.drawable.lunge,R.drawable.squat};
-        int[] btnSet = {R.drawable.logo,R.drawable.logo};
+        int[] imgSet = {R.drawable.lunge,R.drawable.squat,R.drawable.squat,R.drawable.squat,R.drawable.lunge,R.drawable.squat,R.drawable.squat,R.drawable.squat,R.drawable.lunge,R.drawable.squat,R.drawable.squat,R.drawable.squat};
+        int[] btnSet = {R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo};
 
         // 어댑터 할당, 어댑터는 기본 어댑터를 확장한 커스텀 어댑터를 사용할 것이다.
         adapter = new MyAdapter(imgSet,btnSet);
         recyclerView.setAdapter(adapter);
-
 
 
 
