@@ -38,10 +38,9 @@ import java.util.List;
 
 public class ex_list extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    RecyclerView.Adapter adapter;
-    RecyclerView.LayoutManager layoutManager;
 
+    private RecyclerAdapter adapter;
+    ItemTouchHelper helper;
     int count1 = 0;
     int count2 = 0;
 
@@ -49,6 +48,11 @@ public class ex_list extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ex_list);
+        init();
+
+        getData();
+
+
 
 
     /*    p1.setOnClickListener(new View.OnClickListener() {
@@ -75,27 +79,45 @@ public class ex_list extends AppCompatActivity {
                 tv2.setText("" + count2);
             }
         });*/
-        recyclerView = findViewById(R.id.recycler_view);
-
-        // 리사이클러뷰의 notify()처럼 데이터가 변했을 때 성능을 높일 때 사용한다.
-        recyclerView.setHasFixedSize(true);
-
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        String[] textSet =  {"겸군님","티스토리","입니다","g-y-e-o-m.tistory.com"};
-        int[] imgSet = {R.drawable.lunge,R.drawable.squat,R.drawable.squat,R.drawable.squat,R.drawable.lunge,R.drawable.squat,R.drawable.squat,R.drawable.squat,R.drawable.lunge,R.drawable.squat,R.drawable.squat,R.drawable.squat};
-        int[] btnSet = {R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo};
-
-        // 어댑터 할당, 어댑터는 기본 어댑터를 확장한 커스텀 어댑터를 사용할 것이다.
-        adapter = new MyAdapter(imgSet,btnSet);
-        recyclerView.setAdapter(adapter);
-
 
 
     }
 
 
 
+    private void init() {
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        adapter = new RecyclerAdapter();
+        recyclerView.setAdapter(adapter);
+        helper = new ItemTouchHelper(new ItemTouchHelperCallback(adapter));
+        helper.attachToRecyclerView(recyclerView);
+    }
+
+    private void getData() {
+        // 임의의 데이터입니다.
+
+        List<Integer> listResId = Arrays.asList(
+                R.drawable.lunge,R.drawable.squat,R.drawable.squat,R.drawable.squat,R.drawable.lunge,R.drawable.squat,R.drawable.squat,R.drawable.squat,R.drawable.lunge,R.drawable.squat,R.drawable.squat,R.drawable.squat
+        );
+        List<Integer> listBtnId= Arrays.asList(
+                R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo
+        );
+        for (int i = 0; i < listResId.size(); i++) {
+            // 각 List의 값들을 data 객체에 set 해줍니다.
+            Data data = new Data();
+
+            data.setResId(listResId.get(i));
+            data.setBtnId(listBtnId.get(i));
+            // 각 값이 들어간 data를 adapter에 추가합니다.
+            adapter.addItem(data);
+        }
+
+        // adapter의 값이 변경되었다는 것을 알려줍니다.
+        adapter.notifyDataSetChanged();
+    }
 }
 
