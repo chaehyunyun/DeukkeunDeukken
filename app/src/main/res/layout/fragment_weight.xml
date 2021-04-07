@@ -4,42 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    //남색부분
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="#005587"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/weight"></ImageView>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/cardio"></ImageView>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/part"></ImageView>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/stretching"></ImageView>
-
-    </LinearLayout>
     //보라색 부분 > 운동목록
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="300dp"
         android:background="#872378"
-        android:layout_weight="5">
+        android:layout_weight="8">
         //스크롤뷰
         <ScrollView
             android:layout_width="match_parent"
@@ -69,7 +40,7 @@
                         android:src="@drawable/lunge"
                         android:layout_margin="10dp"
                         android:id="@+id/v1">
-                  </ImageView>
+                    </ImageView>
 
                 </LinearLayout>
 
@@ -182,12 +153,12 @@
         </ScrollView>
     </LinearLayout>
 
-    //갈색부분
+    //하단
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="100dp"
         android:background="@color/white"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:orientation="horizontal">
         <TextView
             android:layout_width="150dp"
@@ -205,12 +176,7 @@
             android:layout_weight="3"
             android:background="@drawable/cart"
             android:id="@+id/cart">
-
         </ImageView>
     </LinearLayout>
 
 </LinearLayout>
-
-
-
-

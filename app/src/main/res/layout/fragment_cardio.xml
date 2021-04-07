@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    //보라색 부분 > 운동목록
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="300dp"
+        android:background="#872378"
+        android:layout_weight="5">
+        //스크롤뷰
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scroll1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/white">
+                    <CheckBox
+                        android:layout_width="30dp"
+                        android:layout_height="130dp"
+                        android:background="@color/white"
+                        android:layout_margin="10dp"
+                        android:id="@+id/ex1"
+                        ></CheckBox>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="cardio fragment"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </ScrollView>
+    </LinearLayout>
+
+    //갈색부분
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:background="@color/white"
+            android:layout_margin="10dp"
+            android:id="@+id/tv1"></TextView>
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@drawable/cart"
+            android:id="@+id/cart">
+
+        </ImageView>
+    </LinearLayout>
+
+</LinearLayout>

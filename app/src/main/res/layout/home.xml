@@ -11,8 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="@drawable/logo"
-            ></ImageView>
+            android:src="@drawable/logo"></ImageView>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +24,7 @@
             android:layout_weight="1"
             android:scaleType="fitXY"
             android:src="@drawable/homeweight"
-            android:id="@+id/btn"></ImageButton>
+            android:id="@+id/homeweight"></ImageButton>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -43,13 +42,15 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="fitXY"
-            android:src="@drawable/homepart"></ImageButton>
+            android:src="@drawable/homepart"
+            android:id="@+id/homepart"></ImageButton>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="fitXY"
-            android:src="@drawable/homestretching"></ImageButton>
+            android:src="@drawable/homestretching"
+            android:id="@+id/homestretching"></ImageButton>
     </LinearLayout>
 
     <LinearLayout
@@ -76,6 +77,7 @@
             android:scaleType="fitXY"
             android:src="@drawable/girok"></ImageView>
         <ImageView
+            android:id="@+id/mypage"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"

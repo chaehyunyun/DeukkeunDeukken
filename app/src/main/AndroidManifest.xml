@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyLogin">
 
+        <activity android:name=".Mypage"> </activity>
         <activity android:name=".NewId"> </activity>
         <activity android:name=".FindPw"> </activity>
         <activity android:name=".AfterLogin"> </activity>
@@ -24,14 +25,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".second_window">
-        </activity>
-        <activity android:name=".home"></activity>
+        <activity android:name=".home"> </activity>
+        <activity android:name=".Stretching"> </activity>
+        <activity android:name=".Weight"> </activity>
+
         <activity
             android:name=".ex_detail"
-            android:parentActivityName=".second_window">
+            android:parentActivityName=".Weight">
         </activity>
-
         <activity android:name=".ex_list"></activity>
 
     </application>
