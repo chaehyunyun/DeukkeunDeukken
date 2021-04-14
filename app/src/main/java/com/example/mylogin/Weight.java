@@ -2,9 +2,13 @@ package com.example.mylogin;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -12,10 +16,7 @@ public class Weight extends AppCompatActivity {
 
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
-    private fragment_weight fragment1;
-    private fragment_cardio fragment2;
-    private fragment_part fragment3;
-    private Object ex_detail;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,15 +24,13 @@ public class Weight extends AppCompatActivity {
         setContentView(R.layout.weight);
 
 
-        //상단바?! 프래그먼트로 만들기
         fragmentManager = getSupportFragmentManager();
-        fragment1 = new fragment_weight();
-        fragment2 = new fragment_cardio();
-        fragment3 = new fragment_part();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, new fragment_weight());
+        fragmentTransaction.commit();
 
-        transaction = fragmentManager.beginTransaction();
-        //처음에는 weight 화면 띄우기
-        transaction.replace(R.id.frameLayout, fragment1).commitAllowingStateLoss();
+        FragmentTransaction fragmentTransaction2 = fragmentManager.beginTransaction();
+        fragmentTransaction2.replace(R.id.bottomFrameLayout, new fragment_cart()).commit();
 
     }
 
@@ -43,13 +42,13 @@ public class Weight extends AppCompatActivity {
         switch(view.getId())
         {
             case R.id.weightIV:
-                transaction.replace(R.id.frameLayout, fragment1).commitAllowingStateLoss();
+                transaction.replace(R.id.frameLayout, new fragment_weight()).commitAllowingStateLoss();
                 break;
             case R.id.cardioIV:
-                transaction.replace(R.id.frameLayout, fragment2).commitAllowingStateLoss();
+                transaction.replace(R.id.frameLayout, new fragment_cardio()).commitAllowingStateLoss();
                 break;
             case R.id.partIV:
-                transaction.replace(R.id.frameLayout, fragment3).commitAllowingStateLoss();
+                transaction.replace(R.id.frameLayout, new fragment_part()).commitAllowingStateLoss();
                 break;
 
         }
