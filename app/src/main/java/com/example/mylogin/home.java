@@ -14,6 +14,10 @@ public class home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
+        // 신체 기록 최초 저장
+        Intent intent = new Intent(this, BodyProfile.class);
+        startActivity(intent);
+
         //웨이트 이미지버튼
         //home에서 Weight으로 연결
         ImageButton btn1 = (ImageButton) findViewById(R.id.homeweight);
@@ -49,11 +53,11 @@ public class home extends AppCompatActivity {
             }
         });
 
-        /*ImageView girok =(ImageView)findViewById(R.id.girok);
+        ImageView girok =(ImageView)findViewById(R.id.girok);
         girok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(home.this, memo.class);
+                Intent intent = new Intent(home.this, BodyProfile.class);
                 startActivity(intent);
 
             }
@@ -66,7 +70,7 @@ public class home extends AppCompatActivity {
                 Intent intent = new Intent(home.this, memo.class);
                 startActivity(intent);
             }
-        });*/
+        });
     }
 
 }

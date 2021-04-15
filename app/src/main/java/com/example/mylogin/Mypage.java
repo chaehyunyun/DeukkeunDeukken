@@ -29,8 +29,6 @@ public class Mypage extends AppCompatActivity implements View.OnClickListener{
 
     TextView userId;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +55,6 @@ public class Mypage extends AppCompatActivity implements View.OnClickListener{
         //logout button event
         buttonLogout.setOnClickListener(this);
         textviewDelete.setOnClickListener(this);
-
 
     }
 

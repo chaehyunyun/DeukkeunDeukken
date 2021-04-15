@@ -80,11 +80,11 @@ public class BodyProfile extends AppCompatActivity {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = preferences.edit();
 
-        height = preferences.getString("height", "0");
+        height = preferences.getString("height", "180");
         valueHeight.setText(height);
-        weight = preferences.getString("weight", "0");
+        weight = preferences.getString("weight", "70");
         valueWeight.setText(weight);
-        BMI = preferences.getString("BMI", "0");
+        BMI = preferences.getString("BMI", "21.60");
         valueBMI.setText(BMI);
         level = preferences.getString("level", "Normal");
         BMILevel.setText(level);
