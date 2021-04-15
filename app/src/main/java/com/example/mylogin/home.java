@@ -49,7 +49,7 @@ public class home extends AppCompatActivity {
             }
         });
 
-        ImageView girok =(ImageView)findViewById(R.id.girok);
+        /*ImageView girok =(ImageView)findViewById(R.id.girok);
         girok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +66,7 @@ public class home extends AppCompatActivity {
                 Intent intent = new Intent(home.this, memo.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
 }
