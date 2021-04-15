@@ -34,13 +34,8 @@ public class fragment_cart extends Fragment {
     private ChildEventListener mChild;
 
     private ListView listView;
-
-    Adapter adapter;
+    private ArrayAdapter<String> adapter;
     List<Object> Array = new ArrayList<Object>();
-
-
-    private TextView result;
-
 
 
     @Nullable
@@ -54,30 +49,25 @@ public class fragment_cart extends Fragment {
         initDatabase();
 
         //어댑터안에 데이터 담기, 리스트뷰에 어댑터 설정
-        adapter = new Adapter();
+        adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, new ArrayList<String>());;
         listView.setAdapter(adapter);
 
-        // 이벤트 처리 리스너 설정
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ExerciseItem item = (ExerciseItem) adapter.getItem(position);
-                //Toast.makeText(this, "선택 :"+item.getName(), Toast.LENGTH_LONG).show();
-            }
-        });
 
+        //경로 전체에 대해 변경값이 있으면 실행시키는 리스너, 데이터가 추가/변경되었을 경우 값을 리스트뷰에 넣을 때 쓰일 리스너
         mReference = mDatabase.getReference("fragment_weight"); // 변경값을 확인할 child 이름
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
                 //리스트뷰 초기화
                 Array.clear();
+                adapter.clear();
 
                 for (DataSnapshot messageData : dataSnapshot.getChildren()) {
                     // child 내에 있는 데이터만큼 반복합니다.
-                    String msg2 = messageData.getValue().toString();
-                    Array.add(msg2);
-                    adapter.addItem(new ExerciseItem(msg2));
+                    String msg = messageData.getValue().toString();
+                    Array.add(msg);
+                    adapter.add(msg);
 
                 }
                 adapter.notifyDataSetChanged();

@@ -77,15 +77,17 @@ public class fragment_weight extends Fragment implements CompoundButton.OnChecke
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         // 체크박스를 클릭해서 상태가 바꾸었을 경우 호출되는 콜백 메서드
 
+        firebaseDatabase.getReference().child("fragment_weight").removeValue();
+
         String name = "";
         adapter = new Adapter();
 
         if(cb1.isChecked()) {
-            name+=cb1.getText().toString()+"런지1";
+            name+=cb1.getText().toString()+"런지1\n";
         }
 
         if(cb2.isChecked()) {
-            name+=cb2.getText().toString()+"런지2";
+            name+=cb2.getText().toString()+"런지2\n";
         }
 
         databaseReference.child("fragment_weight").push().setValue(name);
@@ -93,6 +95,7 @@ public class fragment_weight extends Fragment implements CompoundButton.OnChecke
         adapter.notifyDataSetChanged();
 
     }
+
 
     class Adapter extends BaseAdapter {
         ArrayList<ExerciseItem> items = new ArrayList<ExerciseItem>();
