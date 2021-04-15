@@ -46,9 +46,27 @@ public class home extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(home.this, Mypage.class);
                 startActivity(intent);
-                finish();
             }
         });
 
+        ImageView girok =(ImageView)findViewById(R.id.girok);
+        girok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(home.this, memo.class);
+                startActivity(intent);
+
+            }
+        });
+
+        ImageView memo =(ImageView)findViewById(R.id.memo);
+        memo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(home.this, memo.class);
+                startActivity(intent);
+            }
+        });
     }
+
 }

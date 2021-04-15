@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mylogin">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <application
         android:allowBackup="true"
@@ -12,11 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyLogin">
-
-        <activity android:name=".Mypage"> </activity>
-        <activity android:name=".NewId"> </activity>
-        <activity android:name=".FindPw"> </activity>
-        <activity android:name=".AfterLogin"> </activity>
+        <activity android:name=".Memo"></activity>
+        <activity android:name=".Mypage"></activity>
+        <activity android:name=".NewId"></activity>
+        <activity android:name=".FindPw"></activity>
+        <activity android:name=".AfterLogin"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,17 +24,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".home"> </activity>
-        <activity android:name=".Stretching"> </activity>
-        <activity android:name=".Weight"> </activity>
-
+        <activity android:name=".home"></activity>
+        <activity android:name=".Stretching"></activity>
+        <activity android:name=".Weight"></activity>
         <activity
             android:name=".ex_detail"
-            android:parentActivityName=".Weight">
-        </activity>
-        <activity android:name=".ex_list"></activity>
-
+            android:parentActivityName=".Weight"></activity>
+        <activity android:name=".ex_list" />
     </application>
 
 </manifest>

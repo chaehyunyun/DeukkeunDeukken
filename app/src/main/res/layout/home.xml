@@ -65,12 +65,14 @@
             android:scaleType="fitXY"
             android:src="@drawable/home"></ImageView>
         <ImageView
+            android:id="@+id/memo"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="fitXY"
             android:src="@drawable/community"></ImageView>
         <ImageView
+            android:id="@+id/girok"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"

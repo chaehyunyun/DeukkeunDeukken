@@ -28,9 +28,6 @@ public class AfterLogin extends AppCompatActivity implements View.OnClickListene
     private Button buttonLogout;
     private TextView textivewDelete;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
