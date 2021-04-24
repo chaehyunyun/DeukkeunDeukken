@@ -9,7 +9,7 @@
                 <size android:height="2dp"/>
                 <corners
                     android:radius="8dp" />
-                <solid android:color="#E91E63"/>
+                <solid android:color="#FF001FC5"/>
             </shape>
         </clip>
     </item>

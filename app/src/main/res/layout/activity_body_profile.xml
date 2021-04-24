@@ -223,7 +223,7 @@
             android:text="BMI CHECK"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            app:backgroundTint="#0027FF"
+            app:backgroundTint="#001FC5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.532"
@@ -241,10 +241,8 @@
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.429"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.477" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/BMILevel"
@@ -282,7 +280,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="SAVE"
-            app:backgroundTint="#0027FF"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="#001FC5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.527"
