@@ -13,4 +13,8 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="CalendarViewTheme" parent="Theme.MyLogin">
+        <item name="colorAccent">#3273F4</item>
+    </style>
 </resources>

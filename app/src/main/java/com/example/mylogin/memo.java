@@ -45,6 +45,7 @@ public class memo extends AppCompatActivity {
         recordText =findViewById(R.id.recordText);
         editText =findViewById(R.id.editText);
 
+        //User can scroll the record screen
         recordText.setMovementMethod(new ScrollingMovementMethod());
 
         /*//로그인 및 회원가입 엑티비티에서 이름을 받아옴
@@ -53,7 +54,11 @@ public class memo extends AppCompatActivity {
         final String userID=intent.getStringExtra("userID");
         textView3.setText(name+"님의 달력 일기장");*/
 
+
+        //setting record structure
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
+            //The record is set in selected date by user
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 diaryTextView.setVisibility(View.VISIBLE);
@@ -68,6 +73,7 @@ public class memo extends AppCompatActivity {
             }
         });
 
+        //setting record structure when 'SAVE' button is pressed.
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,9 +90,11 @@ public class memo extends AppCompatActivity {
         });
     }
 
+    //contents is saved through file-stream.
+    //When value of exercise list is implemented, will implement that this function will be connected with Firebase.
     public void  checkDay(int cYear,int cMonth,int cDay){
-        fname=cYear+"-"+(cMonth+1)+""+"-"+cDay+".txt"; //저장할 파일 이름설정
-        FileInputStream fis=null;//FileStream fis 변수
+        fname=cYear+"-"+(cMonth+1)+""+"-"+cDay+".txt";
+        FileInputStream fis=null;
 
         try{
             fis=openFileInput(fname);
@@ -119,6 +127,7 @@ public class memo extends AppCompatActivity {
                 }
 
             });
+
             btn_del.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -144,6 +153,8 @@ public class memo extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    //All contents with record is removed.
     @SuppressLint("WrongConstant")
     public void removeDiary(String readDay){
         FileOutputStream fos=null;
@@ -158,6 +169,8 @@ public class memo extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    //Save the changed part of contents
     @SuppressLint("WrongConstant")
     public void saveDiary(String readDay){
         FileOutputStream fos=null;

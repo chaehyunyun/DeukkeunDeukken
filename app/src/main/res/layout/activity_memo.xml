@@ -49,12 +49,12 @@
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
+        android:theme="@style/CalendarViewTheme"
         android:layout_height="400dp"
         android:layout_marginTop="60dp"
         android:dateTextAppearance="@style/TextAppearance.AppCompat.Large"
         android:filterTouchesWhenObscured="false"
         android:fitsSystemWindows="true"
-        android:weekSeparatorLineColor="@color/teal_200"
         android:weightSum="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
