@@ -26,7 +26,7 @@
             android:id="@+id/back"
             android:name="back"
             android:layout_width="40dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="10dp"
             android:src="@drawable/ic_back_arrow_b" />
 

@@ -30,7 +30,7 @@ public class memo extends AppCompatActivity {
     public Button btn_edit, btn_del, btn_save;
     public TextView diaryTextView, recordText;
     public EditText editText;
-    //ImageView back_memo;
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,15 @@ public class memo extends AppCompatActivity {
         btn_edit =findViewById(R.id.btn_edit);
         recordText =findViewById(R.id.recordText);
         editText =findViewById(R.id.editText);
+        back = findViewById(R.id.back);
+
+        // back button
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         //User can scroll the record screen
         recordText.setMovementMethod(new ScrollingMovementMethod());
