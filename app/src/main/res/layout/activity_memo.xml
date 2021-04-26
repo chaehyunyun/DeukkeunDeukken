@@ -22,13 +22,13 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="6dp">
 
-        <!--<ImageView
-            android:id="@+id/back_memo"
-            android:name="back_memo"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/back"
+            android:name="back"
+            android:layout_width="38dp"
+            android:layout_height="match_parent"
             android:padding="10dp"
-            android:src="@drawable/ic_back_arrow_b" />-->
+            android:src="@drawable/ic_back_arrow_b" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -49,12 +49,12 @@
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
+        android:theme="@style/CalendarViewTheme"
         android:layout_height="400dp"
         android:layout_marginTop="60dp"
         android:dateTextAppearance="@style/TextAppearance.AppCompat.Large"
         android:filterTouchesWhenObscured="false"
         android:fitsSystemWindows="true"
-        android:weekSeparatorLineColor="@color/teal_200"
         android:weightSum="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
