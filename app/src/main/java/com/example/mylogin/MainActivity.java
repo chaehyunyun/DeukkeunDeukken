@@ -3,7 +3,6 @@ package com.example.mylogin;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActivityManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         private static final int RC_SIGN_IN = 9001;
         private SignInButton signInButton;
 
-        //DB이용한 이메일 로그인 구현
+        //Email Login
         //define view objects
         EditText editTextEmail;
         EditText editTextPassword;
@@ -57,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
             mAuth = FirebaseAuth.getInstance();
 
             if(mAuth.getCurrentUser() != null) {
-                //이미 로그인 되었다면 이 액티비티를 종료함
+                //Exit this activity if you already have a history of log in
                 finish();
-                //그리고 profile 액티비티를 연다.
-                startActivity(new Intent(getApplicationContext(), home.class)); //추가해 줄 ProfileActivity
+                //And open the home activity
+                startActivity(new Intent(getApplicationContext(), home.class));
             }
             //initializing views
             editTextEmail = (EditText) findViewById(R.id.editTextEmail);
@@ -100,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
             signInButton = findViewById(R.id.signInButton);
             mAuth = FirebaseAuth.getInstance();
 
-            //자동로그인
             //If you have a record of logging in before, log in automatically.
             if (mAuth.getCurrentUser() != null) {
                 SharedPreferences pref = getSharedPreferences("Service socket info", MODE_PRIVATE);
@@ -127,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                     signIn();
                 }
             });
+
         } //onCreate 끝
 
 
@@ -167,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    //구글로그인
+    //Google Login
         private void signIn() {
             Intent signInIntent = mGoogleSignInClient.getSignInIntent();
             startActivityForResult(signInIntent, RC_SIGN_IN);
