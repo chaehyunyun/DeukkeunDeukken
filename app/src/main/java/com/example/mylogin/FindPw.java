@@ -25,6 +25,7 @@ public class FindPw extends AppCompatActivity implements View.OnClickListener {
     private Button buttonFind;
     private TextView textviewMessage;
     private ProgressDialog progressDialog;
+
     //define firebase object
     private FirebaseAuth firebaseAuth;
 
@@ -39,14 +40,14 @@ public class FindPw extends AppCompatActivity implements View.OnClickListener {
         firebaseAuth = FirebaseAuth.getInstance();
 
         buttonFind.setOnClickListener(this);
-
     }
+
     @Override
     public void onClick(View view) {
         if(view == buttonFind){
             progressDialog.setMessage("처리중입니다. 잠시 기다려 주세요...");
             progressDialog.show();
-            //비밀번호 재설정 이메일 보내기
+            //Send an email to the user to reset the password
             String emailAddress = editTextUserEmail.getText().toString().trim();
             firebaseAuth.sendPasswordResetEmail(emailAddress)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {

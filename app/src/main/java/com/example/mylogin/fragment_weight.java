@@ -1,34 +1,20 @@
 package com.example.mylogin;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.ScrollView;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -50,7 +36,7 @@ public class fragment_weight extends Fragment implements CompoundButton.OnChecke
         View view = inflater.inflate(R.layout.fragment_weight, container, false);
 
 
-        //운동을 누르면 운동 상세 페이지로 이동
+        //If you click the exercise picture, you can move to the exercise detail page.
         ImageView v1 = (ImageView) view.findViewById(R.id.v1);
         v1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,10 +59,13 @@ public class fragment_weight extends Fragment implements CompoundButton.OnChecke
 
 
 
+    //A 'Callback' method called when the State of CheckBox changes by clicking
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         // 체크박스를 클릭해서 상태가 바꾸었을 경우 호출되는 콜백 메서드
 
+        //Delete the current exercise list in the real-time database
+        // because the exercise list has been updated.
         firebaseDatabase.getReference().child("fragment_weight").removeValue();
 
         String name = "";
@@ -90,13 +79,14 @@ public class fragment_weight extends Fragment implements CompoundButton.OnChecke
             name+=cb2.getText().toString()+"런지2\n";
         }
 
+        //Push() the updated exercise list to the real-time database.
         databaseReference.child("fragment_weight").push().setValue(name);
         adapter.addItem(new ExerciseItem(name));
         adapter.notifyDataSetChanged();
 
     }
 
-
+    //'Adapter class' acting as data management
     class Adapter extends BaseAdapter {
         ArrayList<ExerciseItem> items = new ArrayList<ExerciseItem>();
 
@@ -124,8 +114,9 @@ public class fragment_weight extends Fragment implements CompoundButton.OnChecke
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            // 뷰 객체 재사용
+            //Reuse View Objects
             ExerciseItemView view = null;
+
             if (convertView == null) {
                 view = new ExerciseItemView(getActivity().getApplicationContext());
             } else {
@@ -133,9 +124,7 @@ public class fragment_weight extends Fragment implements CompoundButton.OnChecke
             }
 
             ExerciseItem item = items.get(position);
-
             view.setName(item.getName());
-
 
             return view;
         }

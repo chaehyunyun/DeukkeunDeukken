@@ -1,19 +1,14 @@
 package com.example.mylogin;
 
-import android.content.Context;
+
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -33,6 +28,7 @@ public class fragment_cart extends Fragment {
     private DatabaseReference mReference;
     private ChildEventListener mChild;
 
+    //Use listView to show the exercises selected in the fragment above.
     private ListView listView;
     private ArrayAdapter<String> adapter;
     List<Object> Array = new ArrayList<Object>();
@@ -44,27 +40,32 @@ public class fragment_cart extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_cart, container, false);
 
         listView = (ListView)rootView.findViewById(R.id.listView);
-
-        //경로 전체에 대해 변경값이 있으면 실행시키는 리스너
         initDatabase();
 
         //어댑터안에 데이터 담기, 리스트뷰에 어댑터 설정
+        //Place data in adapter, set adapter in ListView
         adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, new ArrayList<String>());;
         listView.setAdapter(adapter);
 
 
-        //경로 전체에 대해 변경값이 있으면 실행시키는 리스너, 데이터가 추가/변경되었을 경우 값을 리스트뷰에 넣을 때 쓰일 리스너
-        mReference = mDatabase.getReference("fragment_weight"); // 변경값을 확인할 child 이름
+        //경로 전체에 대해 변경값이 있으면 실행시키는 리스너
+        // 데이터가 추가/변경되었을 경우 값을 리스트뷰에 넣을 때 쓰일 리스너
+        //'child' name to determine the change
+        mReference = mDatabase.getReference("fragment_weight");
+
+        //A 'Listener' that run if there are changes to the entire path
+        //A 'Listener' for putting values into list views when data has been added/changed
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 //리스트뷰 초기화
+                //Initialize the ListView to update the change.
                 Array.clear();
                 adapter.clear();
 
+                //Repeat as much as the data within the 'child'
                 for (DataSnapshot messageData : dataSnapshot.getChildren()) {
-                    // child 내에 있는 데이터만큼 반복합니다.
                     String msg = messageData.getValue().toString();
                     Array.add(msg);
                     adapter.add(msg);
@@ -80,17 +81,12 @@ public class fragment_cart extends Fragment {
             }
         });
 
-
-
-
-
         return rootView;
 
     }//onCreateView 끝
 
     class Adapter extends BaseAdapter {
         ArrayList<ExerciseItem> items = new ArrayList<ExerciseItem>();
-
 
         // Generate > implement methods
         @Override
@@ -115,7 +111,7 @@ public class fragment_cart extends Fragment {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            // 뷰 객체 재사용
+            // Reuse View Objects
             ExerciseItemView view = null;
             if (convertView == null) {
                 view = new ExerciseItemView(getActivity().getApplicationContext());
@@ -124,7 +120,6 @@ public class fragment_cart extends Fragment {
             }
 
             ExerciseItem item = items.get(position);
-
             view.setName(item.getName());
 
 

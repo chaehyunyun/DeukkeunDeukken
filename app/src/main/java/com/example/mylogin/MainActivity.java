@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
             mAuth = FirebaseAuth.getInstance();
 
             //자동로그인
+            //If you have a record of logging in before, log in automatically.
             if (mAuth.getCurrentUser() != null) {
                 SharedPreferences pref = getSharedPreferences("Service socket info", MODE_PRIVATE);
 
@@ -112,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-
 
 
             GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -176,24 +176,19 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
-            Log.d("LoginActivity", "여기는 onActivityResult!");
             // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
             if (requestCode == RC_SIGN_IN) {
                 Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
                 try {
                     // Google Sign In was successful, authenticate with Firebase
-                    Log.d("LoginActivity", "여기는 onActivityResult try0!");
                     GoogleSignInAccount account = task.getResult(ApiException.class);
-                    Log.d("LoginActivity", "여기는 onActivityResult try1!");
                     firebaseAuthWithGoogle(account);
-                    Log.d("LoginActivity", "여기는 onActivityResult try2!");
                 } catch (ApiException e) {
                 }
             }
         }
 
         private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-            Log.d("LoginActivity", "여기는 firebaseAuthWithGoogle!");
             AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
             mAuth.signInWithCredential(credential)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

@@ -40,6 +40,7 @@ public class Mypage extends AppCompatActivity implements View.OnClickListener{
 
         //initializing firebase authentication object
         firebaseAuth = FirebaseAuth.getInstance();
+
         //유저가 로그인 하지 않은 상태라면 null 상태이고 이 액티비티를 종료하고 로그인 액티비티를 연다.
         if(firebaseAuth.getCurrentUser() == null) {
             finish();
@@ -60,16 +61,18 @@ public class Mypage extends AppCompatActivity implements View.OnClickListener{
 
 
 
-
-
     @Override
     public void onClick(View view) {
+
+        //If you click the logout button, log out
         if (view == buttonLogout) {
             firebaseAuth.signOut();
             finish();
             startActivity(new Intent(this, MainActivity.class));
         }
-        //회원탈퇴를 클릭하면 회원정보를 삭제한다. 삭제전에 컨펌창을 하나 띄워야겠다.
+
+        //If you click 'Exit Members' button, delete member information
+        //Display a confirmation window before deleting it.
         if(view == textviewDelete) {
             AlertDialog.Builder alert_confirm = new AlertDialog.Builder(Mypage.this);
             alert_confirm.setMessage("정말 계정을 삭제 할까요?").setCancelable(false).setPositiveButton("확인", new DialogInterface.OnClickListener() {
