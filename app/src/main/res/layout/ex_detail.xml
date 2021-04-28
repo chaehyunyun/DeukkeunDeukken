@@ -1,86 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:textColor="@color/black"
-        android:text="운동이름 : 스쿼트"/>
-
-
-    <VideoView
-        android:id="@+id/vv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
+    >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/btnPlay"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:text="Play">
-        </Button>
-        <Button
-            android:id="@+id/btnStop"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:text="Stop">
-        </Button>
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:orientation="vertical"
+        >
+
+        <VideoView
+
+            android:id="@+id/vv"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:gravity="right"
+            android:layout_marginRight="10dp"
 
 
+            >
+            <Button
+                android:id="@+id/btnPlay"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:backgroundTint="#1759d2"
+                android:text="Play"
+                android:layout_margin="5dp"
+                >
+            </Button>
+            <Button
+                android:id="@+id/btnStop"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:backgroundTint="#1759d2"
+                android:layout_margin="5dp"
+                android:text="Stop">
+            </Button>
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4.5"
+        android:orientation="vertical"
+
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/detail"
+            android:layout_margin="10dp"
+            ></ImageView>
     </LinearLayout>
 
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:textColor="@color/black"
-        android:text="운동순서"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text="허벅지가 무릎과 수평이 될 때까지 앉았다 섰다 하는 동작으로, 가장 기본적인 하체 운동이다."/>
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:textColor="@color/black"
-        android:text="운동부위"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text="허벅지(대퇴사두근, 대둔근, 슬굴곡근)"/>
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:textColor="@color/black"
-        android:text="소모칼로리"/>
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="20dp"
-        android:text="100개->74kcal"/>
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:background="#ffffff">
 
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                >
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/home"
+                    >
+                </ImageView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                >
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/scale"
+                    android:id="@+id/scale"
+                    >
+                </ImageView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                >
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/calendar"
+                    android:id="@+id/calendar"
+                    >
+                </ImageView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                >
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/mypage"
+                    android:id="@+id/mypage"
+                    >
+                </ImageView>
+            </RelativeLayout>
+        </LinearLayout>
 
-
+    </LinearLayout>
 </LinearLayout>

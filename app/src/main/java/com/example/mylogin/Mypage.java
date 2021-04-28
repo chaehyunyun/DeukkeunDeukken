@@ -75,7 +75,8 @@ public class Mypage extends AppCompatActivity implements View.OnClickListener{
         //Display a confirmation window before deleting it.
         if(view == textviewDelete) {
             AlertDialog.Builder alert_confirm = new AlertDialog.Builder(Mypage.this);
-            alert_confirm.setMessage("정말 계정을 삭제 할까요?").setCancelable(false).setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            alert_confirm.setMessage("정말 계정을 삭제 할까요?").setCancelable(false).setPositiveButton("확인",
+                    new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

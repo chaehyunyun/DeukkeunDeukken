@@ -3,92 +3,144 @@
     android:background="#ffe6b3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:backgroundTint="@color/white"
+    >
 
-    <LinearLayout
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
         android:orientation="horizontal">
-
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/userId"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="45dp"
+            android:textColor="@color/black"
+            android:textSize="10dp" />
+        <ImageView
+            android:src="@drawable/email"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:padding="30dp"
+            android:layout_gravity="center_horizontal"
             android:text="이메일"
             android:textColor="@color/black"
             android:textSize="20dp" />
 
         //사용자의 이메일을 적기 위한 textview
-        <TextView
-            android:id="@+id/userId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:padding="30dp"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
-    </LinearLayout>
 
 
-    <LinearLayout
+    </FrameLayout>
+
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="512dp"
         android:layout_gravity="center_horizontal"
         android:layout_weight="1"
         android:orientation="vertical">
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logout"
+            android:layout_gravity="center_horizontal"
+            >
 
+        </ImageView>
         <Button
             android:id="@+id/buttonLogout"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="로그아웃" />
+            android:background="#00ff0000"
+            android:layout_marginTop="25dp"
+            />
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/delete"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="53dp"
+            >
 
+        </ImageView>
         <TextView
             android:id="@+id/textviewDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="16dp"
-            android:text="탈퇴하기"
+            android:layout_marginTop="85dp"
             android:textColor="@color/colorAccent" />
-    </LinearLayout>
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="61dp"
-        android:layout_gravity="bottom"
-        android:orientation="horizontal">
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#ffffff">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:scaleType="fitXY"
-            android:src="@drawable/home"></ImageView>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/home"
+                >
+            </ImageView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:scaleType="fitXY"
-            android:src="@drawable/community"></ImageView>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/scale"
+                android:id="@+id/scale"
+                >
+            </ImageView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:scaleType="fitXY"
-            android:src="@drawable/girok"></ImageView>
-
-        <ImageView
-            android:id="@+id/mypage"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/calendar"
+                android:id="@+id/calendar"
+                >
+            </ImageView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:scaleType="fitXY"
-            android:src="@drawable/mypage"></ImageView>
+            >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/mypage"
+                android:id="@+id/mypage"
+                >
+            </ImageView>
+        </RelativeLayout>
     </LinearLayout>
+
 </LinearLayout>

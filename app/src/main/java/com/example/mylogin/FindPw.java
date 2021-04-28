@@ -56,7 +56,7 @@ public class FindPw extends AppCompatActivity implements View.OnClickListener {
                             if(task.isSuccessful()){
                                 Toast.makeText(FindPw.this, "이메일을 보냈습니다.", Toast.LENGTH_LONG).show();
                                 finish();
-                                startActivity(new Intent(getApplicationContext(), AfterLogin.class));
+                                startActivity(new Intent(getApplicationContext(), FindPw.class));
                             } else {
                                 Toast.makeText(FindPw.this, "메일 보내기 실패!", Toast.LENGTH_LONG).show();
                             }

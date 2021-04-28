@@ -1,16 +1,22 @@
 package com.example.mylogin;
 
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-public class Weight extends AppCompatActivity {
+public class whole_ex extends AppCompatActivity {
 
+    VideoView vv;
     private FragmentManager fragmentManager;
     private Fragment fw, fc, fp;
 
@@ -19,12 +25,55 @@ public class Weight extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.weight);
 
+
+        vv= findViewById(R.id.videoView2);
+        //Video Uri
+        Uri videoUri= Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.mh);
+
+        //비디오뷰의 재생, 일시정지 등을 할 수 있는 '컨트롤바'를 붙여주는 작업
+        vv.setMediaController(new MediaController(this));
+
+        //VideoView가 보여줄 동영상의 경로 주소(Uri) 설정하기
+        vv.setVideoURI(videoUri);
+
+        //동영상을 읽어오는데 시간이 걸리므로..
+        //비디오 로딩 준비가 끝났을 때 실행하도록..
+        //리스너 설정
+        vv.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                //비디오 시작
+                vv.start();
+            }
+        });
+
+
         fragmentManager = getSupportFragmentManager();
 
         //When you click on the weight ImageButton, you can see weight exercises first.
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, new fragment_weight());
-        fragmentTransaction.commit();
+
+        //앞 액티비티에서 보낸 번들을 받음
+        Intent passedIntent = getIntent();
+        if(passedIntent!=null) {
+            Bundle bundle = getIntent().getExtras();
+            String whatbtn = "";
+            whatbtn = bundle.getString("whatbtn");
+
+            if(whatbtn.equals("btn1")) {
+                fragmentTransaction.replace(R.id.frameLayout, new fragment_weight());
+                fragmentTransaction.commit();
+            }
+            if(whatbtn.equals("btn2")) {
+                fragmentTransaction.replace(R.id.frameLayout, new fragment_cardio());
+                fragmentTransaction.commit();
+            }
+            if(whatbtn.equals("btn3")) {
+                fragmentTransaction.replace(R.id.frameLayout, new fragment_part());
+                fragmentTransaction.commit();
+            }
+        }
+
 
         //Set up a fragment to show the selected exercises.
         FragmentTransaction fragmentTransaction2 = fragmentManager.beginTransaction();
@@ -78,12 +127,6 @@ public class Weight extends AppCompatActivity {
             }
         });
 
-    }
-
-
-
-
-
-
+    } //onCreate end
 
 }

@@ -9,13 +9,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyLogin">
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+
         <activity android:name=".memo"></activity>
         <activity android:name=".Mypage"></activity>
         <activity android:name=".NewId"></activity>
         <activity android:name=".FindPw"></activity>
         <activity android:name=".BodyProfile"></activity>
-        <activity android:name=".AfterLogin"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,11 +25,10 @@
         </activity>
         <activity android:name=".home"></activity>
         <activity android:name=".Stretching"></activity>
-        <activity android:name=".Weight"></activity>
-        <activity
-            android:name=".ex_detail"
-            android:parentActivityName=".Weight"></activity>
+        <activity android:name=".whole_ex"></activity>
+        <activity android:name=".ex_detail"></activity>
         <activity android:name=".ex_list" />
+        <activity android:name=".cart_list"/>
     </application>
 
 </manifest>

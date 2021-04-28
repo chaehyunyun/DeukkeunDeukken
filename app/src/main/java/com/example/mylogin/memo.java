@@ -95,20 +95,19 @@ public class memo extends AppCompatActivity {
     }
 
     //contents is saved through file-stream.
-    //When value of exercise list is implemented, will implement that this function will be connected with Firebase.
+    //When value of exercise list is implemented,
+    //will implement that this function will be connected with Firebase.
     public void  checkDay(int cYear,int cMonth,int cDay){
         fname=cYear+"-"+(cMonth+1)+""+"-"+cDay+".txt";
         FileInputStream fis=null;
 
         try{
             fis=openFileInput(fname);
-
             byte[] fileData=new byte[fis.available()];
             fis.read(fileData);
             fis.close();
 
             str=new String(fileData);
-
             editText.setVisibility(View.INVISIBLE);
             recordText.setVisibility(View.VISIBLE);
             recordText.setText(str);

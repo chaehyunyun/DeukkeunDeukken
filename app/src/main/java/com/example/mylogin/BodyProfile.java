@@ -215,6 +215,14 @@ public class BodyProfile extends AppCompatActivity {
         childUpdates.put("/User_BodyProfile_list/" + uid + "/" + date + "/", postValues);
         reference.updateChildren(childUpdates);
     }
+    // Save to Firebase
+    public void save() {
+        height = String.valueOf(valueHeight.getText());
+        weight = String.valueOf(valueWeight.getText());
+        BMI = String.valueOf(valueBMI.getText());
+        postFirebaseDataBase(true);
+        cheakBMI = true;
+    }
 
 //    // Firebase's data lookup method
 //    public void getFirebaseDataBase() {
@@ -247,14 +255,7 @@ public class BodyProfile extends AppCompatActivity {
 //        data.addListenerForSingleValueEvent(eventListener);
 //    }
 
-    // Save to Firebase
-    public void save() {
-        height = String.valueOf(valueHeight.getText());
-        weight = String.valueOf(valueWeight.getText());
-        BMI = String.valueOf(valueBMI.getText());
-        postFirebaseDataBase(true);
-        cheakBMI = true;
-    }
+
 
     // Toast method
     void showToast(String msg) {

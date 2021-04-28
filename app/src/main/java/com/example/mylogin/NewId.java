@@ -39,8 +39,10 @@ public class NewId extends AppCompatActivity implements View.OnClickListener  {
         firebaseAuth = FirebaseAuth.getInstance();
 
         if(firebaseAuth.getCurrentUser() != null){
+            //이미 로그인 되었다면 이 액티비티를 종료함
             finish();
-            startActivity(new Intent(getApplicationContext(), AfterLogin.class));
+            //그리고 profile 액티비티를 연다.
+            startActivity(new Intent(getApplicationContext(), home.class)); //추가해 줄 ProfileActivity
         }
         //initializing views
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
@@ -54,13 +56,12 @@ public class NewId extends AppCompatActivity implements View.OnClickListener  {
         buttonSignup.setOnClickListener(this);
     }
 
-    //Firebase creating a new user
+    //Firebse creating a new user
     private void registerUser(){
-        //Gets the email, password entered by the user.
+        //사용자가 입력하는 email, password를 가져온다.
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
-
-        //Check whether email and password are empty or not.
+        //email과 password가 비었는지 아닌지를 체크 한다.
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this, "Email을 입력해 주세요.", Toast.LENGTH_SHORT).show();
             return;
@@ -69,23 +70,21 @@ public class NewId extends AppCompatActivity implements View.OnClickListener  {
             Toast.makeText(this, "Password를 입력해 주세요.", Toast.LENGTH_SHORT).show();
         }
 
-        //If email and password are typed correctly, proceed.
+        //email과 password가 제대로 입력되어 있다면 계속 진행된다.
         progressDialog.setMessage("등록중입니다. 기다려 주세요...");
         progressDialog.show();
 
         //creating a new user
-        firebaseAuth.createUserWithEmailAndPassword(email, password)
+        firebaseAuth.createUserWithEmailAndPassword(email, password) //회원가입
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        //If your membership registration has been completed successfully,
                         if(task.isSuccessful()){
-                            //exit the current activity
                             finish();
-                            //go to home activity.
                             startActivity(new Intent(getApplicationContext(), home.class));
-                        } else { //error
-                            textviewMessage.setText("에러유형\n - 이미 등록된 이메일  " + "\n -암호 최소 6자리 이상 \n - 서버에러");
+                        } else {
+                            //에러발생시
+                            textviewMessage.setText("에러유형\n - 이미 등록된 이메일  \n -암호 최소 6자리 이상 \n - 서버에러");
                             Toast.makeText(NewId.this, "등록 에러!", Toast.LENGTH_SHORT).show();
                         }
                         progressDialog.dismiss();

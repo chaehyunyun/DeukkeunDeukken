@@ -1,13 +1,16 @@
 package com.example.mylogin;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -42,24 +45,19 @@ public class fragment_cart extends Fragment {
         listView = (ListView)rootView.findViewById(R.id.listView);
         initDatabase();
 
-        //어댑터안에 데이터 담기, 리스트뷰에 어댑터 설정
         //Place data in adapter, set adapter in ListView
         adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, new ArrayList<String>());;
         listView.setAdapter(adapter);
 
-
-        //경로 전체에 대해 변경값이 있으면 실행시키는 리스너
-        // 데이터가 추가/변경되었을 경우 값을 리스트뷰에 넣을 때 쓰일 리스너
         //'child' name to determine the change
-        mReference = mDatabase.getReference("fragment_weight");
+        mReference = mDatabase.getReference("fragment_ExList");
+
 
         //A 'Listener' that run if there are changes to the entire path
         //A 'Listener' for putting values into list views when data has been added/changed
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                //리스트뷰 초기화
                 //Initialize the ListView to update the change.
                 Array.clear();
                 adapter.clear();
@@ -69,7 +67,6 @@ public class fragment_cart extends Fragment {
                     String msg = messageData.getValue().toString();
                     Array.add(msg);
                     adapter.add(msg);
-
                 }
                 adapter.notifyDataSetChanged();
                 listView.setSelection(adapter.getCount() - 1);
@@ -78,6 +75,17 @@ public class fragment_cart extends Fragment {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+
+        //cart ImageView
+        ImageView cart;
+        cart = (ImageView)rootView.findViewById(R.id.cart);
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), cart_list.class);
+                startActivity(intent);
             }
         });
 
