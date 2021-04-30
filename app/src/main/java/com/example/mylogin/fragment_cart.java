@@ -84,7 +84,7 @@ public class fragment_cart extends Fragment {
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), cart_list.class);
+                Intent intent = new Intent(getActivity(), ex_list.class);
                 startActivity(intent);
             }
         });
