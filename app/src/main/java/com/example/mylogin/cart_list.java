@@ -1,34 +1,9 @@
 package com.example.mylogin;
 
-import androidx.annotation.IdRes;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.media.Image;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.ScrollView;
-import android.view.View;
-
-import android.widget.Button;
-
-import android.widget.TextView;
-
-import java.util.ArrayList;
 
 import android.os.Bundle;
 
@@ -36,10 +11,10 @@ import android.os.Bundle;
 import java.util.Arrays;
 import java.util.List;
 
-public class ex_list extends AppCompatActivity {
+public class cart_list extends AppCompatActivity {
 
 
-    private RecyclerAdapter adapter;
+    private RecyclerAdapter_cart_list adapter;
     ItemTouchHelper helper;
     int count1 = 0;
     int count2 = 0;
@@ -47,7 +22,7 @@ public class ex_list extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ex_list);
+        setContentView(R.layout.cart_list);
         init();
 
         getData();
@@ -91,7 +66,7 @@ public class ex_list extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        adapter = new RecyclerAdapter();
+        adapter = new RecyclerAdapter_cart_list();
         recyclerView.setAdapter(adapter);
         helper = new ItemTouchHelper(new ItemTouchHelperCallback(adapter));
         helper.attachToRecyclerView(recyclerView);

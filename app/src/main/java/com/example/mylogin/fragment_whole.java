@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-public class whole_ex extends AppCompatActivity {
+public class fragment_whole extends AppCompatActivity {
 
     VideoView vv;
     private FragmentManager fragmentManager;
@@ -23,12 +23,12 @@ public class whole_ex extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.weight);
+        setContentView(R.layout.fragment_whole);
 
 
         vv= findViewById(R.id.videoView2);
         //Video Uri
-        Uri videoUri= Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.mh);
+        Uri videoUri= Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.muscle1);
 
         //비디오뷰의 재생, 일시정지 등을 할 수 있는 '컨트롤바'를 붙여주는 작업
         vv.setMediaController(new MediaController(this));

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="5"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
         android:orientation="vertical"
         >
 
@@ -18,48 +19,50 @@
             android:layout_height="250dp"
             />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal"
-            android:gravity="right"
-            android:layout_marginRight="10dp"
 
-
-            >
-            <Button
-                android:id="@+id/btnPlay"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:backgroundTint="#1759d2"
-                android:text="Play"
-                android:layout_margin="5dp"
-                >
-            </Button>
-            <Button
-                android:id="@+id/btnStop"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:backgroundTint="#1759d2"
-                android:layout_margin="5dp"
-                android:text="Stop">
-            </Button>
-
-
-        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="4.5"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:gravity="right"
+        android:layout_weight="1"
+        android:layout_marginRight="10dp"
+
+
+        >
+        <Button
+            android:id="@+id/btnPlay"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:backgroundTint="#1759d2"
+            android:text="Play"
+            android:layout_margin="5dp"
+            >
+        </Button>
+        <Button
+            android:id="@+id/btnStop"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:backgroundTint="#1759d2"
+            android:layout_margin="5dp"
+            android:text="Stop">
+        </Button>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
         android:orientation="vertical"
 
         >
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:src="@drawable/detail"
             android:layout_margin="10dp"
             ></ImageView>

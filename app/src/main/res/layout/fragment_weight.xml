@@ -172,7 +172,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
-                            android:src="@drawable/sqaut5"
+                            android:src="@drawable/sqaut8"
                             android:layout_centerVertical="true"
                             android:id="@+id/v6"
                             android:layout_margin="1dp"

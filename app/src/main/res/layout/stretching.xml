@@ -39,37 +39,68 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_gravity="bottom"
-        android:orientation="horizontal">
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#ffffff">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:scaleType="fitXY"
-            android:src="@drawable/home"></ImageView>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/home"
+                >
+            </ImageView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:scaleType="fitXY"
-            android:src="@drawable/community"></ImageView>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/scale"
+                android:id="@+id/scale"
+                >
+            </ImageView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:scaleType="fitXY"
-            android:src="@drawable/girok"></ImageView>
-
-        <ImageView
-            android:id="@+id/mypage"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/calendar"
+                android:id="@+id/calendar"
+                >
+            </ImageView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:scaleType="fitXY"
-            android:src="@drawable/mypage"></ImageView>
+            >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/mypage"
+                android:id="@+id/mypage"
+                >
+            </ImageView>
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

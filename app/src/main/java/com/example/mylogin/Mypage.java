@@ -44,7 +44,7 @@ public class Mypage extends AppCompatActivity implements View.OnClickListener{
         //유저가 로그인 하지 않은 상태라면 null 상태이고 이 액티비티를 종료하고 로그인 액티비티를 연다.
         if(firebaseAuth.getCurrentUser() == null) {
             finish();
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, login.class));
         }
 
         //유저가 있다면, null이 아니면 계속 진행
@@ -68,7 +68,7 @@ public class Mypage extends AppCompatActivity implements View.OnClickListener{
         if (view == buttonLogout) {
             firebaseAuth.signOut();
             finish();
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, login.class));
         }
 
         //If you click 'Exit Members' button, delete member information
@@ -86,7 +86,7 @@ public class Mypage extends AppCompatActivity implements View.OnClickListener{
                                         public void onComplete(@NonNull Task<Void> task) {
                                             Toast.makeText(Mypage.this, "계정이 삭제 되었습니다.", Toast.LENGTH_LONG).show();
                                             finish();
-                                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                            startActivity(new Intent(getApplicationContext(), login.class));
                                         }
                                     });
                         }

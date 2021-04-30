@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -34,7 +33,7 @@ public class home extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(home.this, whole_ex.class);
+                Intent intent = new Intent(home.this, fragment_whole.class);
 
                 //번들을 이용해서 어떤 버튼이 눌렸는지 써서 보내줌
                 whatbtn = "btn1";
@@ -50,7 +49,7 @@ public class home extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(home.this, whole_ex.class);
+                Intent intent = new Intent(home.this, fragment_whole.class);
 
                 //번들을 이용해서 어떤 버튼이 눌렸는지 써서 보내줌
                 whatbtn = "btn2";
@@ -66,7 +65,7 @@ public class home extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(home.this, whole_ex.class);
+                Intent intent = new Intent(home.this, fragment_whole.class);
 
                 //번들을 이용해서 어떤 버튼이 눌렸는지 써서 보내줌
                 whatbtn = "btn3";
@@ -105,7 +104,7 @@ public class home extends AppCompatActivity {
         memo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(home.this, memo.class);
+                Intent intent = new Intent(home.this, Calendar.class);
                 startActivity(intent);
             }
         });
@@ -122,7 +121,7 @@ public class home extends AppCompatActivity {
 
         vv= findViewById(R.id.videoView3);
         //Video Uri
-        Uri videoUri= Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.mh);
+        Uri videoUri= Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.muscle1);
 
         //비디오뷰의 재생, 일시정지 등을 할 수 있는 '컨트롤바'를 붙여주는 작업
         vv.setMediaController(new MediaController(this));

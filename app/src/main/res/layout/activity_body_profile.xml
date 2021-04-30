@@ -8,6 +8,7 @@
     android:paddingTop="6dp"
     android:paddingRight="6dp"
     android:paddingBottom="6dp"
+    android:background="@color/white"
     tools:context=".BodyProfile">
 
     <RelativeLayout
@@ -20,7 +21,8 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="6dp">
+        tools:layout_editor_absoluteX="6dp"
+        >
 
         <ImageView
             android:id="@+id/back"
@@ -41,6 +43,7 @@
             android:layout_marginLeft="251dp"
             android:layout_marginBottom="12dp"
             android:text="Today's record"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
         <TextView
@@ -54,6 +57,7 @@
             android:layout_marginRight="193dp"
             android:layout_marginBottom="8dp"
             android:text="YYYY-MM-DD"
+            android:textColor="@color/black"
             android:textSize="25sp" />
 
     </RelativeLayout>
@@ -83,7 +87,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Height"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
+
 
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -125,6 +130,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginBottom="16dp"
+                android:textColor="@color/black"
                 android:text="cm"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/valueHeight"></TextView>
@@ -148,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Weight"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -192,6 +198,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginBottom="16dp"
                 android:text="kg"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/valueWeight">">
 
@@ -239,6 +246,7 @@
             android:layout_centerInParent="true"
             android:includeFontPadding="false"
             android:text="21.60"
+            android:textColor="@color/black"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -252,6 +260,7 @@
             android:layout_centerInParent="true"
             android:includeFontPadding="false"
             android:text="Normal"
+            android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -267,6 +276,7 @@
             android:layout_centerInParent="true"
             android:includeFontPadding="false"
             android:text="Your BMI"
+            android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

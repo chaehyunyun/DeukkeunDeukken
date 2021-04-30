@@ -28,7 +28,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class MainActivity extends AppCompatActivity {
+public class login extends AppCompatActivity {
 
         private FirebaseAuth mAuth = null;
         private GoogleSignInClient mGoogleSignInClient;
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
+            setContentView(R.layout.login);
 
 
             //여기서부터

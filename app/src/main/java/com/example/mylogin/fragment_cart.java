@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -84,7 +83,7 @@ public class fragment_cart extends Fragment {
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ex_list.class);
+                Intent intent = new Intent(getActivity(), cart_list.class);
                 startActivity(intent);
             }
         });

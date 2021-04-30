@@ -17,7 +17,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 
-public class memo extends AppCompatActivity {
+public class Calendar extends AppCompatActivity {
 
     public String fname=null;
     public String str=null;
@@ -30,7 +30,7 @@ public class memo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_memo);
+        setContentView(R.layout.calendar);
 
         calendarView=findViewById(R.id.calendarView);
         diaryTextView=findViewById(R.id.diaryTextView);
