@@ -28,7 +28,6 @@
         <activity android:name=".whole_ex"></activity>
         <activity android:name=".ex_detail"></activity>
         <activity android:name=".ex_list" />
-        <activity android:name=".cart_list"/>
     </application>
 
 </manifest>
