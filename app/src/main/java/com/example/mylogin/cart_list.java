@@ -8,13 +8,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class cart_list extends AppCompatActivity {
 
 
-    private RecyclerAdapter_cart_list adapter;
+    private Adapter_cart adapter;
     ItemTouchHelper helper;
     int count1 = 0;
     int count2 = 0;
@@ -26,8 +28,6 @@ public class cart_list extends AppCompatActivity {
         init();
 
         getData();
-
-
 
 
     /*    p1.setOnClickListener(new View.OnClickListener() {
@@ -55,10 +55,7 @@ public class cart_list extends AppCompatActivity {
             }
         });*/
 
-
     }
-
-
 
     private void init() {
 
@@ -66,27 +63,22 @@ public class cart_list extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        adapter = new RecyclerAdapter_cart_list();
+        adapter = new Adapter_cart();
         recyclerView.setAdapter(adapter);
         helper = new ItemTouchHelper(new ItemTouchHelperCallback(adapter));
         helper.attachToRecyclerView(recyclerView);
     }
 
     private void getData() {
-        // 임의의 데이터입니다.
+        List<Integer> listRes = new ArrayList<>();
+        int resID = getResources().getIdentifier("@drawable/leftright", "drawable", this.getPackageName());
+        listRes.add(resID);
 
-        List<Integer> listResId = Arrays.asList(
-                R.drawable.lunge,R.drawable.squat,R.drawable.squat,R.drawable.squat,R.drawable.lunge,R.drawable.squat,R.drawable.squat,R.drawable.squat,R.drawable.lunge,R.drawable.squat,R.drawable.squat,R.drawable.squat
-        );
-        List<Integer> listBtnId= Arrays.asList(
-                R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo
-        );
-        for (int i = 0; i < listResId.size(); i++) {
+        for (int i = 0; i < listRes.size(); i++) {
             // 각 List의 값들을 data 객체에 set 해줍니다.
             Data data = new Data();
-
-            data.setResId(listResId.get(i));
-            data.setBtnId(listBtnId.get(i));
+            data.setIndex(i+1);
+            data.setResId(listRes.get(i));
             // 각 값이 들어간 data를 adapter에 추가합니다.
             adapter.addItem(data);
         }

@@ -1,155 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/black"
-            android:orientation="vertical">
+            android:layout_height="70dp"
+            android:background="#1968f8">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/logo"></ImageView>
-        </LinearLayout>
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="70dp"
+                android:src="@drawable/toplogo6"></ImageView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
+            <VideoView
+                android:id="@+id/videoView2"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="270dp"
+                android:layout_marginTop="9dp"></VideoView>
+        </FrameLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:gravity="center"
                 android:text="Today's Exercise List"
                 android:textAlignment="center"
-                android:gravity="center"
                 android:textSize="20dp">
 
             </TextView>
-        </LinearLayout>
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="500dp">
-            <LinearLayout
+            android:layout_height="542dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="6"
-                android:orientation="horizontal"
-                >
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="100dp"
-                        android:text="1"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        >
-                    </TextView>
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="100dp"
-                        android:text="2"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        >
-                    </TextView>
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="100dp"
-                        android:text="3"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        >
-                    </TextView>
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="100dp"
-                        android:text="4"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        >
-                    </TextView>
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="100dp"
-                        android:text="5"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        >
-                    </TextView>
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="100dp"
-                        android:text="6"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        >
-                    </TextView>
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="100dp"
-                        android:text="7"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        >
-                    </TextView>
-                    <TextView
-                        android:layout_width="40dp"
-                        android:layout_height="100dp"
-                        android:text="8"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        >
-                    </TextView>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-
-                    >
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:scrollbarFadeDuration="0"
-                        android:scrollbarSize="5dp"
-                        android:scrollbarThumbVertical="@android:color/darker_gray"
-                        android:scrollbars="vertical"
-                        xmlns:android="http://schemas.android.com/apk/res/android">
-                    </androidx.recyclerview.widget.RecyclerView>
-
-
-
-                </LinearLayout>
-
-
-            </LinearLayout>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scrollbarFadeDuration="0"
+                android:scrollbarSize="5dp"
+                android:scrollbarThumbVertical="@android:color/darker_gray"
+                android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
         </androidx.core.widget.NestedScrollView>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_weight="2">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="dfjskdjfksdjfk">
 
-            </TextView>
-        </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:text="재생하기"
+            android:textSize="20sp">
+        </Button>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

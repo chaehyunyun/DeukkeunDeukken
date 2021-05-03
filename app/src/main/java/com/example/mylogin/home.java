@@ -99,7 +99,6 @@ public class home extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(home.this, BodyProfile.class);
                 startActivity(intent);
-
             }
         });
 
@@ -142,7 +141,6 @@ public class home extends AppCompatActivity {
                 vv.start();
             }
         });
-
 
     }
 

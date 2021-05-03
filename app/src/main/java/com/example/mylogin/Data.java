@@ -2,32 +2,31 @@ package com.example.mylogin;
 
 public class Data {
 
-    private String content;
+    private int index;
     private int resId;
-    private int btnId;
 
-
-    public String getContent() {
-        return content;
+    public Data() {
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public Data(int index, int resId) {
+        this.index = index;
+        this.resId = resId;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 
     public int getResId() {
         return resId;
     }
 
-    public void setResId(int resId) {
+    public void setResId(Integer resId) {
         this.resId = resId;
     }
 
-    public int getBtnId() {
-        return btnId;
-    }
-
-    public void setBtnId(int btnId) {
-        this.btnId = btnId;
-    }
 }

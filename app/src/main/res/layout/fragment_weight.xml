@@ -28,15 +28,19 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <ImageView
+                            android:id="@+id/v1"
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
-                            android:src="@drawable/squat8"
-                            android:layout_centerVertical="true"
-                            android:id="@+id/v1"
-                            android:layout_margin="1dp"
-                            >
-                        </ImageView>
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="0dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_marginBottom="1dp"
+                            android:src="@drawable/squat8"></ImageView>
+
                         <CheckBox
                             android:id="@+id/ex1"
                             android:layout_width="30dp"

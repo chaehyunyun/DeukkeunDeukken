@@ -40,7 +40,6 @@ public class fragment_cardio extends Fragment implements CompoundButton.OnChecke
             }
         });*/
 
-
         return view;
     } //onCreateView 끝
 
@@ -75,7 +74,6 @@ public class fragment_cardio extends Fragment implements CompoundButton.OnChecke
     //'Adapter class' acting as data management
     class Adapter extends BaseAdapter {
         ArrayList<ExerciseItem> items = new ArrayList<ExerciseItem>();
-
 
         // Generate > implement methods
         @Override

@@ -35,7 +35,6 @@ public class fragment_cart extends Fragment {
     private ArrayAdapter<String> adapter;
     List<Object> Array = new ArrayList<Object>();
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -129,10 +128,8 @@ public class fragment_cart extends Fragment {
             ExerciseItem item = items.get(position);
             view.setName(item.getName());
 
-
             return view;
         }
-
 
     }
 

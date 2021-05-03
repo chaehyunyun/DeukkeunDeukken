@@ -11,13 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class RecyclerAdapter_cart_list extends RecyclerView.Adapter<RecyclerAdapter_cart_list.ItemViewHolder> implements ItemTouchHelperListener
-
-{
-
+public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHolder> implements ItemTouchHelperListener {
     // adapter에 들어갈 list 입니다.
-    private ArrayList<Data> listData = new ArrayList<>();
+    private ArrayList<Data> ex_list = new ArrayList<>();
 
     @NonNull
     @Override
@@ -31,62 +29,48 @@ public class RecyclerAdapter_cart_list extends RecyclerView.Adapter<RecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         // Item을 하나, 하나 보여주는(bind 되는) 함수입니다.
-        holder.onBind(listData.get(position));
+        holder.onBind(ex_list.get(position));
     }
 
     @Override
     public int getItemCount() {
         // RecyclerView의 총 개수 입니다.
-        return listData.size();
+        return ex_list.size();
     }
 
     void addItem(Data data) {
         // 외부에서 item을 추가시킬 함수입니다.
-        listData.add(data);
+        ex_list.add(data);
     }
     @Override public boolean onItemMove(int from_position, int to_position) {
-        Data data = listData.get(from_position);
-        listData.remove(from_position);
-        listData.add(to_position,data);
+        Data data = ex_list.get(from_position);
+        ex_list.remove(from_position);
+        ex_list.add(to_position,data);
         notifyItemMoved(from_position,to_position); return true;
     }
     @Override
     public void onItemSwipe(int position) {
-        listData.remove(position); notifyItemRemoved(position);
+        ex_list.remove(position); notifyItemRemoved(position);
     }
-
 
     // RecyclerView의 핵심인 ViewHolder 입니다.
     // 여기서 subView를 setting 해줍니다.
     class ItemViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView imageView;
-        public TextView c1;
-        public TextView c2;
-        public ImageButton m1;
-        public ImageButton m2;
-        public ImageButton p1;
-        public ImageButton p2;
+        public TextView index;
 
         ItemViewHolder(View itemView) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.v1);
-            c1 = itemView.findViewById(R.id.v1_c1);
-            c2 = itemView.findViewById(R.id.v1_c2);
-            m1 = itemView.findViewById(R.id.v1_m1);
-            m2 = itemView.findViewById(R.id.v1_m2);
-            p1 = itemView.findViewById(R.id.v1_p1);
-            p2 = itemView.findViewById(R.id.v1_p2);
+            index = itemView.findViewById(R.id.index);
+            imageView = itemView.findViewById(R.id.image);
         }
 
-        void onBind(Data data) {
-            imageView.setImageResource(data.getResId());
-            p1.setImageResource(data.getBtnId());
-            p2.setImageResource(data.getBtnId());
-            m1.setImageResource(data.getBtnId());
-            m2.setImageResource(data.getBtnId());
 
+        void onBind(Data data) {
+            index.setText(Integer.toString(data.getIndex()));
+            imageView.setImageResource(data.getResId());
         }
     }
 }
