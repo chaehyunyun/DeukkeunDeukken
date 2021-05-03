@@ -1,12 +1,12 @@
 package com.example.mylogin;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -34,14 +34,15 @@ public class BodyProfile extends AppCompatActivity {
     Button btnBMI, btnInsert;
     DatabaseReference reference;
     String height, weight, BMI, level;
-    ArrayAdapter<String> adapter;
-    SharedPreferences preferences;
+    SharedPreferences preferences; // 데이터
+    SharedPreferences prefPopup; // 팝업
     SharedPreferences.Editor editor;
     SeekBar seekbar1, seekbar2;
     ImageView back;
     TextView textDate;
     Boolean cheakBMI;
     String date, uid;
+//    ArrayAdapter<String> adapter;
 
     static ArrayList<String> arrayIndex = new ArrayList<String>();
     static ArrayList<String> arrayData = new ArrayList<String>();
@@ -49,7 +50,11 @@ public class BodyProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_body_profile);
+        setContentView(R.layout.body_profile);
+
+        // 처음 실행 팝업
+        prefPopup = getSharedPreferences("Popup", MODE_PRIVATE);
+        checkFirstRun();
 
         // Get the ID of the currently connected user
         DatabaseReference mDatabase;
@@ -80,15 +85,20 @@ public class BodyProfile extends AppCompatActivity {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = preferences.edit();
 
-        height = preferences.getString("height", "180");
+        height = preferences.getString("height", "");
         valueHeight.setText(height);
-        weight = preferences.getString("weight", "70");
+        weight = preferences.getString("weight", "");
         valueWeight.setText(weight);
-        BMI = preferences.getString("BMI", "21.60");
+        BMI = preferences.getString("BMI", "");
         valueBMI.setText(BMI);
-        level = preferences.getString("level", "Normal");
+        level = preferences.getString("level", "");
         BMILevel.setText(level);
-        findBmiResult();
+        if (height != "") {
+            seekbar1.setProgress(Integer.parseInt(height));
+        }
+        if (weight != "") {
+            seekbar2.setProgress(Integer.parseInt(weight));
+        }
 
         // Back button
         back.setOnClickListener(new View.OnClickListener() {
@@ -183,8 +193,7 @@ public class BodyProfile extends AppCompatActivity {
         if (result < 18.5) {
             BMILevel.setText("Underweight");
             BMILevel.setTextColor(Color.parseColor("#FF0026FF"));
-        }
-        else if (18.5 <= result && result <= 22.9) {
+        } else if (18.5 <= result && result <= 22.9) {
             BMILevel.setText("Normal");
             BMILevel.setTextColor(Color.parseColor("#FF299E00"));
         } else if (23 <= result && result <= 24.9) {
@@ -215,6 +224,7 @@ public class BodyProfile extends AppCompatActivity {
         childUpdates.put("/User_BodyProfile_list/" + uid + "/" + date + "/", postValues);
         reference.updateChildren(childUpdates);
     }
+
     // Save to Firebase
     public void save() {
         height = String.valueOf(valueHeight.getText());
@@ -255,7 +265,15 @@ public class BodyProfile extends AppCompatActivity {
 //        data.addListenerForSingleValueEvent(eventListener);
 //    }
 
+    public void checkFirstRun() {
+        boolean Popup = prefPopup.getBoolean("Popup", true);
+        if (Popup) {
+            Intent newIntent = new Intent(this, BodyProfilePopup.class);
+            startActivity(newIntent);
 
+            prefPopup.edit().putBoolean("Popup", false).apply();
+        }
+    }
 
     // Toast method
     void showToast(String msg) {

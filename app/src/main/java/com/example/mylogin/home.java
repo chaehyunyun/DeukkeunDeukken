@@ -3,6 +3,7 @@ package com.example.mylogin;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,20 +11,22 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 public class home extends AppCompatActivity {
 
     VideoView vv;
-    String whatbtn="";
+    String whatbtn = "";
+    public SharedPreferences prefs;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        // 신체 기록 최초 저장
-        Intent intent = new Intent(this, BodyProfile.class);
-        startActivity(intent);
+        // 신체 기록 최초 저장, 처음 실행시만 bodyprofile 설정하도록
+        prefs = getSharedPreferences("Pref", MODE_PRIVATE);
+        checkFirstRun();
 
         Bundle bundle = new Bundle();
 
@@ -79,7 +82,7 @@ public class home extends AppCompatActivity {
 
         //스트레칭 이미지버튼
         //home에서 Stretching으로 연결
-        ImageButton stretching=(ImageButton)findViewById(R.id.homestretching);
+        ImageButton stretching = (ImageButton) findViewById(R.id.homestretching);
         stretching.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +93,7 @@ public class home extends AppCompatActivity {
         });
 
         //하단바
-        ImageView girok =(ImageView)findViewById(R.id.scale);
+        ImageView girok = (ImageView) findViewById(R.id.scale);
         girok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,7 +103,7 @@ public class home extends AppCompatActivity {
             }
         });
 
-        ImageView memo =(ImageView)findViewById(R.id.calendar);
+        ImageView memo = (ImageView) findViewById(R.id.calendar);
         memo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,7 +113,7 @@ public class home extends AppCompatActivity {
         });
 
         //home에서 mypage으로 연결
-        ImageView mypage=(ImageView)findViewById(R.id.mypage);
+        ImageView mypage = (ImageView) findViewById(R.id.mypage);
         mypage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,9 +122,9 @@ public class home extends AppCompatActivity {
             }
         });
 
-        vv= findViewById(R.id.videoView3);
+        vv = findViewById(R.id.videoView3);
         //Video Uri
-        Uri videoUri= Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.muscle1);
+        Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.muscle1);
 
         //비디오뷰의 재생, 일시정지 등을 할 수 있는 '컨트롤바'를 붙여주는 작업
         vv.setMediaController(new MediaController(this));
@@ -139,6 +142,18 @@ public class home extends AppCompatActivity {
                 vv.start();
             }
         });
+
+
     }
 
+    public void checkFirstRun() {
+        boolean isFirstRun = prefs.getBoolean("isFirstRun", true);
+        if (isFirstRun) {
+            Intent newIntent = new Intent(home.this, BodyProfile.class);
+            startActivity(newIntent);
+
+            prefs.edit().putBoolean("isFirstRun", false).apply();
+        }
+
+    }
 }

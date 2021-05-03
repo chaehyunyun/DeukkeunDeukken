@@ -50,7 +50,6 @@ public class login extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.login);
 
-
             //여기서부터
             //initializig firebase auth object
             mAuth = FirebaseAuth.getInstance();

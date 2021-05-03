@@ -3,38 +3,61 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#ededed"
+    >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="8"
+        >
+        <ImageView
+            android:layout_width="500dp"
+            android:layout_height="500dp"
+            android:background="#d8e0ef"
+            android:layout_marginTop="259dp"
+            android:layout_gravity="center_horizontal"
+            ></ImageView>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/str6"
+            >
 
-    <Button
-        android:text="아침 스트레칭"
-        android:id="@+id/morning"
-        android:layout_weight="4"
-        android:background="#00ff0000"
-        android:textColor="@color/black"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
-        android:text="운동 전 스트레칭"
-        android:id="@+id/before"
-        android:layout_weight="4"
-        android:background="#00ff0000"
-        android:textColor="@color/black"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
-        android:text="운동 후 스트레칭"
-        android:id="@+id/after"
-        android:layout_weight="4"
-        android:background="#00ff0000"
-        android:textColor="@color/black"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        </ImageView>
+
+        <Button
+            android:id="@+id/morning"
+            android:layout_weight="4"
+            android:background="#00ff0000"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:layout_marginTop="230dp"
+            android:layout_width="match_parent"
+            android:layout_height="130dp" />
+        <Button
+            android:id="@+id/before"
+            android:layout_weight="4"
+            android:background="#00ff0000"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:layout_marginTop="400dp"
+            android:layout_width="match_parent"
+            android:layout_height="130dp" />
+        <Button
+            android:id="@+id/after"
+            android:layout_weight="4"
+            android:background="#00ff0000"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:layout_marginTop="555dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="130dp" />
+
+    </FrameLayout>
 
 
     <LinearLayout
