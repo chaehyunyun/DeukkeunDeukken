@@ -48,7 +48,6 @@ public class fragment_weight extends Fragment implements CompoundButton.OnChecke
             }
         });
 
-
         cb1 = (CheckBox)view.findViewById(R.id.ex1);
         cb2 = (CheckBox)view.findViewById(R.id.ex2);
         cb1.setOnCheckedChangeListener(this);

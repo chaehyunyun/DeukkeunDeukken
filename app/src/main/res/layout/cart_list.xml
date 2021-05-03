@@ -16,15 +16,16 @@
             <ImageView
                 android:layout_width="250dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="70dp"
-                android:src="@drawable/toplogo6"></ImageView>
+                android:src="@drawable/toplogo6"
+                android:layout_marginLeft="70dp"></ImageView>
 
             <VideoView
-                android:id="@+id/videoView2"
+                android:id="@+id/videoView3"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="270dp"
                 android:layout_marginTop="9dp"></VideoView>
+
         </FrameLayout>
 
             <TextView
