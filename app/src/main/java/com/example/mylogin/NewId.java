@@ -33,7 +33,7 @@ public class NewId extends AppCompatActivity implements View.OnClickListener  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.newid);
+        setContentView(R.layout.signup);
 
         //initializig firebase auth object
         firebaseAuth = FirebaseAuth.getInstance();

@@ -8,9 +8,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_height="300dp"
+        android:layout_height="match_parent"
         android:background="#872378"
-        android:layout_weight="4">
+      >
         //스크롤뷰
         <ScrollView
             android:layout_width="match_parent"
@@ -144,7 +144,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
-                            android:src="@drawable/squat8"
+                            android:src="@drawable/squat"
                             android:layout_centerVertical="true"
                             android:id="@+id/v5"
                             android:layout_margin="1dp"
@@ -172,7 +172,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
-                            android:src="@drawable/sqaut8"
+                            android:src="@drawable/squat"
                             android:layout_centerVertical="true"
                             android:id="@+id/v6"
                             android:layout_margin="1dp"
