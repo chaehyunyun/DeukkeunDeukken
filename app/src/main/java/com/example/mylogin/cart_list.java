@@ -24,19 +24,19 @@ public class cart_list extends AppCompatActivity {
     int count1 = 0;
     int count2 = 0;
 
-//    ImageButton btn_count_up, btn_count_down, btn_set_up, btn_set_down;
-//    TextView textView_count, textView_set;
-//    int count = 0;
-//    int set = 0;
-//
-//    protected void onCreate(Bundle savedInstanceState) {
-//
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.cart_list);
-//        init();
-//
-//        getData();
-//
+    ImageButton btn_count_up, btn_count_down, btn_set_up, btn_set_down;
+    TextView textView_count, textView_set;
+    int count = 0;
+    int set = 0;
+
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.cart_list);
+        init();
+
+        getData();
+
 //        textView_count = findViewById(R.id.textView_count);
 //        textView_set = findViewById(R.id.textView_set);
 //
@@ -76,7 +76,7 @@ public class cart_list extends AppCompatActivity {
 //                }
 //            }
 //        });
-//    }
+    }
 
     private void init() {
 
