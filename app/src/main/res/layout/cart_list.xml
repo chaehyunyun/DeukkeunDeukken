@@ -29,16 +29,15 @@
 
         </FrameLayout>
 
-        <TextView
+        <ImageButton
+            android:id="@+id/start"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:text="운동 순서와 횟수를 수정해보세요"
-            android:textAlignment="center"
-            android:textColor="#1759D2"
-            android:textSize="20dp">
-
-        </TextView>
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@color/white"
+            android:scaleType="fitCenter"
+            android:src="@drawable/start"></ImageButton>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -55,12 +54,75 @@
                 android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
         </androidx.core.widget.NestedScrollView>
 
-        <Button
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="bottom|center|right"
-            android:background="#1760D0"
-            android:text="운동 시작하기"
-            android:textSize="20sp"></Button>
+            android:orientation="horizontal"
+            android:background="#ffffff"
+            android:layout_gravity="bottom|center|right">
+
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/home"
+                    android:id="@+id/home"
+                    >
+                </ImageView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/scale"
+                    android:id="@+id/scale"
+                    >
+                </ImageView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/calendar"
+                    android:id="@+id/calendar"
+                    >
+                </ImageView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/mypage"
+                    android:id="@+id/mypage"
+                    >
+                </ImageView>
+            </RelativeLayout>
+        </LinearLayout>
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

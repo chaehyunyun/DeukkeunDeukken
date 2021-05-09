@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mylogin">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
@@ -11,24 +12,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-
-        <activity android:name=".Calendar"></activity>
-        <activity android:name=".Mypage"></activity>
-        <activity android:name=".NewId"></activity>
-        <activity android:name=".FindPw"></activity>
-        <activity android:name=".BodyProfile"></activity>
+        <activity android:name=".Exercise"></activity>
+        <activity android:name=".Calendar" />
+        <activity android:name=".Mypage" />
+        <activity android:name=".NewId" />
+        <activity android:name=".FindPw" />
+        <activity android:name=".BodyProfile" />
         <activity android:name=".login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.ALL_APPS" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".home"></activity>
-        <activity android:name=".Stretching"></activity>
-        <activity android:name=".fragment_whole"></activity>
-        <activity android:name=".ex_detail"></activity>
-        <activity android:name=".cart_list"></activity>
-        <activity android:name=".BodyProfilePopup" android:theme="@android:style/Theme.Dialog" />
+        <activity android:name=".home" />
+        <activity android:name=".Stretching" />
+        <activity android:name=".fragment_whole" />
+        <activity android:name=".ex_detail" />
+        <activity android:name=".cart_list" />
+        <activity
+            android:name=".BodyProfilePopup"
+            android:theme="@android:style/Theme.Dialog" />
     </application>
 
 </manifest>
