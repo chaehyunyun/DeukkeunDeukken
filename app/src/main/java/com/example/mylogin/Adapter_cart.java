@@ -19,7 +19,9 @@ import java.util.List;
 public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHolder> implements ItemTouchHelperListener {
     // adapter에 들어갈 list 입니다.
     private ArrayList<Data> ex_list = new ArrayList<>();
+
     private ArrayList<Dictionary> mList;
+
     private OnItemClickListener mListener = null;
     int count=0, set=0;
 
@@ -128,6 +130,8 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
         void onBind(Data data) {
             index.setText(Integer.toString(data.getIndex()));
             imageView.setImageResource(data.getResId());
+            textView_count.setText(Integer.toString(data.getCount()));
+            textView_set.setText(Integer.toString(data.getSet()));
             //textView_count.setText(Integer.toString(data.getIndex()));
             //textView_set.setText(Integer.toString(data.getIndex()));
         }

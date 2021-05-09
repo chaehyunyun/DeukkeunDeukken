@@ -100,11 +100,18 @@ public class cart_list extends AppCompatActivity {
                 if(v.getId()==R.id.btn_count_down)
                 {
                     count--;
+                    //textView_count.setText(Integer.toString(count));
                     textView_count.setText(Integer.toString(count));
                 }
                 else if(v.getId()==R.id.btn_count_up)
                 {
                     count++;
+                    //textView_count.setText(Integer.toString(count));
+                }
+                else if(v.getId()==R.id.btn_set_down)
+                {
+                    set--;
+                    //textView_set.setText(Integer.toString(set));
                     textView_count.setText(Integer.toString(count));
                 }
                 else if(v.getId()==R.id.btn_set_down)
@@ -115,6 +122,7 @@ public class cart_list extends AppCompatActivity {
                 else if(v.getId()==R.id.btn_set_up)
                 {
                     set++;
+                    //textView_count.setText(Integer.toString(set));
                     textView_count.setText(Integer.toString(set));
                 }
             }
@@ -184,6 +192,8 @@ public class cart_list extends AppCompatActivity {
             Data data = new Data();
             data.setIndex(i+1);
             data.setResId(listRes.get(i));
+            data.setCount(count);
+            data.setSet(set);
             // 각 값이 들어간 data를 adapter에 추가합니다.
             adapter.addItem(data);
         }
