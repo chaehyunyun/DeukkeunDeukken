@@ -50,7 +50,6 @@ public class fragment_cart extends Fragment {
         //'child' name to determine the change
         mReference = mDatabase.getReference("fragment_ExList");
 
-
         //A 'Listener' that run if there are changes to the entire path
         //A 'Listener' for putting values into list views when data has been added/changed
         mReference.addValueEventListener(new ValueEventListener() {

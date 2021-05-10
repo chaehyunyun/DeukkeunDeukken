@@ -20,10 +20,21 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
     // adapter에 들어갈 list 입니다.
     private ArrayList<Data> ex_list = new ArrayList<>();
 
-    private ArrayList<Dictionary> mList;
+    public interface OnItemClickListener{
+        //void onItemClick(View v, int position);
+        void onItemClicked(int position);
+        void onCountUpClick(int position);
+        void onCountDownClick(int position);
+        void onSetUpClick(int position);
+        void onSetDownClick(int position);
+    }
 
-    private OnItemClickListener mListener = null;
-    int count=0, set=0;
+    private OnItemClickListener mListener;
+
+    // OnItemClickListener 리스너 객체 참조를 어댑터에 전달하는 메서드
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener ;
+    }
 
     @NonNull
     @Override
@@ -36,8 +47,50 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        // Item을 하나, 하나 보여주는(bind 되는) 함수입니다.
+
         holder.onBind(ex_list.get(position));
+
+        if(mListener!=null)
+        {
+            final int pos = position;
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mListener.onItemClicked(pos);
+                }
+            });
+
+            holder.btn_count_up.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mListener.onCountUpClick(pos);
+                }
+            });
+
+            holder.btn_count_down.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mListener.onCountDownClick(pos);
+                }
+            });
+
+            holder.btn_set_up.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mListener.onSetUpClick(pos);
+                }
+            });
+
+            holder.btn_set_down.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mListener.onSetDownClick(pos);
+                }
+            });
+
+        }
+
     }
 
     @Override
@@ -50,24 +103,27 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
         // 외부에서 item을 추가시킬 함수입니다.
         ex_list.add(data);
     }
+
     @Override public boolean onItemMove(int from_position, int to_position) {
         Data data = ex_list.get(from_position);
         ex_list.remove(from_position);
         ex_list.add(to_position,data);
-        notifyItemMoved(from_position,to_position); return true;
+        notifyItemMoved(from_position,to_position);
+        for(int i=0; i<getItemCount(); i++) {
+            data = ex_list.get(i);
+            data.setIndex(i);
+        }
+        return true;
     }
+
     @Override
     public void onItemSwipe(int position) {
-        ex_list.remove(position); notifyItemRemoved(position);
-    }
-
-    public interface OnItemClickListener{
-        void onItemClick(View v, int position);
-    }
-
-    // OnItemClickListener 리스너 객체 참조를 어댑터에 전달하는 메서드
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.mListener = listener ;
+        ex_list.remove(position);
+        notifyItemRemoved(position);
+        for(int i=position+1; i<getItemCount(); i++) {
+            Data data = ex_list.get(i);
+            data.setIndex(i-1);
+        }
     }
 
     // RecyclerView의 핵심인 ViewHolder 입니다.
@@ -78,9 +134,6 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
         public TextView index;
         public TextView textView_count, textView_set;
         public ImageButton btn_count_up, btn_count_down, btn_set_up, btn_set_down;
-        /*public TextView textView_count, textView_set;
-        int count = 0;
-        int set = 0;*/
 
         ItemViewHolder(View itemView) {
             super(itemView);
@@ -94,37 +147,6 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
             btn_set_down=itemView.findViewById(R.id.btn_set_down);
             btn_set_up=itemView.findViewById(R.id.btn_set_up);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getAdapterPosition();
-
-                    if(position!=RecyclerView.NO_POSITION){
-                        if(mListener!=null){
-                            mListener.onItemClick(v,position);
-                        }
-                    }
-                }
-            });
-
-            /*
-            //횟수 및 세트 조절
-            textView_count = itemView.findViewById(R.id.textView_count);
-            textView_set = itemView.findViewById(R.id.textView_set);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getAdapterPosition();
-
-                    if(position!=RecyclerView.NO_POSITION){
-                        if(mListener!=null){
-                            mListener.onItemClick(v,position);
-                        }
-                    }
-                }
-            });*/
-
         }
 
         void onBind(Data data) {
@@ -132,29 +154,7 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
             imageView.setImageResource(data.getResId());
             textView_count.setText(Integer.toString(data.getCount()));
             textView_set.setText(Integer.toString(data.getSet()));
-            //textView_count.setText(Integer.toString(data.getIndex()));
-            //textView_set.setText(Integer.toString(data.getIndex()));
         }
 
-        /*public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.btn_count_down:
-                    count--;
-                    textView_count.setText(Integer.toString(count));
-                    break;
-                case R.id.btn_count_up:
-                    textView_count.setText(Integer.toString(count));
-                    count++;
-                    break;
-                case R.id.btn_set_down:
-                    textView_count.setText(Integer.toString(set));
-                    set--;
-                    break;
-                case R.id.btn_set_up:
-                    textView_count.setText(Integer.toString(set));
-                    set++;
-                    break;
-            }
-        }*/
     }
 }

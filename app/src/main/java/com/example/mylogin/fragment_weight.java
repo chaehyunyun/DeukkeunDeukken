@@ -73,11 +73,11 @@ public class fragment_weight extends Fragment implements CompoundButton.OnChecke
         adapter = new Adapter();
 
         if(cb1.isChecked()) {
-            name+=cb1.getText().toString()+"스쿼트\n";
+            name+=cb1.getText().toString()+"squat\n";
         }
 
         if(cb2.isChecked()) {
-            name+=cb2.getText().toString()+"마운틴 클라이머\n";
+            name+=cb2.getText().toString()+"mountainclimber\n";
         }
 
         //Push() the updated exercise list to the real-time database.

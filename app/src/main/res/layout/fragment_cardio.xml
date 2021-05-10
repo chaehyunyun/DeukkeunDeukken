@@ -45,7 +45,7 @@
                             android:id="@+id/ex1"
                             android:layout_width="30dp"
                             android:layout_height="120dp"
-
+                            android:buttonTint="@color/checkBox"
                             android:layout_marginLeft="30dp"></CheckBox>
 
 
@@ -74,7 +74,7 @@
                             android:id="@+id/ex2"
                             android:layout_width="30dp"
                             android:layout_height="120dp"
-
+                            android:buttonTint="@color/checkBox"
                             android:layout_marginLeft="30dp"></CheckBox>
 
 
@@ -103,7 +103,7 @@
                             android:id="@+id/ex3"
                             android:layout_width="30dp"
                             android:layout_height="120dp"
-
+                            android:buttonTint="@color/checkBox"
                             android:layout_marginLeft="30dp"></CheckBox>
 
 
@@ -132,7 +132,7 @@
                             android:id="@+id/ex4"
                             android:layout_width="30dp"
                             android:layout_height="120dp"
-
+                            android:buttonTint="@color/checkBox"
                             android:layout_marginLeft="30dp"></CheckBox>
 
 
@@ -161,7 +161,7 @@
                             android:id="@+id/ex5"
                             android:layout_width="30dp"
                             android:layout_height="120dp"
-
+                            android:buttonTint="@color/checkBox"
                             android:layout_marginLeft="30dp"></CheckBox>
 
 
