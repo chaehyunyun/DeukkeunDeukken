@@ -39,6 +39,7 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
 
     TextView textView_count, textView_set;
     VideoView vv;
+    ImageView back;
 
     List<Integer> listRes = new ArrayList<>();
 
@@ -46,7 +47,6 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
     int set = 0;
     int resID;
     String msg;
-    String str = "";
     String[] array;
     String packName;
 
@@ -80,6 +80,16 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
                 vv.start();
             }
         });
+
+        back = findViewById(R.id.back);
+        // Back button
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
 
         //운동시작 누르면 Exercise 로
         ImageView start = (ImageView) findViewById(R.id.start);
@@ -143,6 +153,11 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
         recyclerView.setAdapter(adapter);
         helper = new ItemTouchHelper(new ItemTouchHelperCallback(adapter));
         helper.attachToRecyclerView(recyclerView);
+    }
+
+    @Override
+    public void onItemChanged() {
+        adapter.notifyDataSetChanged();
     }
 
     @Override

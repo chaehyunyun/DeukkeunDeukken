@@ -27,6 +27,7 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
         void onCountDownClick(int position);
         void onSetUpClick(int position);
         void onSetDownClick(int position);
+        void onItemChanged();
     }
 
     private OnItemClickListener mListener;
@@ -113,6 +114,7 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
             data = ex_list.get(i);
             data.setIndex(i);
         }
+        mListener.onItemChanged();
         return true;
     }
 
@@ -122,9 +124,9 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
         notifyItemRemoved(position);
         for(int i=0; i<getItemCount(); i++) {
             Data data = ex_list.get(i);
-            data = ex_list.get(i);
             data.setIndex(i);
         }
+        mListener.onItemChanged();
     }
 
     // RecyclerView의 핵심인 ViewHolder 입니다.

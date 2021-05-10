@@ -10,6 +10,14 @@
         android:background="#1968f8">
 
         <ImageView
+            android:id="@+id/back"
+            android:name="back"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:src="@drawable/ic_back_arrow_w" />
+
+        <ImageView
             android:layout_width="250dp"
             android:layout_height="match_parent"
             android:src="@drawable/toplogo6"

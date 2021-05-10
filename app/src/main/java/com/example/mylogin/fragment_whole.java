@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 public class fragment_whole extends AppCompatActivity {
 
     VideoView vv;
+    ImageView back;
     private FragmentManager fragmentManager;
     private Fragment fw, fc, fp;
 
@@ -47,6 +48,14 @@ public class fragment_whole extends AppCompatActivity {
             }
         });
 
+        back = findViewById(R.id.back);
+        // Back button
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         fragmentManager = getSupportFragmentManager();
 
         //When you click on the weight ImageButton, you can see weight exercises first.
