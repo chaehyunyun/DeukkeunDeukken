@@ -120,9 +120,10 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
     public void onItemSwipe(int position) {
         ex_list.remove(position);
         notifyItemRemoved(position);
-        for(int i=position+1; i<getItemCount(); i++) {
+        for(int i=0; i<getItemCount(); i++) {
             Data data = ex_list.get(i);
-            data.setIndex(i-1);
+            data = ex_list.get(i);
+            data.setIndex(i);
         }
     }
 
