@@ -28,7 +28,7 @@ public class home extends AppCompatActivity {
         prefs = getSharedPreferences("Pref", MODE_PRIVATE);
         checkFirstRun();
 
-        Bundle bundle = new Bundle();
+        Bundle bundle2 = new Bundle();
 
         //웨이트 이미지버튼
         //home에서 Weight으로 연결
@@ -40,8 +40,8 @@ public class home extends AppCompatActivity {
 
                 //번들을 이용해서 어떤 버튼이 눌렸는지 써서 보내줌
                 whatbtn = "btn1";
-                bundle.putString("whatbtn", whatbtn);
-                intent.putExtras(bundle);
+                bundle2.putString("whatbtn", whatbtn);
+                intent.putExtras(bundle2);
 
                 startActivity(intent);
                 finish();
@@ -56,8 +56,8 @@ public class home extends AppCompatActivity {
 
                 //번들을 이용해서 어떤 버튼이 눌렸는지 써서 보내줌
                 whatbtn = "btn2";
-                bundle.putString("whatbtn", whatbtn);
-                intent.putExtras(bundle);
+                bundle2.putString("whatbtn", whatbtn);
+                intent.putExtras(bundle2);
 
                 startActivity(intent);
                 finish();
@@ -72,8 +72,8 @@ public class home extends AppCompatActivity {
 
                 //번들을 이용해서 어떤 버튼이 눌렸는지 써서 보내줌
                 whatbtn = "btn3";
-                bundle.putString("whatbtn", whatbtn);
-                intent.putExtras(bundle);
+                bundle2.putString("whatbtn", whatbtn);
+                intent.putExtras(bundle2);
 
                 startActivity(intent);
                 finish();

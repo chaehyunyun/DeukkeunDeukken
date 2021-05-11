@@ -3,24 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
-    >
+    android:background="@color/white">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="4"
         android:orientation="vertical"
-        >
+        android:gravity="center" >
 
         <VideoView
-
             android:id="@+id/vv"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            />
-
-
+            android:layout_height="250dp" />
     </LinearLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,19 +26,17 @@
         android:layout_gravity="center_horizontal"
         android:gravity="right"
         android:layout_weight="1"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="10dp">
 
-
-        >
         <Button
             android:id="@+id/btnPlay"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:backgroundTint="#1759d2"
             android:text="Play"
-            android:layout_margin="5dp"
-            >
+            android:layout_margin="5dp">
         </Button>
+
         <Button
             android:id="@+id/btnStop"
             android:layout_width="100dp"
@@ -49,23 +45,20 @@
             android:layout_margin="5dp"
             android:text="Stop">
         </Button>
-
-
     </LinearLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="4"
-        android:orientation="vertical"
-
-        >
-
+        android:orientation="vertical">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:src="@drawable/detail"
-            android:layout_margin="10dp"
-            ></ImageView>
+            android:id="@+id/ex_imageView"
+            android:layout_margin="10dp">
+        </ImageView>
     </LinearLayout>
 
 
@@ -74,8 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -86,61 +78,49 @@
             <RelativeLayout
                 android:layout_width="100dp"
                 android:layout_height="60dp"
-                android:layout_weight="1"
-                >
+                android:layout_weight="1">
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="35dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/home"
-                    >
-                </ImageView>
+                    android:src="@drawable/home"/>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="100dp"
                 android:layout_height="60dp"
-                android:layout_weight="1"
-                >
+                android:layout_weight="1">
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="35dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/scale"
-                    android:id="@+id/scale"
-                    >
-                </ImageView>
+                    android:id="@+id/scale"/>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="100dp"
                 android:layout_height="60dp"
-                android:layout_weight="1"
-                >
+                android:layout_weight="1">
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="35dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/calendar"
-                    android:id="@+id/calendar"
-                    >
-                </ImageView>
+                    android:id="@+id/calendar"/>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="100dp"
                 android:layout_height="60dp"
-                android:layout_weight="1"
-                >
+                android:layout_weight="1">
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="35dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/mypage"
-                    android:id="@+id/mypage"
-                    >
-                </ImageView>
+                    android:id="@+id/mypage"/>
             </RelativeLayout>
         </LinearLayout>
 

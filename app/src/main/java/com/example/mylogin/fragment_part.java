@@ -19,10 +19,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class fragment_part extends Fragment implements CompoundButton.OnCheckedChangeListener {
-
+    private CheckBox cb1, cb2, cb3, cb4;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
     Adapter adapter;
+    String part_ex = "";
+    String part = "part";
 
     @Nullable
     @Override
@@ -33,16 +35,31 @@ public class fragment_part extends Fragment implements CompoundButton.OnCheckedC
         View view = inflater.inflate(R.layout.fragment_part, container, false);
 
         //If you click the exercise picture, you can move to the exercise detail page.
-        /*
-        ImageView v1 = (ImageView) view.findViewById(R.id.v1);
-        v1.setOnClickListener(new View.OnClickListener() {
+        //스탠딩내전근
+        ImageView iv1 = (ImageView) view.findViewById(R.id.iv1);
+        iv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //어떤 exercise가 눌렸는지 번들에 담아서 보내줌
+                Bundle bundle_ex = new Bundle();
+                part_ex = "part_iv1";
+                bundle_ex.putString("Type", part);
+                bundle_ex.putString("part_ex", part_ex);
+
                 Intent intent = new Intent(getActivity(), ex_detail.class);
+                intent.putExtras(bundle_ex);
                 startActivity(intent);
             }
-        });*/
+        });
 
+        cb1 = (CheckBox) view.findViewById(R.id.ex1);
+        cb2 = (CheckBox) view.findViewById(R.id.ex2);
+        cb3 = (CheckBox) view.findViewById(R.id.ex3);
+        cb4 = (CheckBox) view.findViewById(R.id.ex4);
+        cb1.setOnCheckedChangeListener(this);
+        cb2.setOnCheckedChangeListener(this);
+        cb3.setOnCheckedChangeListener(this);
+        cb4.setOnCheckedChangeListener(this);
 
         return view;
     } //onCreateView 끝
@@ -59,14 +76,18 @@ public class fragment_part extends Fragment implements CompoundButton.OnCheckedC
         String name = "";
         adapter = new fragment_part.Adapter();
 
-        /*
-        if(cb1.isChecked()) {
-            name+=cb1.getText().toString()+"런지1\n";
+        if (cb1.isChecked()) {
+            name += cb1.getText().toString() + "스탠딩 내전근 스트레칭\n";
         }
-
-        if(cb2.isChecked()) {
-            name+=cb2.getText().toString()+"런지2\n";
-        }*/
+        if (cb2.isChecked()) {
+            name += cb2.getText().toString() + "브릿지\n";
+        }
+        if (cb3.isChecked()) {
+            name += cb2.getText().toString() + "옆으로 누워 다리 올리기\n";
+        }
+        if (cb4.isChecked()) {
+            name += cb2.getText().toString() + "벽 푸시업\n";
+        }
 
         //Push() the updated exercise list to the real-time database.
         databaseReference.child("fragment_ExList").push().setValue(name);
