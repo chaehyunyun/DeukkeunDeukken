@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 public class fragment_whole extends AppCompatActivity {
 
     VideoView vv;
+    ImageView back;
     private FragmentManager fragmentManager;
     private Fragment fw, fc, fp;
 
@@ -47,7 +48,14 @@ public class fragment_whole extends AppCompatActivity {
             }
         });
 
-
+        back = findViewById(R.id.back);
+        // Back button
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         fragmentManager = getSupportFragmentManager();
 
         //When you click on the weight ImageButton, you can see weight exercises first.
@@ -126,6 +134,43 @@ public class fragment_whole extends AppCompatActivity {
 
             }
         });
+
+        //하단바
+//        ImageView home = (ImageView) findViewById(R.id.home);
+//        home.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), home.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        ImageView scale = (ImageView) findViewById(R.id.scale);
+//        scale.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), BodyProfile.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        ImageView memo = (ImageView) findViewById(R.id.calendar);
+//        memo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), Calendar.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        ImageView mypage = (ImageView) findViewById(R.id.mypage);
+//        mypage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), Mypage.class);
+//                startActivity(intent);
+//            }
+//        });
 
     } //onCreate end
 

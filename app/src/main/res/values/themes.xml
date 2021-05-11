@@ -15,6 +15,6 @@
     </style>
 
     <style name="CalendarViewTheme" parent="Theme.MyLogin">
-        <item name="colorAccent">#3273F4</item>
+        <item name="colorAccent">#1968f8</item>
     </style>
 </resources>

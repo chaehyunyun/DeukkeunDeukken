@@ -57,7 +57,6 @@ public class BodyProfile extends AppCompatActivity {
         checkFirstRun();
 
         // Get the ID of the currently connected user
-        DatabaseReference mDatabase;
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); // Get information of logged in user
         uid = user != null ? user.getUid() : null; // Get the unique uid of the logged-in user
 
@@ -221,6 +220,7 @@ public class BodyProfile extends AppCompatActivity {
             FirebasePost post = new FirebasePost(height, weight, BMI);
             postValues = post.toMap();
         }
+
         childUpdates.put("/User_BodyProfile_list/" + uid + "/" + date + "/", postValues);
         reference.updateChildren(childUpdates);
     }

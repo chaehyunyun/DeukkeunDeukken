@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FirebasePost {
-    // firebase가 인식하기 위해선 public으로 설정
+
     public String height;
     public String weight;
     public String BMI;
