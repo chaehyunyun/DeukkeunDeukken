@@ -90,8 +90,7 @@
                             android:src="@drawable/handclap"
                             android:layout_centerVertical="true"
                             android:id="@+id/v3"
-                            android:layout_margin="1dp"
-                            >
+                            android:layout_margin="1dp">
                         </ImageView>
                         <CheckBox
                             android:id="@+id/ex3"

@@ -24,8 +24,8 @@ public class fragment_weight extends Fragment implements CompoundButton.OnChecke
     private CheckBox cb1, cb2, cb3, cb4;
     int[] ImageId = {R.drawable.lunge_unchecked, R.drawable.lunge_checked};
 
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference();
     Adapter adapter;
 
     String weight_ex = "";
@@ -50,8 +50,6 @@ public class fragment_weight extends Fragment implements CompoundButton.OnChecke
                 weight_ex = "weight_iv1";
                 bundle_ex.putString("Type", weight);
                 bundle_ex.putString("weight_ex", weight_ex);
-
-                Toast.makeText(getActivity(), bundle_ex.getString("Type"), Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getActivity(), ex_detail.class);
                 intent.putExtras(bundle_ex);

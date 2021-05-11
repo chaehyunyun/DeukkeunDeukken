@@ -32,7 +32,7 @@ public class ex_detail extends AppCompatActivity {
 
         String type = bundle_ex.getString("Type");
 
-        Toast.makeText(getApplicationContext(), type, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), type, Toast.LENGTH_SHORT).show();
 
 
         if (intent != null) {
