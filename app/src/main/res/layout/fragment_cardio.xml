@@ -12,37 +12,45 @@
         android:background="#872378"
         >
         //스크롤뷰
+
         <ScrollView
+            android:id="@+id/scroll1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/scroll1">
+            android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="120dp"
-                    android:orientation="horizontal"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <ImageView
+                            android:id="@+id/v1"
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
-                            android:src="@drawable/burpi3"
-                            android:layout_centerVertical="true"
-                            android:id="@+id/iv1"
-                            android:layout_margin="1dp" >
-                        </ImageView>
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="1dp"
+                            android:layout_marginRight="1dp"
+                            android:src="@drawable/burpi3"></ImageView>
+
                         <CheckBox
                             android:id="@+id/ex1"
                             android:layout_width="30dp"
                             android:layout_height="120dp"
-
-                            android:layout_marginLeft="30dp"
-                            ></CheckBox>
+                            android:buttonTint="@color/checkBox"
+                            android:layout_marginLeft="30dp"></CheckBox>
 
 
                     </RelativeLayout>
@@ -51,138 +59,143 @@
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="120dp"
-                    android:orientation="horizontal"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <ImageView
+                            android:id="@+id/v2"
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
-                            android:src="@drawable/leftright"
                             android:layout_centerVertical="true"
-                            android:id="@+id/v2"
                             android:layout_margin="1dp"
-                            >
-                        </ImageView>
+                            android:src="@drawable/leftright"></ImageView>
+
                         <CheckBox
                             android:id="@+id/ex2"
                             android:layout_width="30dp"
                             android:layout_height="120dp"
-
-                            android:layout_marginLeft="30dp"
-                            ></CheckBox>
+                            android:buttonTint="@color/checkBox"
+                            android:layout_marginLeft="30dp"></CheckBox>
 
 
                     </RelativeLayout>
                 </FrameLayout>
+
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="120dp"
-                    android:orientation="horizontal"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <ImageView
+                            android:id="@+id/v3"
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
-                            android:src="@drawable/handclap"
                             android:layout_centerVertical="true"
-                            android:id="@+id/v3"
-                            android:layout_margin="1dp">
-                        </ImageView>
+                            android:layout_margin="1dp"
+                            android:src="@drawable/handclap"></ImageView>
+
                         <CheckBox
                             android:id="@+id/ex3"
                             android:layout_width="30dp"
                             android:layout_height="120dp"
-
-                            android:layout_marginLeft="30dp"
-                            ></CheckBox>
+                            android:buttonTint="@color/checkBox"
+                            android:layout_marginLeft="30dp"></CheckBox>
 
 
                     </RelativeLayout>
                 </FrameLayout>
+
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="120dp"
-                    android:orientation="horizontal"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <ImageView
+                            android:id="@+id/v4"
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
-                            android:src="@drawable/highknees2"
                             android:layout_centerVertical="true"
-                            android:id="@+id/v4"
                             android:layout_margin="1dp"
-                            >
-                        </ImageView>
+                            android:src="@drawable/highknees2"></ImageView>
+
                         <CheckBox
                             android:id="@+id/ex4"
                             android:layout_width="30dp"
                             android:layout_height="120dp"
-
-                            android:layout_marginLeft="30dp"
-                            ></CheckBox>
+                            android:buttonTint="@color/checkBox"
+                            android:layout_marginLeft="30dp"></CheckBox>
 
 
                     </RelativeLayout>
                 </FrameLayout>
+
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="120dp"
-                    android:orientation="horizontal"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <ImageView
+                            android:id="@+id/v5"
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
-                            android:src="@drawable/squat"
                             android:layout_centerVertical="true"
-                            android:id="@+id/v5"
                             android:layout_margin="1dp"
-                            >
-                        </ImageView>
+                            android:src="@drawable/squat"></ImageView>
+
                         <CheckBox
                             android:id="@+id/ex5"
                             android:layout_width="30dp"
                             android:layout_height="120dp"
-
-                            android:layout_marginLeft="30dp"
-                            ></CheckBox>
+                            android:buttonTint="@color/checkBox"
+                            android:layout_marginLeft="30dp"></CheckBox>
 
 
                     </RelativeLayout>
                 </FrameLayout>
+
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="120dp"
-                    android:orientation="horizontal"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <ImageView
+                            android:id="@+id/v6"
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
-                            android:src="@drawable/squat"
                             android:layout_centerVertical="true"
-                            android:id="@+id/v6"
                             android:layout_margin="1dp"
-                            >
-                        </ImageView>
+                            android:src="@drawable/squat"></ImageView>
+
                         <CheckBox
                             android:id="@+id/ex6"
                             android:layout_width="30dp"
                             android:layout_height="120dp"
 
-                            android:layout_marginLeft="30dp"
-                            ></CheckBox>
+                            android:layout_marginLeft="30dp"></CheckBox>
 
 
                     </RelativeLayout>

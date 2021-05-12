@@ -99,7 +99,7 @@ public class fragment_weight extends Fragment implements CompoundButton.OnChecke
 
         //Delete the current exercise list in the real-time database
         // because the exercise list has been updated.
-        firebaseDatabase.getReference("fragment_ExList");
+        firebaseDatabase.getReference().child("fragment_ExList").removeValue();
 
         String name = "";
         adapter = new Adapter();

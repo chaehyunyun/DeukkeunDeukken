@@ -36,8 +36,8 @@ public class fragment_part extends Fragment implements CompoundButton.OnCheckedC
 
         //If you click the exercise picture, you can move to the exercise detail page.
         //스탠딩내전근
-        ImageView iv1 = (ImageView) view.findViewById(R.id.iv1);
-        iv1.setOnClickListener(new View.OnClickListener() {
+        ImageView v1 = (ImageView) view.findViewById(R.id.v1);
+        v1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //어떤 exercise가 눌렸는지 번들에 담아서 보내줌
