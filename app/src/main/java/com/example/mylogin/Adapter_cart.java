@@ -112,7 +112,7 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
         notifyItemMoved(from_position,to_position);
         for(int i=0; i<getItemCount(); i++) {
             data = ex_list.get(i);
-            data.setIndex(i);
+            data.setIndex(i+1);
         }
         mListener.onItemChanged();
         return true;
@@ -124,7 +124,7 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
         notifyItemRemoved(position);
         for(int i=0; i<getItemCount(); i++) {
             Data data = ex_list.get(i);
-            data.setIndex(i);
+            data.setIndex(i+1);
         }
         mListener.onItemChanged();
     }

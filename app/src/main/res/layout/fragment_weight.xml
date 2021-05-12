@@ -90,7 +90,7 @@
                             android:id="@+id/v3"
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
-                            android:src="@drawable/reverse2"
+                            android:src="@drawable/reverscrunch"
                             android:layout_centerVertical="true"
                             android:layout_margin="1dp">
                         </ImageView>
