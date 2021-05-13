@@ -67,7 +67,7 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/v2"
+                            android:id="@+id/iv2"
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
                             android:layout_centerVertical="true"
@@ -96,7 +96,7 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/v3"
+                            android:id="@+id/iv3"
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
                             android:layout_centerVertical="true"
@@ -125,7 +125,7 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/v4"
+                            android:id="@+id/iv4"
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
                             android:layout_centerVertical="true"
@@ -154,7 +154,7 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/v5"
+                            android:id="@+id/iv5"
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
                             android:layout_centerVertical="true"
@@ -183,7 +183,7 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/v6"
+                            android:id="@+id/iv6"
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
                             android:layout_centerVertical="true"
