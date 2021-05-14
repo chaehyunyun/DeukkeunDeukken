@@ -50,54 +50,10 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:orientation="horizontal">
-
-                        <ImageButton
-                            android:id="@+id/btn_count_up"
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginStart="3dp"
-                            android:layout_marginLeft="3dp"
-                            android:layout_marginBottom="17dp"
-                            android:background="#FFFFFF"
-                            android:gravity="center_horizontal"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/icon_up_black"></ImageButton>
-
-                        <TextView
-                            android:id="@+id/count"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_centerHorizontal="true"
-                            android:gravity="center"
-                            android:text="횟수"
-                            android:textAlignment="center"
-                            android:textColor="@color/black"></TextView>
-
-                        <ImageButton
-                            android:id="@+id/btn_count_down"
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginRight="3dp"
-                            android:layout_marginBottom="17dp"
-                            android:background="#FFFFFF"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/icon_down_black"></ImageButton>
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
                         android:layout_width="65dp"
                         android:layout_height="50dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginTop="25dp">
 
                         <ImageButton
                             android:id="@+id/btn_set_up"
@@ -132,22 +88,13 @@
                             android:scaleType="centerCrop"
                             android:src="@drawable/icon_down_black"></ImageButton>
                     </RelativeLayout>
-
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView_count"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/black" />
-
+                    android:orientation="vertical"
+                    android:layout_marginTop="25dp">
                     <TextView
                         android:id="@+id/textView_set"
                         android:layout_width="match_parent"

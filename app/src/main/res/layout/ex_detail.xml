@@ -10,15 +10,12 @@
         android:layout_height="wrap_content"
         android:layout_weight="4"
         android:orientation="vertical"
-        android:gravity="center"
-        >
+        android:gravity="center">
 
         <VideoView
-
             android:id="@+id/vv"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            />
+            android:layout_height="250dp" />
 
 
     </LinearLayout>

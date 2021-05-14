@@ -1,10 +1,8 @@
 package com.example.mylogin;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,8 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.List;
 
 public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHolder> implements ItemTouchHelperListener {
     // adapter에 들어갈 list 입니다.
@@ -59,20 +55,6 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
                 @Override
                 public void onClick(View view) {
                     mListener.onItemClicked(pos);
-                }
-            });
-
-            holder.btn_count_up.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mListener.onCountUpClick(pos);
-                }
-            });
-
-            holder.btn_count_down.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mListener.onCountDownClick(pos);
                 }
             });
 
@@ -135,18 +117,15 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
 
         public ImageView imageView;
         public TextView index;
-        public TextView textView_count, textView_set;
-        public ImageButton btn_count_up, btn_count_down, btn_set_up, btn_set_down;
+        public TextView textView_set;
+        public ImageButton btn_set_up, btn_set_down;
 
         ItemViewHolder(View itemView) {
             super(itemView);
 
             index = itemView.findViewById(R.id.index);
             imageView = itemView.findViewById(R.id.image);
-            textView_count = itemView.findViewById(R.id.textView_count);
             textView_set = itemView.findViewById(R.id.textView_set);
-            btn_count_down=itemView.findViewById(R.id.btn_count_down);
-            btn_count_up=itemView.findViewById(R.id.btn_count_up);
             btn_set_down=itemView.findViewById(R.id.btn_set_down);
             btn_set_up=itemView.findViewById(R.id.btn_set_up);
 
@@ -155,7 +134,6 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
         void onBind(Data data) {
             index.setText(Integer.toString(data.getIndex()));
             imageView.setImageResource(data.getResId());
-            textView_count.setText(Integer.toString(data.getCount()));
             textView_set.setText(Integer.toString(data.getSet()));
         }
 

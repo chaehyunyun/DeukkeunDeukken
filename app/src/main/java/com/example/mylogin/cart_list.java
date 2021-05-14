@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.MediaController;
@@ -25,7 +24,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemClickListener {
 
@@ -115,7 +113,7 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(cart_list.this, Exercise.class);
+                Intent intent = new Intent(cart_list.this, Exercise_Start.class);
                 startActivity(intent);
             }
         });
