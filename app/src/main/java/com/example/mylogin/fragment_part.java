@@ -31,7 +31,7 @@ public class fragment_part extends Fragment implements CompoundButton.OnCheckedC
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //앱을 껐다가 다시 접속했을 때 전에 올려뒀던 파이어베이스를 가져오기 때문에
         //파이어베이스를 초기화해줌
-        firebaseDatabase.getReference().child("fragment_ExList").removeValue();
+
         View view = inflater.inflate(R.layout.fragment_part, container, false);
 
         //If you click the exercise picture, you can move to the exercise detail page.
@@ -72,28 +72,79 @@ public class fragment_part extends Fragment implements CompoundButton.OnCheckedC
 
         //Delete the current exercise list in the real-time database
         // because the exercise list has been updated.
-        firebaseDatabase.getReference().child("fragment_ExList").removeValue();
+
 
         String name = "";
         adapter = new fragment_part.Adapter();
 
-        if (cb1.isChecked()) {
-            name += cb1.getText().toString() + "스탠딩 내전근 스트레칭\n";
-        }
-        if (cb2.isChecked()) {
-            name += cb2.getText().toString() + "브릿지\n";
-        }
-        if (cb3.isChecked()) {
-            name += cb2.getText().toString() + "옆으로 누워 다리 올리기\n";
-        }
-        if (cb4.isChecked()) {
-            name += cb2.getText().toString() + "벽 푸시업\n";
-        }
+        cb1.setOnClickListener(new CheckBox.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (((CheckBox)v).isChecked()) {
+                    databaseReference.child("fragment_ExList").child("standinginner").setValue("standinginner");
+                    String name = "";
+                    name ="standing inner";
+                    adapter.addItem(new ExerciseItem(name));
+                    adapter.notifyDataSetChanged();
+                } else
+                {
+                    DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference()
+                            .child("fragment_ExList").child("standinginner");
+                    mPostReference.removeValue();
+                    adapter.notifyDataSetChanged();
+
+                }
+            }
+        }) ;
+        cb2.setOnClickListener(new CheckBox.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (((CheckBox)v).isChecked()) {
+                    databaseReference.child("fragment_ExList").child("bridge").setValue("bridge");
+                    String name = "";
+                    name ="bridge";
+                    adapter.addItem(new ExerciseItem(name));
+                    adapter.notifyDataSetChanged();
+                } else
+                {
+                    DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference()
+                            .child("fragment_ExList").child("bridge");
+                    mPostReference.removeValue();
+                    adapter.notifyDataSetChanged();
+
+                }
+            }
+        }) ;
+       /* cb3.setOnClickListener(new CheckBox.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (((CheckBox)v).isChecked()) {
+                    databaseReference.child("fragment_ExList").push().setValue("3");
+                    adapter.addItem(new ExerciseItem("3"));
+                    adapter.notifyDataSetChanged();
+                } else {
+                    firebaseDatabase.getReference().child("fragment_ExList").removeValue();
+                }
+            }
+        }) ;
+        cb4.setOnClickListener(new CheckBox.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (((CheckBox)v).isChecked()) {
+                    databaseReference.child("fragment_ExList").push().setValue("4");
+                    adapter.addItem(new ExerciseItem("4"));
+                    adapter.notifyDataSetChanged();
+                } else {
+                    // TODO : CheckBox is unchecked.
+                }
+            }
+        }) ;*/
 
         //Push() the updated exercise list to the real-time database.
-        databaseReference.child("fragment_ExList").push().setValue(name);
-        adapter.addItem(new ExerciseItem(name));
+
+
         adapter.notifyDataSetChanged();
+
 
     }
 

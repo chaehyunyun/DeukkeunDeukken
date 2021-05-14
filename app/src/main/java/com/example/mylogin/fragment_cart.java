@@ -9,11 +9,14 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,8 +35,10 @@ public class fragment_cart extends Fragment {
 
     //Use listView to show the exercises selected in the fragment above.
     private ListView listView;
+    private TextView textview;
     private ArrayAdapter<String> adapter;
     List<Object> Array = new ArrayList<Object>();
+
 
     @Nullable
     @Override
@@ -41,11 +46,13 @@ public class fragment_cart extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_cart, container, false);
 
         listView = (ListView)rootView.findViewById(R.id.listView);
+
         initDatabase();
 
         //Place data in adapter, set adapter in ListView
         adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, new ArrayList<String>());;
         listView.setAdapter(adapter);
+        setListViewHeightBasedOnChildren(listView);
 
         //'child' name to determine the change
         mReference = mDatabase.getReference("fragment_ExList");
@@ -56,11 +63,12 @@ public class fragment_cart extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //Initialize the ListView to update the change.
+
                 Array.clear();
                 adapter.clear();
-
                 //Repeat as much as the data within the 'child'
                 for (DataSnapshot messageData : dataSnapshot.getChildren()) {
+
                     String msg = messageData.getValue().toString();
                     Array.add(msg);
                     adapter.add(msg);
@@ -89,6 +97,30 @@ public class fragment_cart extends Fragment {
         return rootView;
 
     }//onCreateView 끝
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            // pre-condition
+            return;
+        }
+
+        int totalHeight = 0;
+
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.AT_MOST);
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            View listItem = listAdapter.getView(i, null, listView);
+            //listItem.measure(0, 0);
+            listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+
+        params.height = totalHeight;
+        listView.setLayoutParams(params);
+
+        listView.requestLayout();
+    }
+
 
     class Adapter extends BaseAdapter {
         ArrayList<ExerciseItem> items = new ArrayList<ExerciseItem>();
@@ -127,8 +159,10 @@ public class fragment_cart extends Fragment {
             ExerciseItem item = items.get(position);
             view.setName(item.getName());
 
+
             return view;
         }
+
 
     }
 
@@ -136,8 +170,8 @@ public class fragment_cart extends Fragment {
 
         mDatabase = FirebaseDatabase.getInstance();
 
-        mReference = mDatabase.getReference("log");
-        mReference.child("log").setValue("check");
+        mReference = mDatabase.getReference("fragment_ExList");
+
 
         mChild = new ChildEventListener() {
 

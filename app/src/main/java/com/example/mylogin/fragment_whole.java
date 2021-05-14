@@ -14,6 +14,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class fragment_whole extends AppCompatActivity {
 
     VideoView vv;
@@ -51,9 +54,13 @@ public class fragment_whole extends AppCompatActivity {
         back = findViewById(R.id.back);
         // Back button
         back.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 onBackPressed();
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference databaseReference = firebaseDatabase.getReference();
+                firebaseDatabase.getReference().child("fragment_ExList").removeValue();
             }
         });
         fragmentManager = getSupportFragmentManager();

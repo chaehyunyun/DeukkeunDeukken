@@ -166,14 +166,13 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //Repeat as much as the data within the 'child'
                 for (DataSnapshot messageData : dataSnapshot.getChildren()) {
-                    msg = messageData.getValue().toString();
-                }
 
-                array = msg.split("\n");
-                for (int i = 0; i < array.length; i++) {
-                    resID = getResources().getIdentifier("@drawable/" + array[i], "drawable", packName);
+                    //수정했어 애들아
+                    msg=messageData.getValue().toString();
+                    resID = getResources().getIdentifier("@drawable/" + msg, "drawable", packName);
                     listRes.add(resID);
                 }
+
 
                 /*
                 for(int i=0; i<listRes.size(); i++) {
