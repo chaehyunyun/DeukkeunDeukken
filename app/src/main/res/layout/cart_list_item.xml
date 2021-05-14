@@ -40,31 +40,20 @@
 
                 <ImageView
                     android:id="@+id/image"
-                    android:layout_width="293dp"
+                    android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:scaleType="centerInside" />
 
                 <LinearLayout
-                    android:layout_width="65dp"
+                    android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:orientation="vertical">
 
                     <RelativeLayout
-                        android:layout_width="65dp"
-                        android:layout_height="50dp"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="25dp">
-
-                        <ImageButton
-                            android:id="@+id/btn_set_up"
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="3dp"
-                            android:background="#FFFFFF"
-                            android:gravity="center_horizontal"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/icon_up_black"></ImageButton>
+                        android:layout_width="50dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="0dp"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/set"
@@ -75,19 +64,38 @@
                             android:gravity="center"
                             android:text="세트"
                             android:textAlignment="center"
-                            android:textColor="@color/black"></TextView>
+                            android:textColor="@color/black"
+                            android:textSize="18sp"></TextView>
+
+                        <ImageButton
+                            android:id="@+id/btn_set_up"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginTop="6dp"
+                            android:background="#FFFFFF"
+                            android:gravity="center_horizontal"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/icon_up"></ImageButton>
 
                         <ImageButton
                             android:id="@+id/btn_set_down"
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginRight="3dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginEnd="0dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_marginBottom="6dp"
                             android:background="#FFFFFF"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/icon_down_black"></ImageButton>
+                            android:src="@drawable/icon_down"></ImageButton>
+
                     </RelativeLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -95,11 +103,12 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_marginTop="25dp">
+
                     <TextView
                         android:id="@+id/textView_set"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:gravity="center"
+                        android:gravity="center|left"
                         android:text="0"
                         android:textColor="@color/black" />
                 </LinearLayout>

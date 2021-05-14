@@ -9,6 +9,6 @@ public class Exercise_Start extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.exerciseStart);
+        setContentView(R.layout.exercise_start);
     }
 }
