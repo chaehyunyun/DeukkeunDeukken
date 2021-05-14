@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -32,6 +32,73 @@
     </FrameLayout>
 
     //비디오 뷰
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:orientation="vertical"
+        >
 
+        <VideoView
+            android:id="@+id/startEx_vv"
+            android:layout_width="match_parent"
+            android:layout_height="400dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_weight="4"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="운동이름"
+                    android:textSize="50dp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    ></TextView>
 
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="6"
+                android:layout_height="300dp"
+                android:orientation="horizontal"
+
+                >
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10"
+                        android:textSize="40dp"
+                        android:textColor="@color/black"
+                        android:layout_margin="20dp"
+                        android:id="@+id/second"
+                        ></TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        android:textSize="40dp"
+                        android:layout_margin="20dp"
+                        android:textColor="@color/black"
+                        android:id="@+id/setCount"
+                        android:layout_toRightOf="@+id/second"
+                        ></TextView>
+                </RelativeLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
 </LinearLayout>

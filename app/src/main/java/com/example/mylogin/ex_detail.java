@@ -1,6 +1,7 @@
 package com.example.mylogin;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -127,10 +128,19 @@ public class ex_detail extends AppCompatActivity {
 
         //ControllerBar 비디오뷰의 재생, 일시정지 등을 할 수 있는 '컨트롤바'를 붙여주는 작업
         vv.setMediaController(new MediaController(this));
+        vv.requestFocus();
 
         //Set the path-address(Uri) for the video you want VideoView to show
         vv.setVideoURI(videoUri);
         vv.start();
+
+
+        //onPrepareListener는 vv.start() 후에 호출됩니다.
+        vv.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+            }
+        });
 
 
     }//onCreate ..
