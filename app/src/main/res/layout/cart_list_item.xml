@@ -93,7 +93,6 @@
                             android:background="#FFFFFF"
                             android:scaleType="centerCrop"
                             android:src="@drawable/icon_down"></ImageButton>
-
                     </RelativeLayout>
 
                 </LinearLayout>
