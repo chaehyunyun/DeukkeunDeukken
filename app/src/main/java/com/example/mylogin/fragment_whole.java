@@ -61,6 +61,7 @@ public class fragment_whole extends AppCompatActivity {
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
                 DatabaseReference databaseReference = firebaseDatabase.getReference();
                 firebaseDatabase.getReference().child("fragment_ExList").removeValue();
+                firebaseDatabase.getReference().child("set").removeValue();
             }
         });
         fragmentManager = getSupportFragmentManager();

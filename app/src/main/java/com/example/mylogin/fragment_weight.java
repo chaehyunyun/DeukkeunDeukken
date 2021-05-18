@@ -37,6 +37,17 @@ public class fragment_weight extends Fragment implements CompoundButton.OnChecke
         //앱을 껐다가 다시 접속했을 때 전에 올려뒀던 파이어베이스를 가져오기 때문에
         //파이어베이스를 초기화해줌
 
+        //테스트용
+
+        databaseReference.child("set").child("1").setValue("1");
+        databaseReference.child("set").child("2").setValue("2");
+        databaseReference.child("set").child("3").setValue("3");
+        databaseReference.child("set").child("4").setValue("4");
+
+        databaseReference.child("second").child("5").setValue("5");
+        databaseReference.child("second").child("10").setValue("10");
+        databaseReference.child("second").child("15").setValue("15");
+
         View view = inflater.inflate(R.layout.fragment_weight, container, false);
 
         //If you click the exercise picture, you can move to the exercise detail page.
