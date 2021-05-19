@@ -9,7 +9,9 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
@@ -35,12 +37,13 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
     Data data;
 
     ItemTouchHelper helper;
-
+    ImageButton start;
     TextView textView_count, textView_set;
     VideoView vv;
     ImageView back;
 
     List<Integer> listRes = new ArrayList<>();
+    List<String> listName = new ArrayList<>();
 
     int count = 0;
     int set = 0;
@@ -113,6 +116,8 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.w("cart_list", "*************************************");
+                adapter.postFirebaseDataBase(true);
                 Intent intent = new Intent(cart_list.this, Exercise_Start.class);
                 startActivity(intent);
             }
@@ -156,7 +161,6 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
         });
 
 
-
         adapter.setOnItemClickListener(this);
 
         mReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -169,6 +173,7 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
                     msg=messageData.getValue().toString();
                     resID = getResources().getIdentifier("@drawable/" + msg, "drawable", packName);
                     listRes.add(resID);
+                    listName.add(msg);
                 }
 
 
@@ -184,6 +189,7 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
                 for (int i = 0; i < listRes.size(); i++) {
                     // 각 List의 값들을 data 객체에 set 해줍니다.
                     data = new Data();
+                    data.setName(listName.get(i));
                     data.setIndex(i+1);
                     data.setResId(listRes.get(i));
                     //ata.setCount(5);
@@ -198,7 +204,6 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
 
                 // adapter의 값이 변경되었다는 것을 알려줍니다.
                 adapter.notifyDataSetChanged();
-
 
             }
 
@@ -231,40 +236,6 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
 
     @Override
     public void onItemClicked(int position) {
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onCountUpClick(int position) {
-
-        Data newData = ex_list.get(position);
-        int newIndex = newData.getIndex();
-
-        count2[newIndex-1]++;
-
-        //count++;
-        ex_list.get(position).setCount(count2[newIndex-1]);
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onCountDownClick(int position) {
-
-        Data newData = ex_list.get(position);
-        int newIndex = newData.getIndex();
-
-        if(count2[newIndex-1]==0)
-        {
-            count2[newIndex-1]=0;
-        }
-        else
-        {
-            count2[newIndex-1]--;
-        }
-
-        //count--;
-        //data.setCount(count);
-        ex_list.get(position).setCount(count2[newIndex-1]);
         adapter.notifyDataSetChanged();
     }
 

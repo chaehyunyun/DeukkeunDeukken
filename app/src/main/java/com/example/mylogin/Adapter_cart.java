@@ -1,5 +1,6 @@
 package com.example.mylogin;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,19 +11,30 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHolder> implements ItemTouchHelperListener {
     // adapter에 들어갈 list 입니다.
     private ArrayList<Data> ex_list = new ArrayList<>();
+    DatabaseReference reference;
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         //void onItemClick(View v, int position);
         void onItemClicked(int position);
-        void onCountUpClick(int position);
-        void onCountDownClick(int position);
+
         void onSetUpClick(int position);
+
         void onSetDownClick(int position);
+
         void onItemChanged();
     }
 
@@ -30,7 +42,7 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
 
     // OnItemClickListener 리스너 객체 참조를 어댑터에 전달하는 메서드
     public void setOnItemClickListener(OnItemClickListener listener) {
-        mListener = listener ;
+        mListener = listener;
     }
 
     @NonNull
@@ -47,8 +59,7 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
 
         holder.onBind(ex_list.get(position));
 
-        if(mListener!=null)
-        {
+        if (mListener != null) {
             final int pos = position;
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -87,14 +98,15 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
         ex_list.add(data);
     }
 
-    @Override public boolean onItemMove(int from_position, int to_position) {
+    @Override
+    public boolean onItemMove(int from_position, int to_position) {
         Data data = ex_list.get(from_position);
         ex_list.remove(from_position);
-        ex_list.add(to_position,data);
-        notifyItemMoved(from_position,to_position);
-        for(int i=0; i<getItemCount(); i++) {
+        ex_list.add(to_position, data);
+        notifyItemMoved(from_position, to_position);
+        for (int i = 0; i < getItemCount(); i++) {
             data = ex_list.get(i);
-            data.setIndex(i+1);
+            data.setIndex(i + 1);
         }
         mListener.onItemChanged();
         return true;
@@ -104,12 +116,44 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
     public void onItemSwipe(int position) {
         ex_list.remove(position);
         notifyItemRemoved(position);
-        for(int i=0; i<getItemCount(); i++) {
+        for (int i = 0; i < getItemCount(); i++) {
             Data data = ex_list.get(i);
-            data.setIndex(i+1);
+            data.setIndex(i + 1);
         }
         mListener.onItemChanged();
     }
+
+    // 운동 기록 (운동 이름 + 세트) 파베에 저장하기
+    public void postFirebaseDataBase(boolean add) {
+
+        // Get date
+        long now = System.currentTimeMillis();
+        Date mDate = new Date(now);
+        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String date = simpleDate.format(mDate);
+
+        // Get the ID of the currently connected user
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); // Get information of logged in user
+        String uid = user != null ? user.getUid() : null; // Get the unique uid of the logged-in user
+
+        reference = FirebaseDatabase.getInstance().getReference();
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        Map<String, Integer> ex = new HashMap<>(); // exercies + set hashmap
+
+        if (add) {
+            for (int i = 0; i < ex_list.size(); i++) {
+                Data data = ex_list.get(i);
+                String exercise = data.getName();
+                int set = data.getSet();
+                ex.put(exercise, set);
+            }
+            childUpdates.put("/User_Ex_list/" + uid + "/" + date + "/", ex);
+            reference.updateChildren(childUpdates);
+        }
+
+    }
+
 
     // RecyclerView의 핵심인 ViewHolder 입니다.
     // 여기서 subView를 setting 해줍니다.
@@ -126,8 +170,8 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
             index = itemView.findViewById(R.id.index);
             imageView = itemView.findViewById(R.id.image);
             textView_set = itemView.findViewById(R.id.textView_set);
-            btn_set_down=itemView.findViewById(R.id.btn_set_down);
-            btn_set_up=itemView.findViewById(R.id.btn_set_up);
+            btn_set_down = itemView.findViewById(R.id.btn_set_down);
+            btn_set_up = itemView.findViewById(R.id.btn_set_up);
 
         }
 
@@ -138,4 +182,5 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
         }
 
     }
+
 }
