@@ -32,7 +32,6 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
     private Adapter_cart adapter;
-    private ArrayList<Data> ex_list = new ArrayList<>();
 
     Data data;
 
@@ -45,14 +44,11 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
     List<Integer> listRes = new ArrayList<>();
     List<String> listName = new ArrayList<>();
 
-    int count = 0;
     int set = 0;
     int resID;
     String msg;
     String[] array;
     String packName;
-    int[] count2 = new int[20];
-    int[] set2 = new int[20];
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -61,22 +57,6 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference("fragment_ExList");
         packName = this.getPackageName();
-
-        for(int i=0; i<20; i++)
-        {
-
-            if(i==0)
-            {
-                count2[i]=0;
-                set2[i]=0;
-            }
-            else
-            {
-                count2[i]=0;
-                set2[i]=0;
-            }
-
-        }
 
         init();
 
@@ -176,30 +156,15 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
                     listName.add(msg);
                 }
 
-
-                /*
-                for(int i=0; i<listRes.size(); i++) {
-
-                    count2[i]=0;
-                    set2[i]=0;
-                }
-
-                 */
-
                 for (int i = 0; i < listRes.size(); i++) {
                     // 각 List의 값들을 data 객체에 set 해줍니다.
                     data = new Data();
                     data.setName(listName.get(i));
                     data.setIndex(i+1);
                     data.setResId(listRes.get(i));
-                    //ata.setCount(5);
-                    //data.setSet(5);
-                    //data.setCount(count2[i]);
-                    //data.setSet(set2[i]);
+                    data.setSet(set);
                     // 각 값이 들어간 data를 adapter에 추가합니다.
-                    ex_list.add(data);
-                    adapter.addItem(ex_list.get(i));
-                    //adapter.addItem(data);
+                    adapter.addItem(data);
                 }
 
                 // adapter의 값이 변경되었다는 것을 알려줍니다.
@@ -213,8 +178,6 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
             }
         });
 
-
-        //adapter.addItem(data);
     }
 
     private void init() {
@@ -242,74 +205,17 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
     @Override
     public void onSetUpClick(int position) {
 
-
-        Data newData = ex_list.get(position);
-        int newIndex = newData.getIndex();
-
-        set2[newIndex-1]++;
-
-        //count++;
-        ex_list.get(position).setSet(set2[newIndex-1]);
+        adapter.modifyItem(position, true);
         adapter.notifyDataSetChanged();
     }
 
     @Override
     public void onSetDownClick(int position) {
 
-        Data newData = ex_list.get(position);
-        int newIndex = newData.getIndex();
-
-        if(set2[newIndex-1]==0)
-        {
-            set2[newIndex-1]=0;
-        }
-        else
-        {
-            set2[newIndex-1]--;
-        }
-
-        //count--;
-        //data.setCount(count);
-        ex_list.get(position).setSet(set2[newIndex-1]);
+        adapter.modifyItem(position, false);
         adapter.notifyDataSetChanged();
+
     }
 
-    /*
-    private void getData() {
-        //A 'Listener' that run if there are changes to the entire path
-        //A 'Listener' for putting values into list views when data has been added/changed
-        mReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //Repeat as much as the data within the 'child'
-                for (DataSnapshot messageData : dataSnapshot.getChildren()) {
-                    msg = messageData.getValue().toString();
-                }
-                array = msg.split("\n");
-                for (int i = 0; i < array.length; i++) {
-                    resID = getResources().getIdentifier("@drawable/" + array[i], "drawable", packName);
-                    listRes.add(resID);
-                }
-                for (int i = 0; i < listRes.size(); i++) {
-                    // 각 List의 값들을 data 객체에 set 해줍니다.
-                    Data data = new Data();
-                    data.setIndex(i+1);
-                    data.setResId(listRes.get(i));
-                    data.setCount(count);
-                    data.setSet(set);
-                    // 각 값이 들어간 data를 adapter에 추가합니다.
-                    adapter.addItem(data);
-                }
-
-                // adapter의 값이 변경되었다는 것을 알려줍니다.
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }*/
 
 }

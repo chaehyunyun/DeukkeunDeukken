@@ -98,6 +98,29 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
         ex_list.add(data);
     }
 
+    void modifyItem(int pos, boolean option)
+    {
+        int set = ex_list.get(pos).getSet();
+
+        if(option==true)
+        {
+            set++;
+        }
+        else
+        {
+            if(set==0)
+            {
+                set=0;
+            }
+            else
+            {
+                set--;
+            }
+        }
+
+        ex_list.get(pos).setSet(set);
+    }
+
     @Override
     public boolean onItemMove(int from_position, int to_position) {
         Data data = ex_list.get(from_position);
