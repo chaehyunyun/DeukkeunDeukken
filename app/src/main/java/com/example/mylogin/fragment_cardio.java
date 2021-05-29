@@ -147,6 +147,9 @@ public class fragment_cardio extends Fragment implements CompoundButton.OnChecke
                     DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference()
                             .child("fragment_ExList2").child("headclap");
                     mPostReference.removeValue();
+                    DatabaseReference mPostReference2 = FirebaseDatabase.getInstance().getReference()
+                            .child("fragment_ExList").child("headclap");
+                    mPostReference2.removeValue();
                     adapter.notifyDataSetChanged();
 
                 }
@@ -167,6 +170,9 @@ public class fragment_cardio extends Fragment implements CompoundButton.OnChecke
                     DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference()
                             .child("fragment_ExList2").child("highknees");
                     mPostReference.removeValue();
+                    DatabaseReference mPostReference2 = FirebaseDatabase.getInstance().getReference()
+                            .child("fragment_ExList").child("highknees");
+                    mPostReference2.removeValue();
                     adapter.notifyDataSetChanged();
 
                 }

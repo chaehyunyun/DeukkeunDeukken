@@ -97,6 +97,9 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
                 DatabaseReference mPostReference3 = FirebaseDatabase.getInstance().getReference()
                         .child("ex_name");
                 mPostReference3.removeValue();
+                DatabaseReference mPostReference4 = FirebaseDatabase.getInstance().getReference()
+                        .child("next_ex");
+                mPostReference4.removeValue();
                 onBackPressed();
             }
 

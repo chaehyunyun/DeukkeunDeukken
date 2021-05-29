@@ -92,6 +92,9 @@ public class fragment_part extends Fragment implements CompoundButton.OnCheckedC
                     DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference()
                             .child("fragment_ExList2").child("standinginner");
                     mPostReference.removeValue();
+                    DatabaseReference mPostReference2 = FirebaseDatabase.getInstance().getReference()
+                            .child("fragment_ExList").child("standinginner");
+                    mPostReference2.removeValue();
                     adapter.notifyDataSetChanged();
 
                 }
@@ -112,6 +115,9 @@ public class fragment_part extends Fragment implements CompoundButton.OnCheckedC
                     DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference()
                             .child("fragment_ExList2").child("bridge");
                     mPostReference.removeValue();
+                    DatabaseReference mPostReference2 = FirebaseDatabase.getInstance().getReference()
+                            .child("fragment_ExList").child("bridge");
+                    mPostReference2.removeValue();
                     adapter.notifyDataSetChanged();
 
                 }
@@ -132,6 +138,9 @@ public class fragment_part extends Fragment implements CompoundButton.OnCheckedC
                     DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference()
                             .child("fragment_ExList2").child("sideleg");
                     mPostReference.removeValue();
+                    DatabaseReference mPostReference2 = FirebaseDatabase.getInstance().getReference()
+                            .child("fragment_ExList").child("sideleg");
+                    mPostReference2.removeValue();
                     adapter.notifyDataSetChanged();
 
                 }
@@ -152,6 +161,9 @@ public class fragment_part extends Fragment implements CompoundButton.OnCheckedC
                     DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference()
                             .child("fragment_ExList2").child("wallpushup");
                     mPostReference.removeValue();
+                    DatabaseReference mPostReference2 = FirebaseDatabase.getInstance().getReference()
+                            .child("fragment_ExList").child("wallpushup");
+                    mPostReference2.removeValue();
                     adapter.notifyDataSetChanged();
 
                 }
