@@ -24,7 +24,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemClickListener {
@@ -44,7 +46,7 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
     List<Integer> listRes = new ArrayList<>();
     List<String> listName = new ArrayList<>();
 
-    int set = 0;
+    int set = 1;
     int resID;
     String msg;
     String[] array;
@@ -86,8 +88,18 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference()
+                        .child("fragment_ExList");
+                mPostReference.removeValue();
+                DatabaseReference mPostReference2 = FirebaseDatabase.getInstance().getReference()
+                        .child("fragment_ExList2");
+                mPostReference2.removeValue();
+                DatabaseReference mPostReference3 = FirebaseDatabase.getInstance().getReference()
+                        .child("ex_name");
+                mPostReference3.removeValue();
                 onBackPressed();
             }
+
         });
 
 
@@ -98,7 +110,16 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
             public void onClick(View v) {
                 Log.w("cart_list", "*************************************");
                 adapter.postFirebaseDataBase(true);
+
+                long now = System.currentTimeMillis();
+                Date mDate = new Date(now);
+                SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                String date = simpleDate.format(mDate);
+
+                Log.i("time_check",date);
+
                 Intent intent = new Intent(cart_list.this, Exercise_Start.class);
+                intent.putExtra("date",date);
                 startActivity(intent);
             }
         });

@@ -41,62 +41,148 @@
 
         <VideoView
             android:id="@+id/startEx_vv"
-            android:layout_width="match_parent"
-            android:layout_height="400dp" />
+            android:layout_width="420dp"
+            android:layout_gravity="center"
+            android:layout_height="420dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:layout_weight="1"
             >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_weight="4"
-                >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="운동이름"
-                    android:textSize="50dp"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center"
-                    ></TextView>
 
-            </LinearLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="4"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="스쿼트"
+                    android:textStyle="bold"
+                    android:textSize="30dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:id="@+id/exname"
+                    ></TextView>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/stopbtn"
+                    android:text="pause"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="right"
+                    ></Button>
+            </FrameLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_weight="6"
-                android:layout_height="300dp"
+                android:layout_weight="1"
+                android:layout_height="100dp"
                 android:orientation="horizontal"
 
                 >
+
                 <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
                     android:layout_centerHorizontal="true"
                     >
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_centerHorizontal="true"
+                        >
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="40dp"
                         android:textColor="@color/black"
-                        android:layout_margin="20dp"
+
                         android:id="@+id/second"
+                        android:text="30"
+                        android:gravity="center_horizontal"
                         ></TextView>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="40dp"
-                        android:layout_margin="20dp"
+                        android:textColor="@color/black"
+                        android:layout_marginRight="30dp"
+                        android:text="초"
+                        android:id="@+id/secondtxt"
+                        android:layout_toRightOf="@+id/second"
+                        android:gravity="center_horizontal"
+                        ></TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="40dp"
                         android:textColor="@color/black"
                         android:id="@+id/setCount"
-                        android:layout_toRightOf="@+id/second"
+                        android:layout_toRightOf="@+id/secondtxt"
+                        android:text="1"
+
+                        ></TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="40dp"
+                        android:textColor="@color/black"
+                        android:text="세트"
+                        android:layout_toRightOf="@+id/setCount"
+                        android:id="@+id/settxt"
+                        ></TextView>
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"
+                        android:text="남았습니다 할 수 있습니다!"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/youcandoit"
                         ></TextView>
                 </RelativeLayout>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:src="@drawable/restcomment"
+                    android:textColor="@color/black"
+                    android:textSize="50dp"
+                    android:id="@+id/rest"
+                    ></ImageView>
             </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_weight="3"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_weight="3"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/next3"
+                    android:id="@+id/nextbtn"
+                    ></ImageView>
+                <ImageView
+                    android:layout_width="270dp"
+                    android:layout_weight="7"
+                    android:layout_height="match_parent"
+                    android:id="@+id/nextex"
+                    ></ImageView>
 
+            </LinearLayout>
         </LinearLayout>
+
 
     </LinearLayout>
 </LinearLayout>

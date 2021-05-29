@@ -30,9 +30,11 @@ public class fragment_cardio extends Fragment implements CompoundButton.OnChecke
     private CheckBox cb1, cb2, cb3, cb4;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    private DatabaseReference index = firebaseDatabase.getReference("index");
     Adapter adapter;
     String cardio_ex ="";
     String cardio = "cardio";
+    int num = 0;
 
     @Nullable
     @Override
@@ -81,22 +83,28 @@ public class fragment_cardio extends Fragment implements CompoundButton.OnChecke
         // because the exercise list has been updated.
 
 
+
+
         adapter = new fragment_cardio.Adapter();
         cb1.setOnClickListener(new CheckBox.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (((CheckBox)v).isChecked()) {
                     databaseReference.child("fragment_ExList").child("burpi").setValue("burpi");
+                    databaseReference.child("fragment_ExList2").child("burpi").setValue("버피");
                     String name = "";
                     name ="burpi";
                     adapter.addItem(new ExerciseItem(name));
                     adapter.notifyDataSetChanged();
                 } else
-                    {
-                        DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference()
-                                .child("fragment_ExList").child("burpi");
-                        mPostReference.removeValue();
-                        adapter.notifyDataSetChanged();
+                {
+                    DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference()
+                            .child("fragment_ExList2").child("burpi");
+                    mPostReference.removeValue();
+                    DatabaseReference mPostReference2 = FirebaseDatabase.getInstance().getReference()
+                            .child("fragment_ExList").child("burpi");
+                    mPostReference2.removeValue();
+                    adapter.notifyDataSetChanged();
 
                 }
             }
@@ -106,6 +114,7 @@ public class fragment_cardio extends Fragment implements CompoundButton.OnChecke
             public void onClick(View v) {
                 if (((CheckBox)v).isChecked()) {
                     databaseReference.child("fragment_ExList").child("leftright").setValue("leftright");
+                    databaseReference.child("fragment_ExList2").child("leftright").setValue("좌우 뛰기");
                     String name = "";
                     name ="leftright";
                     adapter.addItem(new ExerciseItem(name));
@@ -113,26 +122,30 @@ public class fragment_cardio extends Fragment implements CompoundButton.OnChecke
                 } else
                 {
                     DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference()
-                            .child("fragment_ExList").child("leftright");
+                            .child("fragment_ExList2").child("leftright");
                     mPostReference.removeValue();
+                    DatabaseReference mPostReference2 = FirebaseDatabase.getInstance().getReference()
+                            .child("fragment_ExList").child("leftright");
+                    mPostReference2.removeValue();
                     adapter.notifyDataSetChanged();
 
                 }
             }
         }) ;
-        /*cb3.setOnClickListener(new CheckBox.OnClickListener() {
+        cb3.setOnClickListener(new CheckBox.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (((CheckBox)v).isChecked()) {
-                    databaseReference.child("fragment_ExList").child("3").setValue("3");
+                    databaseReference.child("fragment_ExList").child("headclap").setValue("headclap");
+                    databaseReference.child("fragment_ExList2").child("headclap").setValue("머리 위로 박수치기");
                     String name = "";
-                    name ="burpi";
+                    name ="headclap";
                     adapter.addItem(new ExerciseItem(name));
                     adapter.notifyDataSetChanged();
                 } else
                 {
                     DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference()
-                            .child("fragment_ExList").child("3");
+                            .child("fragment_ExList2").child("headclap");
                     mPostReference.removeValue();
                     adapter.notifyDataSetChanged();
 
@@ -143,21 +156,22 @@ public class fragment_cardio extends Fragment implements CompoundButton.OnChecke
             @Override
             public void onClick(View v) {
                 if (((CheckBox)v).isChecked()) {
-                    databaseReference.child("fragment_ExList").child("4").setValue("4");
+                    databaseReference.child("fragment_ExList").child("highknees").setValue("highknees");
+                    databaseReference.child("fragment_ExList2").child("highknees").setValue("하이니즈");
                     String name = "";
-                    name ="burpi";
+                    name ="highknees";
                     adapter.addItem(new ExerciseItem(name));
                     adapter.notifyDataSetChanged();
                 } else
                 {
                     DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference()
-                            .child("fragment_ExList").child("4");
+                            .child("fragment_ExList2").child("highknees");
                     mPostReference.removeValue();
                     adapter.notifyDataSetChanged();
 
                 }
             }
-        }) ;*/
+        });
 
         //Push() the updated exercise list to the real-time database.
 

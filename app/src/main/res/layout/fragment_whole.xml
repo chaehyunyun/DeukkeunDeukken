@@ -76,7 +76,7 @@
         android:layout_height="120dp"
         android:layout_gravity="bottom"
         android:layout_weight="1"
-        android:background="@color/white"></FrameLayout>
+        ></FrameLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"

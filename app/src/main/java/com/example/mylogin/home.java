@@ -14,15 +14,22 @@ import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class home extends AppCompatActivity {
 
     VideoView vv;
     String whatbtn = "";
     public SharedPreferences prefs;
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+
+        databaseReference.child("index").setValue(0);
 
         // 신체 기록 최초 저장, 처음 실행시만 bodyprofile 설정하도록
         prefs = getSharedPreferences("Pref", MODE_PRIVATE);

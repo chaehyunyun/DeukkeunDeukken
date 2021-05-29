@@ -3,6 +3,7 @@ package com.example.mylogin;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,7 @@ public class fragment_cart extends Fragment {
     private TextView textview;
     private ArrayAdapter<String> adapter;
     List<Object> Array = new ArrayList<Object>();
+    String result="";
 
 
     @Nullable
@@ -46,17 +48,21 @@ public class fragment_cart extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_cart, container, false);
 
-        listView = (ListView)rootView.findViewById(R.id.listView);
+        //listView = (ListView)rootView.findViewById(R.id.listView);
+
+        TextView resultTV = (TextView)rootView.findViewById(R.id.result);
+        resultTV.setMovementMethod(new ScrollingMovementMethod());
+
 
         initDatabase();
 
         //Place data in adapter, set adapter in ListView
-        adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, new ArrayList<String>());;
-        listView.setAdapter(adapter);
-        setListViewHeightBasedOnChildren(listView);
+        //adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, new ArrayList<String>());;
+        //listView.setAdapter(adapter);
+        //setListViewHeightBasedOnChildren(listView);
 
         //'child' name to determine the change
-        mReference = mDatabase.getReference("fragment_ExList");
+        mReference = mDatabase.getReference("fragment_ExList2");
 
         //A 'Listener' that run if there are changes to the entire path
         //A 'Listener' for putting values into list views when data has been added/changed
@@ -64,18 +70,25 @@ public class fragment_cart extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //Initialize the ListView to update the change.
-
-                Array.clear();
-                adapter.clear();
+                result="";
+                //Array.clear();
+                //adapter.clear();
                 //Repeat as much as the data within the 'child'
                 for (DataSnapshot messageData : dataSnapshot.getChildren()) {
 
+
                     String msg = messageData.getValue().toString();
-                    Array.add(msg);
-                    adapter.add(msg);
+                    result = result + ("\n" + msg);
+                    //Array.add(msg);
+                    //adapter.add(msg);
                 }
-                adapter.notifyDataSetChanged();
-                listView.setSelection(adapter.getCount() - 1);
+                //adapter.notifyDataSetChanged();
+                //listView.setSelection(adapter.getCount() - 1);
+
+                resultTV.setText(result);
+
+
+
             }
 
             @Override
@@ -83,6 +96,8 @@ public class fragment_cart extends Fragment {
 
             }
         });
+
+
 
         //cart ImageView
         ImageView cart;

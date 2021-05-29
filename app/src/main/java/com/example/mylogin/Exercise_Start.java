@@ -4,10 +4,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.MediaController;
@@ -15,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,6 +39,7 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
     private ChildEventListener mChild2;
     VideoView vw;
     ArrayList<Integer> videolist = new ArrayList<>();
+    ArrayList<Integer> nextExList=new ArrayList<>();
     ArrayList<String> SetList=new ArrayList<>();
     ArrayList<String> SecondList=new ArrayList<>();
     int currvideo = 0;
@@ -42,19 +48,35 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
     private MediaPlayer mediapalyer;
     int set_int=0;
     CountDownTimer timer;
-    String stringSec = "5";
+    String stringSec = "30";
     int videocount=0;
     private boolean mTimerRunning;
+    private Intent intent;
+    String date;
+    String packName;
+    int i=0;
+    ImageView nextex;
+    int nextcount=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        packName = this.getPackageName();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exercise_start);
+
+        intent = getIntent();// 인텐트 받아오기
+        date = intent.getStringExtra("date");
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); // Get information of logged in user
+        String uid = user != null ? user.getUid() : null; // Get the unique uid of the logged-in user
 
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference()
+                        .child("set");
+                mPostReference.removeValue();
                 onBackPressed();
             }
         });
@@ -69,7 +91,46 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
         vw.setMediaController(new MediaController(this));
         vw.setOnCompletionListener(this);
 
-        mReference = mDatabase.getReference("fragment_ExList"); // 변경값을 확인할 child 이름
+  /*      mReference = mDatabase.getReference("ex_name"); // 변경값을 확인할 child 이름
+        mReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot messageData : dataSnapshot.getChildren()) {
+                    String str = messageData.getValue().toString();
+                    Log.i("ordertest",str);
+                }
+            }
+
+            //세트랑 횟수
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });*/
+        DatabaseReference mReference7 = mDatabase.getReference("next_ex"); // 변경값을 확인할 child 이름
+        mReference7.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot messageData : dataSnapshot.getChildren()) {
+                    String str = messageData.getValue().toString();
+                    Log.i("nextex",str);
+                    int res = getResources().getIdentifier("@drawable/" + str, "drawable", packName);
+                    nextExList.add(res);
+                }
+            }
+
+            //세트랑 횟수
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        mReference = mDatabase.getReference("ex_name"); // 변경값을 확인할 child 이름
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -97,6 +158,30 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
         });
 
 
+       /* DatabaseReference ref = mDatabase.getReference("User_Ex_list").child(uid).child(date); // 변경값을 확인할 child 이름
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot messageData : dataSnapshot.getChildren()) {
+                    String str = messageData.getValue().toString();
+                    Log.i("test",str);
+                    SetList.add(str);
+                    if(count2==0)
+                    {
+                        countDown(stringSec, SetList.get(videocount));
+                        count2++;
+                    }
+                }
+            }
+
+            //세트랑 횟수
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        }); */
 
         //파이어베이스에서 가져온 운동리스트를 바탕으로
         //순서대로 영상 틀기
@@ -119,13 +204,14 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
 
         //세트랑 횟수 파이어베이스에서 가져오기
         //이렇게 하나 더 만드는게 맞는지 모르겠어... 일단 했음ㅎㅎ
-        mReference2 = mDatabase2.getReference("set"); // 변경값을 확인할 child 이름
+       mReference2 = mDatabase2.getReference("User_Ex_list").child(uid).child(date); // 변경값을 확인할 child 이름
         mReference2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot messageData : dataSnapshot.getChildren()) {
                     String str = messageData.getValue().toString();
+                    Log.i("test",str);
                     SetList.add(str);
                     Toast.makeText(getApplicationContext(), SetList.get(0), Toast.LENGTH_SHORT).show();
                     if(count2==0)
@@ -155,7 +241,9 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
 
         TextView textview_second = (TextView) findViewById(R.id.second);
         TextView textview_set = (TextView) findViewById(R.id.setCount);
-
+        nextex=(ImageView)findViewById(R.id.nextex);
+        nextex.setImageResource(nextExList.get(nextcount));
+        nextcount++;
         String uriPath
                 = "android.resource://"
                 + getPackageName() + "/" + id;
@@ -201,8 +289,11 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
                 vw.start();
             }
             else {
+
                 countDown(stringSec, SetList.get(videocount));
                 ++currvideo;
+                String s=Integer.toString(currvideo);
+                Log.i("butter",s);
                 if (currvideo == videolist.size())
                     currvideo = 0;
                 setVideo(videolist.get(currvideo));
@@ -223,7 +314,32 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
 
         TextView textview_second = (TextView) findViewById(R.id.second);
         TextView textview_set = (TextView) findViewById(R.id.setCount);
+        TextView secondtxt = (TextView) findViewById(R.id.secondtxt);
+        TextView settxt = (TextView) findViewById(R.id.settxt);
+        TextView fighting = (TextView) findViewById(R.id.youcandoit);
+        TextView exname = (TextView) findViewById(R.id.exname);
+        ImageView nextbtn=(ImageView)findViewById(R.id.nextbtn);
+        ImageView rest=(ImageView)findViewById(R.id.rest);
+
+        textview_second.setVisibility(View.VISIBLE);
+        textview_set.setVisibility(View.VISIBLE);
+        secondtxt.setVisibility(View.VISIBLE);
+        settxt.setVisibility(View.VISIBLE);
+        fighting.setVisibility(View.VISIBLE);
+        exname.setVisibility(View.VISIBLE);
+        nextbtn.setVisibility(View.VISIBLE);
+        rest.setVisibility(View.INVISIBLE);
         textview_set.setText(set);
+if(videocount%2==1)
+{ textview_second.setVisibility(View.INVISIBLE);
+textview_set.setVisibility(View.INVISIBLE);
+    secondtxt.setVisibility(View.INVISIBLE);
+    settxt.setVisibility(View.INVISIBLE);
+    fighting.setVisibility(View.INVISIBLE);
+    exname.setVisibility(View.INVISIBLE);
+    rest.setVisibility(View.VISIBLE);
+    nextbtn.setVisibility(View.INVISIBLE);
+}
 
         // "00"이 아니고, 첫번째 자리가 0 이면 제거
         if (time.substring(0, 1) == "0") {

@@ -1,5 +1,7 @@
 package com.example.mylogin;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +28,10 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
     // adapter에 들어갈 list 입니다.
     private ArrayList<Data> ex_list = new ArrayList<>();
     DatabaseReference reference;
+    private Context context;
+
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = firebaseDatabase.getReference();
 
     public interface OnItemClickListener {
         //void onItemClick(View v, int position);
@@ -166,13 +172,28 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
 
         if (add) {
             for (int i = 0; i < ex_list.size(); i++) {
+                // 이 바로 밑에 수정해야됨
                 Data data = ex_list.get(i);
                 String exercise = data.getName();
                 int set = data.getSet();
+                String str_i=Integer.toString((2*i));
+                int j=(2*i)+1;
+                String str_j=Integer.toString(j);
+                databaseReference.child("ex_name").child(str_i).setValue(exercise);
+                databaseReference.child("ex_name").child(str_j).setValue("rest");
+                if(i>0) {
+                    int k=i-1;
+                    String ii=Integer.toString(2*k);
+                    String iii=Integer.toString((2*k)+1);
+                    databaseReference.child("next_ex").child(ii).setValue(exercise+"_next");
+                    databaseReference.child("next_ex").child(iii).setValue("");
+
+                }
                 ex.put(exercise, set);
             }
             childUpdates.put("/User_Ex_list/" + uid + "/" + date + "/", ex);
             reference.updateChildren(childUpdates);
+            databaseReference.child("User_Ex_list").child(uid).child(date).child("rest").setValue(1);
         }
 
     }
