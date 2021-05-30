@@ -48,7 +48,7 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
     private MediaPlayer mediapalyer;
     int set_int=0;
     CountDownTimer timer;
-    String stringSec = "30";
+    String stringSec = "3";
     int videocount=0;
     private boolean mTimerRunning;
     private Intent intent;
@@ -57,6 +57,7 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
     int i=0;
     ImageView nextex;
     int nextcount=0;
+    int restres;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +81,7 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
                 onBackPressed();
             }
         });
-
+        nextex=(ImageView)findViewById(R.id.nextex);
 
         //String[] ex_list = new String[100];
 
@@ -90,6 +91,7 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
         vw = (VideoView)findViewById(R.id.startEx_vv);
         vw.setMediaController(new MediaController(this));
         vw.setOnCompletionListener(this);
+
 
   /*      mReference = mDatabase.getReference("ex_name"); // 변경값을 확인할 child 이름
         mReference.addValueEventListener(new ValueEventListener() {
@@ -119,6 +121,8 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
                     Log.i("nextex",str);
                     int res = getResources().getIdentifier("@drawable/" + str, "drawable", packName);
                     nextExList.add(res);
+                    if(videocount==0)
+                    {nextex.setImageResource(nextExList.get(0));}
                 }
             }
 
@@ -129,6 +133,9 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
 
             }
         });
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        reference.child("next_ex").child("100").setValue("white");
+        reference.child("next_ex").child("111").setValue("white");
 
         mReference = mDatabase.getReference("ex_name"); // 변경값을 확인할 child 이름
         mReference.addValueEventListener(new ValueEventListener() {
@@ -143,7 +150,7 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
 
                     if(count==0)
                     {
-                        setVideo(videolist.get(0));
+                       setVideo(videolist.get(0));
                         count++;
                     }
                 }
@@ -158,49 +165,6 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
         });
 
 
-       /* DatabaseReference ref = mDatabase.getReference("User_Ex_list").child(uid).child(date); // 변경값을 확인할 child 이름
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for (DataSnapshot messageData : dataSnapshot.getChildren()) {
-                    String str = messageData.getValue().toString();
-                    Log.i("test",str);
-                    SetList.add(str);
-                    if(count2==0)
-                    {
-                        countDown(stringSec, SetList.get(videocount));
-                        count2++;
-                    }
-                }
-            }
-
-            //세트랑 횟수
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        }); */
-
-        //파이어베이스에서 가져온 운동리스트를 바탕으로
-        //순서대로 영상 틀기
-       /* VideoView Video1 = (VideoView) findViewById(R.id.startEx_vv);
-        Uri video = Uri.parse("android.resource://" + getPackageName() +"/"+R.raw.burpi);
-
-
-        MediaController mediacontroller = new MediaController(this);
-        Video1.setMediaController(mediacontroller);
-        Video1.requestFocus();
-        Video1.setVideoURI(video);
-        Video1.start();
-
-        //onPrepareListener는 vv.start() 후에 호출됩니다.
-        Video1.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            public void onPrepared(MediaPlayer mp) {
-                mp.setLooping(true);
-            }
-        });*/
 
         //세트랑 횟수 파이어베이스에서 가져오기
         //이렇게 하나 더 만드는게 맞는지 모르겠어... 일단 했음ㅎㅎ
@@ -213,7 +177,6 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
                     String str = messageData.getValue().toString();
                     Log.i("test",str);
                     SetList.add(str);
-                    Toast.makeText(getApplicationContext(), SetList.get(0), Toast.LENGTH_SHORT).show();
                     if(count2==0)
                     {
                         countDown(stringSec, SetList.get(videocount));
@@ -241,20 +204,34 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
 
         TextView textview_second = (TextView) findViewById(R.id.second);
         TextView textview_set = (TextView) findViewById(R.id.setCount);
-        nextex=(ImageView)findViewById(R.id.nextex);
-        nextex.setImageResource(nextExList.get(nextcount));
-        nextcount++;
+
         String uriPath
                 = "android.resource://"
                 + getPackageName() + "/" + id;
         Uri uri = Uri.parse(uriPath);
         vw.setVideoURI(uri);
         vw.start();
+        vw.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+            public void onCompletion(MediaPlayer mp) {
+
+                try{
+                    mp.release();
+
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+
+        });
         vw.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
+
             public void onPrepared(MediaPlayer mp) {
                 mp.setLooping(true);
             }
+
         });
 
         //함수호출
@@ -289,9 +266,9 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
                 vw.start();
             }
             else {
-
                 countDown(stringSec, SetList.get(videocount));
                 ++currvideo;
+                nextex.setImageResource(nextExList.get(videocount));
                 String s=Integer.toString(currvideo);
                 Log.i("butter",s);
                 if (currvideo == videolist.size())
@@ -320,6 +297,8 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
         TextView exname = (TextView) findViewById(R.id.exname);
         ImageView nextbtn=(ImageView)findViewById(R.id.nextbtn);
         ImageView rest=(ImageView)findViewById(R.id.rest);
+
+       // nextex.setImageResource(nextExList.get(videocount));
 
         textview_second.setVisibility(View.VISIBLE);
         textview_set.setVisibility(View.VISIBLE);
@@ -385,6 +364,7 @@ textview_set.setVisibility(View.INVISIBLE);
 
                 if ((setCount - 1) == 0) { //세트가 0이 되면 다음운동으로 넘겨야됨
                     pauseTimer();
+
                     onCompletion(mediapalyer);
                     videocount++;
                 }

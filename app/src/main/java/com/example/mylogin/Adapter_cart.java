@@ -177,6 +177,7 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
                 String exercise = data.getName();
                 int set = data.getSet();
                 String str_i=Integer.toString((2*i));
+                String istr=Integer.toString(i);
                 int j=(2*i)+1;
                 String str_j=Integer.toString(j);
                 databaseReference.child("ex_name").child(str_i).setValue(exercise);
@@ -186,14 +187,14 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
                     String ii=Integer.toString(2*k);
                     String iii=Integer.toString((2*k)+1);
                     databaseReference.child("next_ex").child(ii).setValue(exercise+"_next");
-                    databaseReference.child("next_ex").child(iii).setValue("");
-
+                    databaseReference.child("next_ex").child(iii).setValue("white");
                 }
                 ex.put(exercise, set);
+                ex.put(exercise+str_i,1);
             }
             childUpdates.put("/User_Ex_list/" + uid + "/" + date + "/", ex);
             reference.updateChildren(childUpdates);
-            databaseReference.child("User_Ex_list").child(uid).child(date).child("rest").setValue(1);
+
         }
 
     }
