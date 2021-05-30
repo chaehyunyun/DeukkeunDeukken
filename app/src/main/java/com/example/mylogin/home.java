@@ -99,6 +99,20 @@ public class home extends AppCompatActivity {
             }
         });
 
+
+        //초보자 루틴
+        //home에서 Beginner_Routine으로 연결
+        ImageButton beginner = (ImageButton) findViewById(R.id.beginner_routine);
+        beginner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(home.this, Beginner_Routine.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
         //하단바
         ImageView girok = (ImageView) findViewById(R.id.scale);
         girok.setOnClickListener(new View.OnClickListener() {

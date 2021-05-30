@@ -1,10 +1,6 @@
 package com.example.mylogin;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +12,9 @@ import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -25,21 +24,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.BreakIterator;
 import java.util.ArrayList;
 
-public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnCompletionListener {
-    ImageView back;
-    private FirebaseDatabase mDatabase;
-    private DatabaseReference mReference;
+public class Beginner_Routine extends AppCompatActivity implements MediaPlayer.OnCompletionListener {
+
+    private FirebaseDatabase mDatabase= FirebaseDatabase.getInstance();
+    private DatabaseReference mReference = mDatabase.getReference();
     private ChildEventListener mChild;
     private FirebaseDatabase mDatabase2;
     private DatabaseReference mReference2;
     private ChildEventListener mChild2;
+
+    ImageView back;
     VideoView vw;
     ArrayList<Integer> videolist = new ArrayList<>();
     ArrayList<Integer> nextExList=new ArrayList<>();
-    ArrayList<String> SetList = new ArrayList<>();
+    ArrayList<String> SetList=new ArrayList<>();
     ArrayList<String> koreanName = new ArrayList<>();
     int currvideo = 0;
     int count=0;
@@ -50,22 +50,108 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
     String stringSec = "3";
     int videocount=0;
     private boolean mTimerRunning;
-    private Intent intent;
     String date;
     String packName;
     int i=0;
     ImageView nextex;
-    int nextcount=0;
-    int restres;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        packName = this.getPackageName();
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.exercise_start);
 
-        intent = getIntent();// 인텐트 받아오기
-        date = intent.getStringExtra("date");
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.beginner_routine);
+
+        //데이터 올리기
+
+        //하체
+        mReference.child("Routine1").child("0").setValue("crosslunge");
+        mReference.child("Routine1").child("1").setValue("rest");
+        mReference.child("Routine11").child("crosslunge").setValue("크로스 런지");
+
+        mReference.child("Routine1").child("2").setValue("donkeykickleft");
+        mReference.child("Routine1").child("3").setValue("rest");
+        mReference.child("Routine11").child("donkeykickleft").setValue("동키 킥");
+
+        mReference.child("Routine1").child("4").setValue("lyingraisingleftleg");
+        mReference.child("Routine1").child("5").setValue("rest");
+        mReference.child("Routine11").child("lyingraisingleftleg").setValue("누워 왼쪽다리 올리기");
+
+        mReference.child("Routine1").child("6").setValue("lyingraisingrightleg");
+        mReference.child("Routine1").child("7").setValue("rest");
+        mReference.child("Routine11").child("lyingraisingrightleg").setValue("누워 오른쪽다리 올리기");
+
+        mReference.child("Routine1").child("8").setValue("sidelunge");
+        mReference.child("Routine1").child("9").setValue("rest");
+        mReference.child("Routine11").child("sidelunge").setValue("사이드런지");
+
+        mReference.child("Routine1").child("10").setValue("sumosquat");
+        mReference.child("Routine1").child("11").setValue("rest");
+        mReference.child("Routine11").child("sumosquat").setValue("스모 스쿼트");
+
+
+        //routine1_next_ex
+        mReference.child("Routine1_next_ex").child("0").setValue("crosslunge");
+        mReference.child("Routine1_next_ex").child("1").setValue("white");
+        mReference.child("Routine1_next_ex").child("2").setValue("donkeykickleft");
+        mReference.child("Routine1_next_ex").child("3").setValue("white");
+        mReference.child("Routine1_next_ex").child("4").setValue("lyingraisingleftleg");
+        mReference.child("Routine1_next_ex").child("5").setValue("white");
+        mReference.child("Routine1_next_ex").child("6").setValue("lyingraisingrightleg");
+        mReference.child("Routine1_next_ex").child("7").setValue("white");
+        mReference.child("Routine1_next_ex").child("8").setValue("sidelunge");
+        mReference.child("Routine1_next_ex").child("9").setValue("white");
+        mReference.child("Routine1_next_ex").child("10").setValue("sumosquat");
+        mReference.child("Routine1_next_ex").child("11").setValue("white");
+        mReference.child("Routine1_next_ex").child("100").setValue("white");
+        mReference.child("Routine1_next_ex").child("111").setValue("white");
+
+
+        //세트 올리기
+        mReference.child("Routine1_set").child("crosslunge").setValue("5");
+        mReference.child("Routine1_set").child("crosslunge_rest").setValue("1");
+        mReference.child("Routine1_set").child("donkeykickleft").setValue("5");
+        mReference.child("Routine1_set").child("donkeykickleft_rest").setValue("1");
+        mReference.child("Routine1_set").child("lyingraisingleftleg").setValue("5");
+        mReference.child("Routine1_set").child("lyingraisingleftleg_rest").setValue("1");
+        mReference.child("Routine1_set").child("lyingraisingrightleg").setValue("5");
+        mReference.child("Routine1_set").child("lyingraisingrightleg_rest").setValue("1");
+        mReference.child("Routine1_set").child("sidelunge").setValue("5");
+        mReference.child("Routine1_set").child("sidelunge_rest").setValue("1");
+        mReference.child("Routine1_set").child("sumosquat").setValue("5");
+        mReference.child("Routine1_set").child("sumosquat_rest").setValue("1");
+
+
+
+
+
+        //복부
+        mReference.child("Routine2").child("0").setValue("abdominalcrunch");
+        mReference.child("Routine2").child("1").setValue("rest");
+        mReference.child("Routine22").child("abdominalcrunch").setValue("복부 크런치");
+
+        mReference.child("Routine2").child("2").setValue("heeltouches");
+        mReference.child("Routine2").child("3").setValue("rest");
+        mReference.child("Routine22").child("heeltouches").setValue("발 뒤꿈치 터치");
+
+        mReference.child("Routine2").child("4").setValue("mountainclimber");
+        mReference.child("Routine2").child("5").setValue("rest");
+        mReference.child("Routine22").child("mountainclimber").setValue("마운틴 클라이머");
+
+        mReference.child("Routine2").child("6").setValue("reclindobliquetwists");
+        mReference.child("Routine2").child("7").setValue("rest");
+        mReference.child("Routine22").child("reclindobliquetwists").setValue("리클라인드 오블릭 트위스트");
+
+        mReference.child("Routine2").child("8").setValue("sissors");
+        mReference.child("Routine2").child("9").setValue("rest");
+        mReference.child("Routine22").child("sissors").setValue("시저 크로스");
+
+        //전신
+
+
+
+
+        packName = this.getPackageName();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); // Get information of logged in user
         String uid = user != null ? user.getUid() : null; // Get the unique uid of the logged-in user
@@ -74,17 +160,11 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference()
-                        .child("set");
-                mPostReference.removeValue();
                 onBackPressed();
             }
         });
         nextex=(ImageView)findViewById(R.id.nextex);
 
-        //String[] ex_list = new String[100];
-
-        //파이어베이스에 있는 운동 목록 가져오기
         initDatabase();
         initDatabase2();
         vw = (VideoView)findViewById(R.id.startEx_vv);
@@ -92,32 +172,17 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
         vw.setOnCompletionListener(this);
 
 
-  /*      mReference = mDatabase.getReference("ex_name"); // 변경값을 확인할 child 이름
-        mReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot messageData : dataSnapshot.getChildren()) {
-                    String str = messageData.getValue().toString();
-                    Log.i("ordertest",str);
-                }
-            }
 
-            //세트랑 횟수
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
-        DatabaseReference mReference7 = mDatabase.getReference("next_ex"); // 변경값을 확인할 child 이름
+        //다음사진
+        DatabaseReference mReference7 = mDatabase.getReference("Routine1_next_ex"); // 변경값을 확인할 child 이름
         mReference7.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot messageData : dataSnapshot.getChildren()) {
                     String str = messageData.getValue().toString();
-                    Log.i("nextex",str);
+                    Log.i("Routine1_next_ex",str);
                     int res = getResources().getIdentifier("@drawable/" + str, "drawable", packName);
                     nextExList.add(res);
                     if(videocount==0)
@@ -125,28 +190,26 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
                 }
             }
 
-            //세트랑 횟수
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        reference.child("next_ex").child("100").setValue("white");
-        reference.child("next_ex").child("111").setValue("white");
+        reference.child("Routine1_next_ex").child("100").setValue("white");
+        reference.child("Routine1_next_ex").child("111").setValue("white");
 
 
 
         //운동 한글이름 가져오기
-        DatabaseReference mReferenceName = mDatabase.getReference("fragment_ExList2"); // 변경값을 확인할 child 이름
+        DatabaseReference mReferenceName = mDatabase.getReference("Routine11"); // 변경값을 확인할 child 이름
         mReferenceName.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot messageData : dataSnapshot.getChildren()) {
                     String str = messageData.getValue().toString();
-                    Log.i("fragment_ExList2",str);
+                    Log.i("Routine11",str);
                     koreanName.add(str);
                 }
             }
@@ -160,8 +223,8 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
         });
 
 
-
-        mReference = mDatabase.getReference("ex_name"); // 변경값을 확인할 child 이름
+        //파이어베이스에 있는 Routine1 = '하체 운동 루틴' 가져오기
+        mReference = mDatabase.getReference("Routine1"); // 변경값을 확인할 child 이름
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -174,13 +237,11 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
 
                     if(count==0)
                     {
-                       setVideo(videolist.get(0), koreanName.get(currvideo));
-                       count++;
+                        setVideo(videolist.get(0), koreanName.get(currvideo));
+                        count++;
                     }
                 }
             }
-
-            //세트랑 횟수
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -190,9 +251,8 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
 
 
 
-        //세트랑 횟수 파이어베이스에서 가져오기
-        //이렇게 하나 더 만드는게 맞는지 모르겠어... 일단 했음ㅎㅎ
-       mReference2 = mDatabase2.getReference("User_Ex_list").child(uid).child(date); // 변경값을 확인할 child 이름
+        //세트랑 받아오기
+        mReference2 = mDatabase2.getReference("Routine1_set"); // 변경값을 확인할 child 이름
         mReference2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -219,20 +279,15 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
 
 
 
+    } //oncreate 끝
 
-
-
-
-
-    } //onCreate end
 
     public void setVideo(int id, String exkoreanName)
     {
 
-
         TextView exname1 = (TextView) findViewById(R.id.exname);
-
         exname1.setText(exkoreanName);
+
         String uriPath
                 = "android.resource://"
                 + getPackageName() + "/" + id;
@@ -279,7 +334,7 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
         AlertDialog.Builder obj = new AlertDialog.Builder(this);
         obj.setTitle("Playback Finished!");
         obj.setIcon(R.mipmap.ic_launcher);
-        MyListener m = new MyListener();
+        Beginner_Routine.MyListener m = new Beginner_Routine.MyListener();
         obj.setPositiveButton("Replay", m);
         obj.setNegativeButton("Next", m);
         obj.setMessage("Want to replay or play next video?");
@@ -328,7 +383,7 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
         ImageView nextbtn=(ImageView)findViewById(R.id.nextbtn);
         ImageView rest=(ImageView)findViewById(R.id.rest);
 
-       // nextex.setImageResource(nextExList.get(videocount));
+        // nextex.setImageResource(nextExList.get(videocount));
 
         textview_second.setVisibility(View.VISIBLE);
         textview_set.setVisibility(View.VISIBLE);
@@ -406,12 +461,13 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
         }.start();
 
     }
+
     private void pauseTimer() {
         timer.cancel();
         mTimerRunning = false;
     }
-    private int done()
-    {
+
+    private int done() {
         return 1;
     }
 
@@ -450,6 +506,7 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
         };
         mReference.addChildEventListener(mChild);
     }
+
     private void initDatabase2() {
 
         mDatabase2 = FirebaseDatabase.getInstance();
@@ -485,6 +542,7 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
         };
         mReference2.addChildEventListener(mChild2);
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

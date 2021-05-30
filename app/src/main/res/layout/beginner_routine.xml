@@ -62,7 +62,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="운동 이름"
+                    android:text="스쿼트"
                     android:textStyle="bold"
                     android:textSize="30dp"
                     android:layout_marginTop="15dp"
@@ -99,46 +99,46 @@
                         android:gravity="center_horizontal"
                         android:layout_centerHorizontal="true"
                         >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="40dp"
-                        android:textColor="@color/black"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="40dp"
+                            android:textColor="@color/black"
 
-                        android:id="@+id/second"
-                        android:text="30"
-                        android:gravity="center_horizontal"
-                        ></TextView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="40dp"
-                        android:textColor="@color/black"
-                        android:layout_marginRight="30dp"
-                        android:text="초"
-                        android:id="@+id/secondtxt"
-                        android:layout_toRightOf="@+id/second"
-                        android:gravity="center_horizontal"
-                        ></TextView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="40dp"
-                        android:textColor="@color/black"
-                        android:id="@+id/setCount"
-                        android:layout_toRightOf="@+id/secondtxt"
-                        android:text="1"
+                            android:id="@+id/second"
+                            android:text="30"
+                            android:gravity="center_horizontal"
+                            ></TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="40dp"
+                            android:textColor="@color/black"
+                            android:layout_marginRight="30dp"
+                            android:text="초"
+                            android:id="@+id/secondtxt"
+                            android:layout_toRightOf="@+id/second"
+                            android:gravity="center_horizontal"
+                            ></TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="40dp"
+                            android:textColor="@color/black"
+                            android:id="@+id/setCount"
+                            android:layout_toRightOf="@+id/secondtxt"
+                            android:text="1"
 
-                        ></TextView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="40dp"
-                        android:textColor="@color/black"
-                        android:text="세트"
-                        android:layout_toRightOf="@+id/setCount"
-                        android:id="@+id/settxt"
-                        ></TextView>
+                            ></TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="40dp"
+                            android:textColor="@color/black"
+                            android:text="세트"
+                            android:layout_toRightOf="@+id/setCount"
+                            android:id="@+id/settxt"
+                            ></TextView>
                     </LinearLayout>
                     <TextView
                         android:layout_width="wrap_content"
@@ -148,8 +148,7 @@
                         android:text="남았습니다 할 수 있습니다!"
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
-                        android:id="@+id/youcandoit"
-                        ></TextView>
+                        android:id="@+id/youcandoit"></TextView>
                 </RelativeLayout>
                 <ImageView
                     android:layout_width="match_parent"

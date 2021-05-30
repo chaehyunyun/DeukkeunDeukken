@@ -31,6 +31,7 @@
         <activity android:name=".fragment_whole" />
         <activity android:name=".ex_detail" />
         <activity android:name=".cart_list" />
+        <activity android:name=".Beginner_Routine"/>
         <activity
             android:name=".BodyProfilePopup"
             android:theme="@android:style/Theme.Dialog" />

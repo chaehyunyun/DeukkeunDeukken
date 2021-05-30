@@ -91,15 +91,16 @@
                     android:scaleType="fitStart"
                     android:src="@drawable/h"></ImageButton>
             </LinearLayout>
-            <ImageView
+
+            <ImageButton
+                android:id="@+id/beginner_routine"
                 android:layout_width="400dp"
                 android:layout_height="150dp"
                 android:src="@drawable/chobo2"
+                android:background="#f6f6f8"
                 android:layout_marginTop="390dp"
-                android:layout_centerHorizontal="true"
-                >
-
-            </ImageView>
+                android:layout_centerHorizontal="true" >
+            </ImageButton>
         </RelativeLayout>
     </FrameLayout>
     <LinearLayout
