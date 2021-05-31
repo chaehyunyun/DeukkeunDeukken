@@ -161,7 +161,9 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
         Date mDate = new Date(now);
         SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat simpleTime = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat simpleDate1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         String date = simpleDate.format(mDate);
+        String date1 = simpleDate1.format(mDate);
         String time = simpleTime.format(mDate);
 
         // Get the ID of the currently connected user
@@ -170,6 +172,7 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
         String uid = user != null ? user.getUid() : null; // Get the unique uid of the logged-in user
         Map<String, Object> childUpdates = new HashMap<>();
         Map<String, String> ex = new HashMap<>(); // exercies + set hashmap
+        Map<String, Integer> ex1 = new HashMap<>();
 
         ex.put("TIME", time);
         newTotal = "TIME: " + time + "\n";
@@ -184,6 +187,33 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
         }
         childUpdates.put("/User_Ex_list/" + uid + "/" + date + "/", ex);
         reference.updateChildren(childUpdates);
+
+        if (add) {
+            for (int i = 0; i < ex_list.size(); i++) {
+                // 이 바로 밑에 수정해야됨
+                Data data = ex_list.get(i);
+                String exercise = data.getName();
+                int set = data.getSet();
+                String str_i=Integer.toString((2*i));
+                String istr=Integer.toString(i);
+                int j=(2*i)+1;
+                String str_j=Integer.toString(j);
+                reference.child("ex_name").child(str_i).setValue(exercise);
+                reference.child("ex_name").child(str_j).setValue("rest");
+                if(i>0) {
+                    int k=i-1;
+                    String ii=Integer.toString(2*k);
+                    String iii=Integer.toString((2*k)+1);
+                    reference.child("next_ex").child(ii).setValue(exercise+"_next");
+                    reference.child("next_ex").child(iii).setValue("white");
+                }
+                ex1.put(exercise, set);
+                ex1.put(exercise+str_i,1);
+            }
+            childUpdates.put("/User_Ex_list/" + uid + "/" + date1 + "/", ex1);
+            reference.updateChildren(childUpdates);
+
+        }
 
     }
 
