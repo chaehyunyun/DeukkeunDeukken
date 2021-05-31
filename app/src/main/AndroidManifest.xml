@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".Exercise_Start"></activity>
+        <activity android:name=".Exercise_End"/>
         <activity android:name=".Calendar" />
         <activity android:name=".Mypage" />
         <activity android:name=".NewId" />

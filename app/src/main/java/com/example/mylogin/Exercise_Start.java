@@ -47,7 +47,7 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
     private MediaPlayer mediapalyer;
     int set_int=0;
     CountDownTimer timer;
-    String stringSec = "3";
+    String stringSec = "5";
     int videocount=0;
     private boolean mTimerRunning;
     private Intent intent;
@@ -261,15 +261,25 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
     @Override
     public void onCompletion(MediaPlayer mediapalyer) {
 
+        Log.i("videolist",Integer.toString(videolist.size()));
+        Log.i("videocount",Integer.toString(videocount));
         this.mediapalyer = mediapalyer;
-        countDown(stringSec, SetList.get(videocount));
-        ++currvideo;
-        nextex.setImageResource(nextExList.get(videocount));
-        //String s=Integer.toString(currvideo);
-        //Log.i("butter",s);
-        if (currvideo == videolist.size())
-            currvideo = 0;
-        setVideo(videolist.get(currvideo), koreanName.get(currvideo)); //currvideo가 비디오 카운트랑 똑같 index라고 생각하면 될듯
+        if(videolist.size()==videocount){
+            Intent intent = new Intent(Exercise_Start.this, Exercise_End.class);
+            startActivity(intent);
+            finish();
+        }
+        else{
+            countDown(stringSec, SetList.get(videocount));
+            ++currvideo;
+            nextex.setImageResource(nextExList.get(videocount));
+            //String s=Integer.toString(currvideo);
+            //Log.i("butter",s);
+            if (currvideo == videolist.size())
+                currvideo = 0;
+
+
+            setVideo(videolist.get(currvideo), koreanName.get(currvideo)); }//currvideo가 비디오 카운트랑 똑같 index라고 생각하면 될듯
     }
 
     public void countDown(String time, String set) {

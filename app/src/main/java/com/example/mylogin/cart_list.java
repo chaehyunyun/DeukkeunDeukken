@@ -41,8 +41,6 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
     Data data;
 
     ItemTouchHelper helper;
-    ImageButton start;
-    TextView textView_count, textView_set;
     VideoView vv;
     ImageView back;
 
@@ -52,7 +50,6 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
     int set = 1;
     int resID;
     String msg;
-    String[] array;
     String packName;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,43 +133,6 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
 
                 Intent intent = new Intent(cart_list.this, Exercise_Start.class);
                 intent.putExtra("date",date);
-                startActivity(intent);
-            }
-        });
-
-        //하단바
-        ImageView home = (ImageView) findViewById(R.id.home);
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(cart_list.this, home.class);
-                startActivity(intent);
-            }
-        });
-
-        ImageView scale = (ImageView) findViewById(R.id.scale);
-        scale.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(cart_list.this, BodyProfile.class);
-                startActivity(intent);
-            }
-        });
-
-        ImageView memo = (ImageView) findViewById(R.id.calendar);
-        memo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(cart_list.this, Calendar.class);
-                startActivity(intent);
-            }
-        });
-
-        ImageView mypage = (ImageView) findViewById(R.id.mypage);
-        mypage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(cart_list.this, Mypage.class);
                 startActivity(intent);
             }
         });

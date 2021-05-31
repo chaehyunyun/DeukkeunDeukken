@@ -91,18 +91,16 @@ public class Beginner_Routine extends AppCompatActivity implements MediaPlayer.O
 
 
         //routine1_next_ex
-        mReference.child("Routine1_next_ex").child("0").setValue("crosslunge");
+        mReference.child("Routine1_next_ex").child("0").setValue("donkeykickleft_next");
         mReference.child("Routine1_next_ex").child("1").setValue("white");
-        mReference.child("Routine1_next_ex").child("2").setValue("donkeykickleft");
+        mReference.child("Routine1_next_ex").child("2").setValue("lyingraisingleftleg_next");
         mReference.child("Routine1_next_ex").child("3").setValue("white");
-        mReference.child("Routine1_next_ex").child("4").setValue("lyingraisingleftleg");
+        mReference.child("Routine1_next_ex").child("4").setValue("lyingraisingrightleg_next");
         mReference.child("Routine1_next_ex").child("5").setValue("white");
-        mReference.child("Routine1_next_ex").child("6").setValue("lyingraisingrightleg");
+        mReference.child("Routine1_next_ex").child("6").setValue("sidelunge_next");
         mReference.child("Routine1_next_ex").child("7").setValue("white");
-        mReference.child("Routine1_next_ex").child("8").setValue("sidelunge");
+        mReference.child("Routine1_next_ex").child("8").setValue("sumosquat_next");
         mReference.child("Routine1_next_ex").child("9").setValue("white");
-        mReference.child("Routine1_next_ex").child("10").setValue("sumosquat");
-        mReference.child("Routine1_next_ex").child("11").setValue("white");
         mReference.child("Routine1_next_ex").child("100").setValue("white");
         mReference.child("Routine1_next_ex").child("111").setValue("white");
 
@@ -533,6 +531,7 @@ public class Beginner_Routine extends AppCompatActivity implements MediaPlayer.O
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
             }
 
             @Override

@@ -49,7 +49,7 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="510dp">
+            android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
@@ -62,73 +62,6 @@
                 android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
         </androidx.core.widget.NestedScrollView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-            android:background="#ffffff">
-
-            <RelativeLayout
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                >
-                <ImageView
-                    android:id="@+id/home"
-                    android:layout_width="50dp"
-                    android:layout_height="35dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/home"
-                    >
-                </ImageView>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                >
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="35dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/scale"
-                    android:id="@+id/scale"
-                    >
-                </ImageView>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                >
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="35dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/calendar"
-                    android:id="@+id/calendar"
-                    >
-                </ImageView>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                >
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="35dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/mypage"
-                    android:id="@+id/mypage"
-                    >
-                </ImageView>
-            </RelativeLayout>
-        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

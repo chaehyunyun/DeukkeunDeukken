@@ -1,6 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/endex"
+            android:scaleType="fitXY"
+            ></ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4세트"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="250dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2세트"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="330dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4세트"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="410dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2세트"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="490dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4세트"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="580dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2세트"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="660dp"/>
+    </FrameLayout>
+</LinearLayout>
