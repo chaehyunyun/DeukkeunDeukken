@@ -99,6 +99,7 @@
                 android:src="@drawable/chobo2"
                 android:background="#f6f6f8"
                 android:layout_marginTop="390dp"
+                android:scaleType="centerInside"
                 android:layout_centerHorizontal="true" >
             </ImageButton>
         </RelativeLayout>

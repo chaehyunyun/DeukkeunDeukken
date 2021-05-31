@@ -1,189 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".Beginner_Routine">
-
+    android:background="@color/white">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="#1968f8">
 
         <ImageView
-            android:id="@+id/back"
-            android:name="back"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:src="@drawable/ic_back_arrow_w" />
-
-        <ImageView
             android:layout_width="250dp"
             android:layout_height="match_parent"
             android:src="@drawable/toplogo6"
             android:layout_marginLeft="70dp"></ImageView>
-        <ImageView
+        <VideoView
+            android:id="@+id/videoView3"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:src="@drawable/startexercise"
             android:layout_marginLeft="270dp"
-            android:layout_marginTop="9dp"></ImageView>
+            android:layout_marginTop="9dp"></VideoView>
     </FrameLayout>
 
-    //비디오 뷰
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="4"
-        android:orientation="vertical"
-        >
-
-        <VideoView
-            android:id="@+id/startEx_vv"
-            android:layout_width="420dp"
-            android:layout_gravity="center"
-            android:layout_height="420dp" />
-
-        <LinearLayout
+        android:layout_height="730dp">
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:src="@drawable/endex"
+            android:scaleType="fitXY"
+            ></ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4세트"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="240dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2세트"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="325dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4세트"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="410dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2세트"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="492dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4세트"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="585dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2세트"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="672dp"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#ffffff">
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             >
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_weight="4"
-                android:orientation="vertical"
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/home"
                 >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="스쿼트"
-                    android:textStyle="bold"
-                    android:textSize="30dp"
-                    android:layout_marginTop="15dp"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center"
-                    android:id="@+id/exname"
-                    ></TextView>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/stopbtn"
-                    android:text="pause"
-                    android:layout_marginRight="10dp"
-                    android:layout_gravity="right"
-                    ></Button>
-            </FrameLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="100dp"
-                android:orientation="horizontal"
-
+            </ImageView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/scale"
+                android:id="@+id/scale"
                 >
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_centerHorizontal="true"
-                    >
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
-                        android:layout_centerHorizontal="true"
-                        >
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="40dp"
-                            android:textColor="@color/black"
-
-                            android:id="@+id/second"
-                            android:text="30"
-                            android:gravity="center_horizontal"
-                            ></TextView>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="40dp"
-                            android:textColor="@color/black"
-                            android:layout_marginRight="30dp"
-                            android:text="초"
-                            android:id="@+id/secondtxt"
-                            android:layout_toRightOf="@+id/second"
-                            android:gravity="center_horizontal"
-                            ></TextView>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="40dp"
-                            android:textColor="@color/black"
-                            android:id="@+id/setCount"
-                            android:layout_toRightOf="@+id/secondtxt"
-                            android:text="1"
-
-                            ></TextView>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="40dp"
-                            android:textColor="@color/black"
-                            android:text="세트"
-                            android:layout_toRightOf="@+id/setCount"
-                            android:id="@+id/settxt"
-                            ></TextView>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="15dp"
-                        android:textColor="@color/black"
-                        android:text="남았습니다 할 수 있습니다!"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:id="@+id/youcandoit"></TextView>
-                </RelativeLayout>
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:src="@drawable/restcomment"
-                    android:textColor="@color/black"
-                    android:textSize="50dp"
-                    android:id="@+id/rest"
-                    ></ImageView>
-            </RelativeLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_weight="3"
-                android:orientation="horizontal"
+            </ImageView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/calendar"
+                android:id="@+id/calendar"
                 >
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_weight="3"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/next3"
-                    android:id="@+id/nextbtn"
-                    ></ImageView>
-                <ImageView
-                    android:layout_width="270dp"
-                    android:layout_weight="7"
-                    android:layout_height="match_parent"
-                    android:id="@+id/nextex"
-                    ></ImageView>
-
-            </LinearLayout>
-        </LinearLayout>
-
-
+            </ImageView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/mypage"
+                android:id="@+id/mypage"
+                >
+            </ImageView>
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

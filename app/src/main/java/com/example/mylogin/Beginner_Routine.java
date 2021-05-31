@@ -1,6 +1,7 @@
 package com.example.mylogin;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -91,11 +92,11 @@ public class Beginner_Routine extends AppCompatActivity implements MediaPlayer.O
 
 
         //routine1_next_ex
-        mReference.child("Routine1_next_ex").child("0").setValue("donkeykickleft_next");
+        mReference.child("Routine1_next_ex").child("0").setValue("donkey_next");
         mReference.child("Routine1_next_ex").child("1").setValue("white");
-        mReference.child("Routine1_next_ex").child("2").setValue("lyingraisingleftleg_next");
+        mReference.child("Routine1_next_ex").child("2").setValue("lyingraisingleg_next");
         mReference.child("Routine1_next_ex").child("3").setValue("white");
-        mReference.child("Routine1_next_ex").child("4").setValue("lyingraisingrightleg_next");
+        mReference.child("Routine1_next_ex").child("4").setValue("lyingraisingleg_next");
         mReference.child("Routine1_next_ex").child("5").setValue("white");
         mReference.child("Routine1_next_ex").child("6").setValue("sidelunge_next");
         mReference.child("Routine1_next_ex").child("7").setValue("white");
@@ -280,32 +281,20 @@ public class Beginner_Routine extends AppCompatActivity implements MediaPlayer.O
     } //oncreate 끝
 
 
+
     public void setVideo(int id, String exkoreanName)
     {
 
-        TextView exname1 = (TextView) findViewById(R.id.exname);
-        exname1.setText(exkoreanName);
 
+        TextView exname1 = (TextView) findViewById(R.id.exname);
+
+        exname1.setText(exkoreanName);
         String uriPath
                 = "android.resource://"
                 + getPackageName() + "/" + id;
         Uri uri = Uri.parse(uriPath);
         vw.setVideoURI(uri);
         vw.start();
-        vw.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-
-            public void onCompletion(MediaPlayer mp) {
-
-                try{
-                    mp.release();
-
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-
-            }
-
-        });
         vw.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
 
@@ -325,40 +314,27 @@ public class Beginner_Routine extends AppCompatActivity implements MediaPlayer.O
 
     //팝업창 비디오가 끝나면 불림
     @Override
-    public void onCompletion(MediaPlayer mediapalyer)
-    {
+    public void onCompletion(MediaPlayer mediapalyer) {
 
+        Log.i("videolist",Integer.toString(videolist.size()));
+        Log.i("videocount",Integer.toString(videocount));
         this.mediapalyer = mediapalyer;
-        AlertDialog.Builder obj = new AlertDialog.Builder(this);
-        obj.setTitle("Playback Finished!");
-        obj.setIcon(R.mipmap.ic_launcher);
-        Beginner_Routine.MyListener m = new Beginner_Routine.MyListener();
-        obj.setPositiveButton("Replay", m);
-        obj.setNegativeButton("Next", m);
-        obj.setMessage("Want to replay or play next video?");
-        obj.show();
-
-    }
-
-    class MyListener implements DialogInterface.OnClickListener {
-        @Override
-        public void onClick(DialogInterface dialog, int which)
-        {
-            if (which == -1) {
-                vw.seekTo(0);
-                vw.start();
-            }
-            else { //팝업창에서 next가 눌리면 들어옴
-                countDown(stringSec, SetList.get(videocount));
-                ++currvideo;
-                nextex.setImageResource(nextExList.get(videocount));
-                //String s=Integer.toString(currvideo);
-                //Log.i("butter",s);
-                if (currvideo == videolist.size())
-                    currvideo = 0;
-                setVideo(videolist.get(currvideo), koreanName.get(currvideo)); //currvideo가 비디오 카운트랑 똑같 index라고 생각하면 될듯
-            }
+        if(videolist.size()==videocount){
+            Intent intent = new Intent(Beginner_Routine.this, Exercise_End.class);
+            startActivity(intent);
+            finish();
         }
+        else{
+            countDown(stringSec, SetList.get(videocount));
+            ++currvideo;
+            nextex.setImageResource(nextExList.get(videocount));
+            //String s=Integer.toString(currvideo);
+            //Log.i("butter",s);
+            if (currvideo == videolist.size())
+                currvideo = 0;
+
+
+            setVideo(videolist.get(currvideo), koreanName.get(currvideo)); }//currvideo가 비디오 카운트랑 똑같 index라고 생각하면 될듯
     }
 
     public void countDown(String time, String set) {
@@ -449,9 +425,9 @@ public class Beginner_Routine extends AppCompatActivity implements MediaPlayer.O
 
                 if ((setCount - 1) == 0) { //세트가 0이 되면 다음운동으로 넘겨야됨
                     pauseTimer();
-
-                    onCompletion(mediapalyer);
                     videocount++;
+                    onCompletion(mediapalyer);
+
                 }
                 else{countDown(originalTime, String.valueOf(setCount - 1));}
 
@@ -459,13 +435,12 @@ public class Beginner_Routine extends AppCompatActivity implements MediaPlayer.O
         }.start();
 
     }
-
     private void pauseTimer() {
         timer.cancel();
         mTimerRunning = false;
     }
-
-    private int done() {
+    private int done()
+    {
         return 1;
     }
 
@@ -504,7 +479,6 @@ public class Beginner_Routine extends AppCompatActivity implements MediaPlayer.O
         };
         mReference.addChildEventListener(mChild);
     }
-
     private void initDatabase2() {
 
         mDatabase2 = FirebaseDatabase.getInstance();
@@ -531,7 +505,6 @@ public class Beginner_Routine extends AppCompatActivity implements MediaPlayer.O
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
             }
 
             @Override
@@ -541,7 +514,6 @@ public class Beginner_Routine extends AppCompatActivity implements MediaPlayer.O
         };
         mReference2.addChildEventListener(mChild2);
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
