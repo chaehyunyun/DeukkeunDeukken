@@ -49,7 +49,7 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="542dp">
+            android:layout_height="510dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
@@ -64,29 +64,28 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="60dp"
             android:orientation="horizontal"
-            android:background="#ffffff"
-            android:layout_gravity="bottom|center|right">
+            android:background="#ffffff">
 
             <RelativeLayout
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 >
                 <ImageView
+                    android:id="@+id/home"
                     android:layout_width="50dp"
                     android:layout_height="35dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/home"
-                    android:id="@+id/home"
                     >
                 </ImageView>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 >
                 <ImageView
@@ -101,7 +100,7 @@
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 >
                 <ImageView
@@ -116,7 +115,7 @@
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 >
                 <ImageView
@@ -130,7 +129,6 @@
                 </ImageView>
             </RelativeLayout>
         </LinearLayout>
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

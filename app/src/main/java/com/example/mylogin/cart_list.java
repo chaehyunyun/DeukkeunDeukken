@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -34,6 +35,8 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
     private Adapter_cart adapter;
+    SharedPreferences pre;
+    SharedPreferences.Editor editor;
 
     Data data;
 
@@ -53,9 +56,12 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
     String packName;
 
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cart_list);
+
+        pre = getSharedPreferences("first", MODE_PRIVATE);
+        editor = pre.edit();
+
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference("fragment_ExList");
         packName = this.getPackageName();
@@ -105,14 +111,21 @@ public class cart_list extends AppCompatActivity implements Adapter_cart.OnItemC
 
         });
 
-
         //운동시작 누르면 Exercise 로
         ImageView start = (ImageView) findViewById(R.id.start);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Log.w("cart_list", "*************************************");
-                adapter.postFirebaseDataBase(true);
+                if(pre.getInt("f", 0)==0) {
+                    adapter.postFirebaseDataBase(true);
+                    editor.putInt("f", 1);
+                    editor.commit();
+                }
+                else
+                    adapter.postFirebaseDataBase2(true);
+
 
                 long now = System.currentTimeMillis();
                 Date mDate = new Date(now);

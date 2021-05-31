@@ -43,7 +43,7 @@ public class ex_detail extends AppCompatActivity {
                 if (weight_ex.equals("weight_iv1")) { //스쿼트
                     resName = "@drawable/squat_detail";
                     //Video Uri, Put the video in the res folder into a variable.
-                  //  videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.squat);
+                    videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.squat);
                 }
                 if (weight_ex.equals("iv2")) { //마운틴 클라이머
 

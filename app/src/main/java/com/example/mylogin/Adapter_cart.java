@@ -1,7 +1,5 @@
 package com.example.mylogin;
 
-import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,10 +29,11 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
     // adapter에 들어갈 list 입니다.
     private ArrayList<Data> ex_list = new ArrayList<>();
     DatabaseReference reference;
-    private Context context;
 
-    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    DatabaseReference databaseReference = firebaseDatabase.getReference();
+    FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference mReference = mDatabase.getReference();
+    String curTotal, newTotal;
+
 
     public interface OnItemClickListener {
         //void onItemClick(View v, int position);
@@ -152,52 +154,94 @@ public class Adapter_cart extends RecyclerView.Adapter<Adapter_cart.ItemViewHold
         mListener.onItemChanged();
     }
 
-    // 운동 기록 (운동 이름 + 세트) 파베에 저장하기
     public void postFirebaseDataBase(boolean add) {
 
         // Get date
         long now = System.currentTimeMillis();
         Date mDate = new Date(now);
-        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat simpleTime = new SimpleDateFormat("HH:mm");
         String date = simpleDate.format(mDate);
+        String time = simpleTime.format(mDate);
 
         // Get the ID of the currently connected user
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); // Get information of logged in user
-        String uid = user != null ? user.getUid() : null; // Get the unique uid of the logged-in user
-
         reference = FirebaseDatabase.getInstance().getReference();
-
+        String uid = user != null ? user.getUid() : null; // Get the unique uid of the logged-in user
         Map<String, Object> childUpdates = new HashMap<>();
-        Map<String, Integer> ex = new HashMap<>(); // exercies + set hashmap
+        Map<String, String> ex = new HashMap<>(); // exercies + set hashmap
 
-        if (add) {
-            for (int i = 0; i < ex_list.size(); i++) {
-                // 이 바로 밑에 수정해야됨
-                Data data = ex_list.get(i);
-                String exercise = data.getName();
-                int set = data.getSet();
-                String str_i=Integer.toString((2*i));
-                String istr=Integer.toString(i);
-                int j=(2*i)+1;
-                String str_j=Integer.toString(j);
-                databaseReference.child("ex_name").child(str_i).setValue(exercise);
-                databaseReference.child("ex_name").child(str_j).setValue("rest");
-                if(i>0) {
-                    int k=i-1;
-                    String ii=Integer.toString(2*k);
-                    String iii=Integer.toString((2*k)+1);
-                    databaseReference.child("next_ex").child(ii).setValue(exercise+"_next");
-                    databaseReference.child("next_ex").child(iii).setValue("white");
-                }
-                ex.put(exercise, set);
-                ex.put(exercise+str_i,1);
-            }
-            childUpdates.put("/User_Ex_list/" + uid + "/" + date + "/", ex);
-            reference.updateChildren(childUpdates);
-
+        ex.put("TIME", time);
+        newTotal = "TIME: " + time + "\n";
+        for (int i = 0; i < ex_list.size(); i++) {
+            Data data = ex_list.get(i);
+            String exercise = data.getName();
+            String set = String.valueOf(data.getSet());
+            String es = exercise + ": " + set + "\n";
+            newTotal = newTotal + es + "\n";
+            ex.put(exercise, set);
+            ex.put("zTotal", newTotal);
         }
+        childUpdates.put("/User_Ex_list/" + uid + "/" + date + "/", ex);
+        reference.updateChildren(childUpdates);
 
     }
+
+    // 운동 기록 (운동 이름 + 세트) 파베에 저장하기
+    public void postFirebaseDataBase2(boolean add) {
+        // Get date
+        long now = System.currentTimeMillis();
+        Date mDate = new Date(now);
+        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat simpleTime = new SimpleDateFormat("HH:mm");
+        String date = simpleDate.format(mDate);
+        String time = simpleTime.format(mDate);
+
+        // Get the ID of the currently connected user
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); // Get information of logged in user
+        reference = FirebaseDatabase.getInstance().getReference();
+        String uid = user != null ? user.getUid() : null; // Get the unique uid of the logged-in user
+        Map<String, Object> childUpdates = new HashMap<>();
+        Map<String, String> ex = new HashMap<>(); // exercies + set hashmap
+
+        mReference.child("User_Ex_list").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChild(date)) {
+
+                    for (DataSnapshot snapshot : dataSnapshot.child(date).getChildren()) {
+                        String key = snapshot.getKey();
+
+                        if (key.equals("zTotal")) {
+                            curTotal = "" + snapshot.getValue();
+                            if (add) {
+                                ex.put("TIME", time);
+                                newTotal = curTotal + "TIME: " + time + "\n";
+                                for (int i = 0; i < ex_list.size(); i++) {
+                                    Data data = ex_list.get(i);
+                                    String exercise = data.getName();
+                                    String set = String.valueOf(data.getSet());
+                                    String es = exercise + ": " + set + "SET";
+                                    newTotal = newTotal + es + "\n";
+                                    ex.put(exercise, set);
+                                    ex.put("zTotal", newTotal);
+                                }
+                                childUpdates.put("/User_Ex_list/" + uid + "/" + date + "/", ex);
+                                reference.updateChildren(childUpdates);
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 
 
     // RecyclerView의 핵심인 ViewHolder 입니다.

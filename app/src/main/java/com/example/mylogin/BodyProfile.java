@@ -34,6 +34,7 @@ public class BodyProfile extends AppCompatActivity {
     Button btnBMI, btnInsert;
     DatabaseReference reference;
     String height, weight, BMI, level;
+    String bf;
     SharedPreferences preferences; // 데이터
     SharedPreferences prefPopup; // 팝업
     SharedPreferences.Editor editor;
@@ -217,7 +218,7 @@ public class BodyProfile extends AppCompatActivity {
         Map<String, Object> childUpdates = new HashMap<>();
         Map<String, Object> postValues = null;
         if (add) {
-            FirebasePost post = new FirebasePost(height, weight, BMI);
+            FirebasePost post = new FirebasePost(height, weight, BMI, bf);
             postValues = post.toMap();
         }
 
@@ -230,6 +231,7 @@ public class BodyProfile extends AppCompatActivity {
         height = String.valueOf(valueHeight.getText());
         weight = String.valueOf(valueWeight.getText());
         BMI = String.valueOf(valueBMI.getText());
+        bf = "Height : " + height + "    Weight : " + weight + "    BMI : " + BMI;
         postFirebaseDataBase(true);
         cheakBMI = true;
     }
@@ -280,11 +282,13 @@ public class BodyProfile extends AppCompatActivity {
         public String height;
         public String weight;
         public String BMI;
+        public String bf;
 
-        public FirebasePost(String height, String weight, String BMI) {
+        public FirebasePost(String height, String weight, String BMI, String bf) {
             this.height = height;
             this.weight = weight;
             this.BMI = BMI;
+            this.bf = bf;
         }
 
         public Map<String, Object> toMap() {
@@ -292,6 +296,7 @@ public class BodyProfile extends AppCompatActivity {
             result.put("height", height);
             result.put("weight", weight);
             result.put("BMI", BMI);
+            result.put("zBF", bf);
             return result;
         }
 

@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:paddingLeft="6dp"
     android:paddingTop="6dp"
     android:paddingRight="6dp"
-    android:background="@color/white"
     android:paddingBottom="6dp"
     tools:context=".Calendar">
 
@@ -51,12 +51,12 @@
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:theme="@style/CalendarViewTheme"
-        android:layout_height="400dp"
+        android:layout_height="370dp"
         android:layout_marginTop="60dp"
         android:dateTextAppearance="@style/TextAppearance.AppCompat.Large"
         android:filterTouchesWhenObscured="false"
         android:fitsSystemWindows="true"
+        android:theme="@style/CalendarViewTheme"
         android:weightSum="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,53 +68,90 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:textColor="@color/black"
         android:layout_marginRight="8dp"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.569"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/txtBodyRecord"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="none"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/diaryTextView" />
+
+    <TextView
+        android:id="@+id/txtWorkoutRecord"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="none"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtBodyRecord" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="0dp"
-        android:layout_height="116dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:ems="10"
-        android:hint="RECORD."
-        android:textColor="@color/black"
+        android:hint="Leave your impressions of the day!"
         android:inputType="textMultiLine"
+        android:textColor="@color/black"
+        android:textColorHint="#000000"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/diaryTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/txtWorkoutRecord" />
 
     <TextView
         android:id="@+id/recordText"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:scrollbarFadeDuration="0"
-        android:scrollbarSize="2dp"
-        android:scrollbarThumbVertical="@color/black"
-        android:scrollbars="vertical"
-        android:visibility="invisible"
+        android:scrollbars="none"
+        android:text=""
         android:textColor="@color/black"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toTopOf="@+id/editText" />
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtWorkoutRecord"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btn_save"
@@ -122,14 +159,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="#1968f8"
         android:text="SAVE"
         android:textColor="@color/white"
-        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
@@ -161,7 +198,6 @@
         android:visibility="invisible"
         app:layout_constraintBaseline_toBaselineOf="@+id/btn_edit"
         app:layout_constraintEnd_toEndOf="@+id/btn_save"></Button>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -106,9 +106,8 @@ public class home extends AppCompatActivity {
         beginner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(home.this, Beginner_Routine.class);
+                Intent intent = new Intent(home.this, Beginner.class);
                 startActivity(intent);
-                finish();
             }
         });
 
