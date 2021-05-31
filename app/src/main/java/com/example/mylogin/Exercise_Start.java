@@ -148,6 +148,7 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
                     String str = messageData.getValue().toString();
                     Log.i("fragment_ExList2",str);
                     koreanName.add(str);
+                    koreanName.add("");
                 }
             }
 
@@ -239,20 +240,6 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
         Uri uri = Uri.parse(uriPath);
         vw.setVideoURI(uri);
         vw.start();
-        vw.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-
-            public void onCompletion(MediaPlayer mp) {
-
-                try{
-                    mp.release();
-
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-
-            }
-
-        });
         vw.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
 
@@ -272,40 +259,17 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
 
     //팝업창 비디오가 끝나면 불림
     @Override
-    public void onCompletion(MediaPlayer mediapalyer)
-    {
+    public void onCompletion(MediaPlayer mediapalyer) {
 
         this.mediapalyer = mediapalyer;
-        AlertDialog.Builder obj = new AlertDialog.Builder(this);
-        obj.setTitle("Playback Finished!");
-        obj.setIcon(R.mipmap.ic_launcher);
-        MyListener m = new MyListener();
-        obj.setPositiveButton("Replay", m);
-        obj.setNegativeButton("Next", m);
-        obj.setMessage("Want to replay or play next video?");
-        obj.show();
-
-    }
-
-    class MyListener implements DialogInterface.OnClickListener {
-        @Override
-        public void onClick(DialogInterface dialog, int which)
-        {
-            if (which == -1) {
-                vw.seekTo(0);
-                vw.start();
-            }
-            else { //팝업창에서 next가 눌리면 들어옴
-                countDown(stringSec, SetList.get(videocount));
-                ++currvideo;
-                nextex.setImageResource(nextExList.get(videocount));
-                //String s=Integer.toString(currvideo);
-                //Log.i("butter",s);
-                if (currvideo == videolist.size())
-                    currvideo = 0;
-                setVideo(videolist.get(currvideo), koreanName.get(currvideo)); //currvideo가 비디오 카운트랑 똑같 index라고 생각하면 될듯
-            }
-        }
+        countDown(stringSec, SetList.get(videocount));
+        ++currvideo;
+        nextex.setImageResource(nextExList.get(videocount));
+        //String s=Integer.toString(currvideo);
+        //Log.i("butter",s);
+        if (currvideo == videolist.size())
+            currvideo = 0;
+        setVideo(videolist.get(currvideo), koreanName.get(currvideo)); //currvideo가 비디오 카운트랑 똑같 index라고 생각하면 될듯
     }
 
     public void countDown(String time, String set) {
@@ -396,9 +360,9 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
 
                 if ((setCount - 1) == 0) { //세트가 0이 되면 다음운동으로 넘겨야됨
                     pauseTimer();
-
-                    onCompletion(mediapalyer);
                     videocount++;
+                    onCompletion(mediapalyer);
+
                 }
                 else{countDown(originalTime, String.valueOf(setCount - 1));}
 
@@ -492,4 +456,6 @@ public class Exercise_Start extends AppCompatActivity implements MediaPlayer.OnC
     }
 
 
+    private class next {
+    }
 }

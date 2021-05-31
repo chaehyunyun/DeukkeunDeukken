@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="vertical"
+    android:background="#00223d"
+    >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/routine"
+       android:layout_gravity="center_vertical"
+
+        ></ImageView>
+
+</LinearLayout>
+    //보라색 부분 > 운동목록
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        >
+        //스크롤뷰
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scroll1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="50dp"
+
+                >
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="120dp"
+                    android:orientation="horizontal"
+                    android:background="@color/white"
+                    android:layout_marginBottom="50dp"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:src="@drawable/bodyroutine"
+                            android:layout_centerVertical="true"
+                            android:id="@+id/bodyroutine"
+                            android:layout_margin="1dp">
+                        </ImageView>
+
+
+                    </RelativeLayout>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="120dp"
+                    android:orientation="horizontal"
+                    android:background="@color/white"
+                    android:layout_marginBottom="50dp"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:src="@drawable/legroutine"
+                            android:layout_centerVertical="true"
+                            android:id="@+id/legroutine"
+                            android:layout_margin="1dp"
+                            >
+                        </ImageView>
+
+
+                    </RelativeLayout>
+                </FrameLayout>
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="120dp"
+                    android:orientation="horizontal"
+                    android:background="@color/white">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:src="@drawable/coreroutine"
+                            android:layout_centerVertical="true"
+                            android:id="@+id/coreroutine"
+                            android:layout_margin="1dp"
+                            >
+                        </ImageView>
+
+
+
+                    </RelativeLayout>
+                </FrameLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
+
+</LinearLayout>
